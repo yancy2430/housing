@@ -1,0 +1,41 @@
+{
+ 
+  "pages": [
+    "pages/index/index",
+    "pages/index/settle",
+    "pages/index/edu",
+    "pages/index/news",
+    "pages/index/me"
+  ],
+  "window": {
+    "backgroundColor": "#f8f8f8",
+    "navigationBarBackgroundColor": "#126DFE",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "custom": true,
+    "color": "#000000",
+    "selectedColor": "#000000",
+    "backgroundColor": "#000000",
+    "list": [
+      {
+        "pagePath": "pages/index/index"
+      },
+      {
+        "pagePath": "pages/index/settle"
+      },
+      {
+        "pagePath": "pages/index/edu"
+      },
+      {
+        "pagePath": "pages/index/news"
+      },
+      {
+        "pagePath": "pages/index/me"
+      }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}
