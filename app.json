@@ -1,5 +1,7 @@
 {
- 
+  "usingComponents": {
+    "van-skeleton": "@vant/weapp/skeleton/index"
+  },
   "pages": [
     "pages/index/index",
     "pages/index/settle",

@@ -1,13 +1,58 @@
 <view class="container">
-  <van-grid border="{{false}}">
-  <van-grid-item use-slot="icon" icon="" text="厦门区域">
-      <image
-        style="width: 100%; height: 90px;"
-        src="https://ke-image.ljcdn.com/materials/appindexconf/d5592269bafbe134453afb01c5612658.png"
-      />
-  </van-grid-item>
-  <van-grid-item icon="https://ke-image.ljcdn.com/materials/appindexconf/94250adc5e77f9b816f77032e27a8412.png" text="漳州区域" />
-  <van-grid-item icon="https://ke-image.ljcdn.com/materials/appindexconf/44b50fa3627b67a9102c82f96ebd9189.png" text="泉州区域" />
-  <van-grid-item icon="https://ke-image.ljcdn.com/materials/appindexconf/d10df2594bba41993ad72a7618c5727d.png" text="其他区域" />
-</van-grid>
+	<van-search label="厦门" shape="round" value="{{ value }}" placeholder="请输入搜索关键词" use-action-slot bind:change="onChange" bind:search="onSearch">
+		<view slot="action" bind:tap="onClick">搜索</view>
+	</van-search>
+	<van-grid border="{{false}}" square>
+		<van-grid-item text="厦门区域">
+			<van-icon slot="icon" size="40" name="https://ke-image.ljcdn.com/materials/appindexconf/d5592269bafbe134453afb01c5612658.png" />
+		</van-grid-item>
+		<van-grid-item text="漳州区域">
+			<van-icon slot="icon" size="40" name="https://ke-image.ljcdn.com/materials/appindexconf/94250adc5e77f9b816f77032e27a8412.png" />
+		</van-grid-item>
+		<van-grid-item text="泉州区域">
+			<van-icon slot="icon" size="40" name="https://ke-image.ljcdn.com/materials/appindexconf/44b50fa3627b67a9102c82f96ebd9189.png" />
+		</van-grid-item>
+		<van-grid-item text="其他区域">
+			<van-icon slot="icon" size="40" name="https://ke-image.ljcdn.com/materials/appindexconf/d10df2594bba41993ad72a7618c5727d.png" />
+		</van-grid-item>
+	</van-grid>
+	<!-- 间隔边框 -->
+	<view class="interval van-hairline--top-bottom"></view>
+	<view class="product-list">
+		<view class="product-item van-hairline--bottom">
+			<van-skeleton avatar-size="5.8rem" avatar-shape="square" title avatar row="2" loading="loading">
+				<view>实际内容</view>
+			</van-skeleton>
+		</view>
+		<view class="product-item van-hairline--bottom">
+			<van-skeleton avatar-size="5.8rem" avatar-shape="square" title avatar row="2" loading="loading">
+				<view>实际内容</view>
+			</van-skeleton>
+		</view>
+		<view class="product-item van-hairline--bottom">
+			<van-skeleton avatar-size="5.8rem" avatar-shape="square" title avatar row="2" loading="loading">
+				<view>实际内容</view>
+			</van-skeleton>
+		</view>
+		<view class="product-item van-hairline--bottom">
+			<van-skeleton avatar-size="5.8rem" avatar-shape="square" title avatar row="2" loading="loading">
+				<view>实际内容</view>
+			</van-skeleton>
+		</view>
+		<view class="product-item van-hairline--bottom">
+			<van-skeleton avatar-size="5.8rem" avatar-shape="square" title avatar row="2" loading="loading">
+				<view>实际内容</view>
+			</van-skeleton>
+		</view>
+		<view class="product-item van-hairline--bottom">
+			<van-skeleton avatar-size="5.8rem" avatar-shape="square" title avatar row="2" loading="loading">
+				<view>实际内容</view>
+			</van-skeleton>
+		</view>
+		<view class="product-item van-hairline--bottom">
+			<van-skeleton avatar-size="5.8rem" avatar-shape="square" title avatar row="2" loading="loading">
+				<view>实际内容</view>
+			</van-skeleton>
+		</view>
+	</view>
 </view>
