@@ -1,8 +1,13 @@
 <view class="container">
   <van-grid border="{{false}}">
-  <van-grid-item icon="photo-o" text="文字" />
-  <van-grid-item icon="photo-o" text="文字" />
-  <van-grid-item icon="photo-o" text="文字" />
-  <van-grid-item icon="photo-o" text="文字" />
+  <van-grid-item use-slot="icon" icon="" text="厦门区域">
+      <image
+        style="width: 100%; height: 90px;"
+        src="https://ke-image.ljcdn.com/materials/appindexconf/d5592269bafbe134453afb01c5612658.png"
+      />
+  </van-grid-item>
+  <van-grid-item icon="https://ke-image.ljcdn.com/materials/appindexconf/94250adc5e77f9b816f77032e27a8412.png" text="漳州区域" />
+  <van-grid-item icon="https://ke-image.ljcdn.com/materials/appindexconf/44b50fa3627b67a9102c82f96ebd9189.png" text="泉州区域" />
+  <van-grid-item icon="https://ke-image.ljcdn.com/materials/appindexconf/d10df2594bba41993ad72a7618c5727d.png" text="其他区域" />
 </van-grid>
 </view>
