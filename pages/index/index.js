@@ -8,6 +8,7 @@ Page({
     this.getTabBar().init();
 	},
   data: {
+    loading:false
 
   }
 })

@@ -1,8 +1,13 @@
 {
   "usingComponents": {
-    "van-skeleton": "@vant/weapp/skeleton/index"
+    "van-skeleton": "@vant/weapp/skeleton/index",
+    "van-row": "@vant/weapp/row/index",
+    "van-col": "@vant/weapp/col/index",
+    "van-sticky": "@vant/weapp/sticky/index",
+    "van-tag": "@vant/weapp/tag/index"
   },
   "pages": [
+    "pages/product/list",
     "pages/index/index",
     "pages/index/settle",
     "pages/index/edu",
