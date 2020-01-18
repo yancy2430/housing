@@ -12,8 +12,9 @@
 
 .tags{
   font-size: 0.6rem;
-  padding-top: 0.2rem;
+  padding-top: 0.5rem;
   color: #888;
+  padding-bottom: 0.8rem;
 }
 .tags .tag{
   font-size: 0.6rem;
@@ -25,4 +26,52 @@
   font-size: 1.3rem;
   line-height: 1.1rem;
   padding-right: 5px;
+  font-weight: 700;
+  color: #000;
+}
+.imgs{
+}
+.bg_img{
+  width: 100%;
+  height: 12.05rem;
+}
+
+.sm_img{
+  width: 100%;
+  height: 6rem;
+  display: block;
+  margin-left: 0.05rem;
+}
+.sm_img:nth-child(2){
+  margin-top: 0.05rem;
+}
+
+.sm_img image{
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.sm-title{
+  font-size: 0.8rem;
+  color: #888;
+}
+
+.sm-text-red{
+  font-size: 1rem;
+  color: red;
+  font-weight: 500;
+}
+.price-info{
+  padding-top: 0.5rem;
+}
+.detail{
+  padding-top: 0.5rem;
+  font-size: 1rem;
+  color: #888;
+}
+.detail text{
+  color: #444;
+}
+.detail-item{
+  padding-top: 0.5rem;
 }

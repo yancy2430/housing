@@ -7,13 +7,15 @@
     "van-tag": "@vant/weapp/tag/index"
   },
   "pages": [
+    "pages/product/photo",
     "pages/product/details",
     "pages/product/list",
     "pages/index/index",
     "pages/index/settle",
     "pages/index/edu",
     "pages/index/news",
-    "pages/index/me"
+    "pages/index/me",
+    "pages/product/slide"
   ],
   "window": {
     "backgroundColor": "#f8f8f8",

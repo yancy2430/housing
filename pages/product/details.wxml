@@ -2,12 +2,55 @@
   <view class="head">
     <view>
       <p class="title">融创大同府</p>
-      <van-tag type="primary">标签</van-tag>
+      <van-tag type="primary">在售</van-tag>
     </view>
     <view class="tags">
       <text class="van-hairline--surround tag">商业类</text>
       <text class="van-hairline--surround tag">商业类</text>
       <text class="van-hairline--surround tag">商业类</text>
     </view>
+    <view>
+      <van-row>
+        <van-col span="16">
+          <image class="bg_img" src="http://a3.att.hudong.com/68/61/300000839764127060614318218_950.jpg"></image>
+        </van-col>
+        <van-col span="8">
+          <view class="sm_img"><image src="http://a3.att.hudong.com/68/61/300000839764127060614318218_950.jpg"></image></view>
+          <view class="sm_img"><image src="http://a3.att.hudong.com/68/61/300000839764127060614318218_950.jpg"></image></view>
+        </van-col>
+      </van-row>
+    </view>
+    <view class="price-info">
+      <van-row>
+        <van-col span="12" class="van-hairline--right">
+          <view class="sm-title">参考价格（均价/总价）</view>
+          <view class="sm-text-red">24000元/252万</view>
+        </van-col>
+        <van-col span="12">
+          <view class="sm-title">建筑面积</view>
+          <view class="sm-text-red">105-125㎡</view>
+        </van-col>
+      </van-row>
+    </view>
+    <view class="detail">
+      <van-row custom-class="detail-item">
+        <van-col span="12" class="van-hairline--right">
+          <view>类型：<text>底商</text></view>
+        </van-col>
+        <van-col span="12">
+          <view>户型：<text>暂无信息</text></view>
+        </van-col>
+      </van-row>
+      <van-row  custom-class="detail-item">
+        <van-col span="12" class="van-hairline--right">
+          <view>结构：<text>塔楼、塔板结合</text></view>
+        </van-col>
+        <van-col span="12">
+          <view>开盘：<text>2019.08.23</text></view>
+        </van-col>
+      </van-row>
+      <view class="detail-item">更多：<text>产权年限、装修标准、开发商...</text></view>
+    </view>
   </view>
+	<view class="interval van-hairline--top-bottom"></view>
 </view>
