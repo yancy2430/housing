@@ -1,0 +1,13 @@
+<view class="container">
+  <view class="head">
+    <view>
+      <p class="title">融创大同府</p>
+      <van-tag type="primary">标签</van-tag>
+    </view>
+    <view class="tags">
+      <text class="van-hairline--surround tag">商业类</text>
+      <text class="van-hairline--surround tag">商业类</text>
+      <text class="van-hairline--surround tag">商业类</text>
+    </view>
+  </view>
+</view>

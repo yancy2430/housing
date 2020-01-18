@@ -1,0 +1,28 @@
+/* pages/product/details.wxss */
+.slide-item{
+  width: 100%;
+  height: 100%;
+}
+.swiper{
+  height: 500rpx;
+}
+.head{
+  padding: 1rem;
+}
+
+.tags{
+  font-size: 0.6rem;
+  padding-top: 0.2rem;
+  color: #888;
+}
+.tags .tag{
+  font-size: 0.6rem;
+  padding:1px 0.2rem 0px 0.2rem;
+  margin-right:0.4rem;
+  color: #888;
+}
+.title{
+  font-size: 1.3rem;
+  line-height: 1.1rem;
+  padding-right: 5px;
+}
