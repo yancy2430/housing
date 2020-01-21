@@ -8,12 +8,14 @@
   },
   "pages": [
     "pages/index/index",
+    "pages/product/photo",
     "pages/product/details",
     "pages/product/list",
     "pages/index/settle",
     "pages/index/edu",
     "pages/index/news",
-    "pages/index/me"
+    "pages/index/me",
+    "pages/product/slide"
   ],
   "window": {
     "backgroundColor": "#f8f8f8",
