@@ -7,9 +7,9 @@
     "van-tag": "@vant/weapp/tag/index"
   },
   "pages": [
+    "pages/index/index",
     "pages/product/details",
     "pages/product/list",
-    "pages/index/index",
     "pages/index/settle",
     "pages/index/edu",
     "pages/index/news",
