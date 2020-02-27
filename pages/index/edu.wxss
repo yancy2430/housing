@@ -1,1 +1,26 @@
-/* pages/edu/edu.wxss */
+/* pages/settle/settle.wxss */
+.container{
+}
+.item{
+  padding-top: 1vw;
+  position: relative;
+}
+.cover{
+  padding: 2vw;
+  width: 20vw;
+  height: 16vw;
+}
+.title{
+  padding: 2vw 2vw 0vw 2vw;
+  color: #333;
+  font-size: 1rem;
+
+}
+.desc{
+  width: 66vw;
+  position: absolute;
+  bottom: 3vw;
+  right: 4vw;
+  color: #666;
+  font-size: .8rem;
+}

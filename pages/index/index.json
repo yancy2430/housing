@@ -1,5 +1,6 @@
 {
   "usingComponents": {
+    "product-list": "/pages/component/product-list",
     "van-grid": "@vant/weapp/grid/index",
     "van-icon": "@vant/weapp/icon/index",
     "van-grid-item": "@vant/weapp/grid-item/index",

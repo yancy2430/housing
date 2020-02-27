@@ -1,0 +1,4 @@
+/* pages/index/area.wxss */
+.areaHot{
+  margin: 10px;
+}

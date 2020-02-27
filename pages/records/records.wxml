@@ -1,0 +1,4 @@
+<van-panel title="落日天涯" desc="测试楼盘" status="18152733661">
+     <product-list class="van-hairline--bottom" wx:for="{{products}}" product="{{item}}" bindtap="goProduct" data-id="{{item.id}}">
+    </product-list>
+</van-panel>

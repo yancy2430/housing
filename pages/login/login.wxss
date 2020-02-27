@@ -1,0 +1,12 @@
+page {
+  background: url(http://weixin.tdeado.com/static/house/login_bg.png) no-repeat center center;
+  background-size: cover;
+}
+
+.loginBtn {
+  width: 60vw;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 10vw 20vw;
+}

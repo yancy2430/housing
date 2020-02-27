@@ -1,3 +1,10 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "van-row": "@vant/weapp/row/index",
+    "van-grid": "@vant/weapp/grid/index",
+    "van-grid-item": "@vant/weapp/grid-item/index",
+    "van-image": "@vant/weapp/image/index",
+    "van-col": "@vant/weapp/col/index"
+  },
+  "navigationBarTitleText": "新闻中心"
 }

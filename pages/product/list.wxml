@@ -1,151 +1,58 @@
 <view class="container">
-	<van-search label="厦门" shape="round" value="{{ value }}" placeholder="请输入搜索关键词" use-action-slot bind:change="onChange" bind:search="onSearch">
-		<view slot="action" bind:tap="onClick">搜索</view>
-	</van-search>
+  <van-search shape="round" value="{{ value }}" placeholder="请输入搜索关键词" use-action-slot bind:search="onSearch">
+    <view slot="label" bind:tap="onClick">
+      <text class="area-text" bindtap="toArea">{{area.name}}</text>
+    </view>
+  </van-search>
 
-<van-sticky>
-  <van-dropdown-menu>
-    <van-dropdown-item value="{{ value1 }}" options="{{ option1 }}" />
-    <van-dropdown-item value="{{ value2 }}" options="{{ option2 }}" />
-    <van-dropdown-item value="{{ value3 }}" options="{{ option3 }}" />
-    <van-dropdown-item value="{{ value4 }}" options="{{ option4 }}" />
-  </van-dropdown-menu>
-</van-sticky>
-	<van-grid border="{{false}}" square>
-		<van-grid-item text="厦门区域">
-			<van-icon slot="icon" size="40" name="https://ke-image.ljcdn.com/materials/appindexconf/d5592269bafbe134453afb01c5612658.png" />
-		</van-grid-item>
-		<van-grid-item text="漳州区域">
-			<van-icon slot="icon" size="40" name="https://ke-image.ljcdn.com/materials/appindexconf/94250adc5e77f9b816f77032e27a8412.png" />
-		</van-grid-item>
-		<van-grid-item text="泉州区域">
-			<van-icon slot="icon" size="40" name="https://ke-image.ljcdn.com/materials/appindexconf/44b50fa3627b67a9102c82f96ebd9189.png" />
-		</van-grid-item>
-		<van-grid-item text="其他区域">
-			<van-icon slot="icon" size="40" name="https://ke-image.ljcdn.com/materials/appindexconf/d10df2594bba41993ad72a7618c5727d.png" />
-		</van-grid-item>
-	</van-grid>
-	<!-- 间隔边框 -->
-	<view class="interval van-hairline--top-bottom"></view>
-	<view class="product-list">
-		<view class="product-item van-hairline--bottom">
-			<van-skeleton avatar-size="5.8rem" avatar-shape="square" title avatar row="2" loading="{{ loading }}">
-				<view class="product-content">
-					<van-row>
-						<van-col span="8">
-							<image class="image" src="https://dss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2946705659,1994258869&fm=26&gp=0.jpg"></image>
-						</van-col>
-						<van-col span="16">
-              <view><text class="item-title">通道嘉鑫苑小区</text><van-tag class="item-tag" type="primary">标签</van-tag></view> 
-              <view class="area">湘潭市·岳塘区</view>
-              <view class="tags"><text class="van-hairline--surround tag">商业类</text> <text class="van-hairline--surround tag">商业类</text> <text class="van-hairline--surround tag">商业类</text></view>
-              <view class="price-col"><text class="price">12500元/㎡</text><text class="area">建面38-76㎡</text></view>
-            </van-col>
-					</van-row>
-				</view>
-			</van-skeleton>
-		</view>
-		<view class="product-item van-hairline--bottom">
-			<van-skeleton avatar-size="5.8rem" avatar-shape="square" title avatar row="2" loading="{{ loading }}">
-				<view class="product-content">
-					<van-row>
-						<van-col span="8">
-							<image class="image" src="https://dss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2946705659,1994258869&fm=26&gp=0.jpg"></image>
-						</van-col>
-						<van-col span="16">
-              <view><text class="item-title">通道嘉鑫苑小区</text><van-tag class="item-tag" type="primary">标签</van-tag></view> 
-              <view class="area">湘潭市·岳塘区</view>
-              <view class="tags"><text class="van-hairline--surround tag">商业类</text> <text class="van-hairline--surround tag">商业类</text> <text class="van-hairline--surround tag">商业类</text></view>
-              <view class="price-col"><text class="price">12500元/㎡</text><text class="area">建面38-76㎡</text></view>
-            </van-col>
-					</van-row>
-				</view>
-			</van-skeleton>
-		</view>
-    <view class="product-item van-hairline--bottom">
-			<van-skeleton avatar-size="5.8rem" avatar-shape="square" title avatar row="2" loading="{{ loading }}">
-				<view class="product-content">
-					<van-row>
-						<van-col span="8">
-							<image class="image" src="https://dss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2946705659,1994258869&fm=26&gp=0.jpg"></image>
-						</van-col>
-						<van-col span="16">
-              <view><text class="item-title">通道嘉鑫苑小区</text><van-tag class="item-tag" type="primary">标签</van-tag></view> 
-              <view class="area">湘潭市·岳塘区</view>
-              <view class="tags"><text class="van-hairline--surround tag">商业类</text> <text class="van-hairline--surround tag">商业类</text> <text class="van-hairline--surround tag">商业类</text></view>
-              <view class="price-col"><text class="price">12500元/㎡</text><text class="area">建面38-76㎡</text></view>
-            </van-col>
-					</van-row>
-				</view>
-			</van-skeleton>
-		</view>
-    <view class="product-item van-hairline--bottom">
-			<van-skeleton avatar-size="5.8rem" avatar-shape="square" title avatar row="2" loading="{{ loading }}">
-				<view class="product-content">
-					<van-row>
-						<van-col span="8">
-							<image class="image" src="https://dss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2946705659,1994258869&fm=26&gp=0.jpg"></image>
-						</van-col>
-						<van-col span="16">
-              <view><text class="item-title">通道嘉鑫苑小区</text><van-tag class="item-tag" type="primary">标签</van-tag></view> 
-              <view class="area">湘潭市·岳塘区</view>
-              <view class="tags"><text class="van-hairline--surround tag">商业类</text> <text class="van-hairline--surround tag">商业类</text> <text class="van-hairline--surround tag">商业类</text></view>
-              <view class="price-col"><text class="price">12500元/㎡</text><text class="area">建面38-76㎡</text></view>
-            </van-col>
-					</van-row>
-				</view>
-			</van-skeleton>
-		</view>
-    <view class="product-item van-hairline--bottom">
-			<van-skeleton avatar-size="5.8rem" avatar-shape="square" title avatar row="2" loading="{{ loading }}">
-				<view class="product-content">
-					<van-row>
-						<van-col span="8">
-							<image class="image" src="https://dss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2946705659,1994258869&fm=26&gp=0.jpg"></image>
-						</van-col>
-						<van-col span="16">
-              <view><text class="item-title">通道嘉鑫苑小区</text><van-tag class="item-tag" type="primary">标签</van-tag></view> 
-              <view class="area">湘潭市·岳塘区</view>
-              <view class="tags"><text class="van-hairline--surround tag">商业类</text> <text class="van-hairline--surround tag">商业类</text> <text class="van-hairline--surround tag">商业类</text></view>
-              <view class="price-col"><text class="price">12500元/㎡</text><text class="area">建面38-76㎡</text></view>
-            </van-col>
-					</van-row>
-				</view>
-			</van-skeleton>
-		</view>
-    <view class="product-item van-hairline--bottom">
-			<van-skeleton avatar-size="5.8rem" avatar-shape="square" title avatar row="2" loading="{{ loading }}">
-				<view class="product-content">
-					<van-row>
-						<van-col span="8">
-							<image class="image" src="https://dss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2946705659,1994258869&fm=26&gp=0.jpg"></image>
-						</van-col>
-						<van-col span="16">
-              <view><text class="item-title">通道嘉鑫苑小区</text><van-tag class="item-tag" type="primary">标签</van-tag></view> 
-              <view class="area">湘潭市·岳塘区</view>
-              <view class="tags"><text class="van-hairline--surround tag">商业类</text> <text class="van-hairline--surround tag">商业类</text> <text class="van-hairline--surround tag">商业类</text></view>
-              <view class="price-col"><text class="price">12500元/㎡</text><text class="area">建面38-76㎡</text></view>
-            </van-col>
-					</van-row>
-				</view>
-			</van-skeleton>
-		</view>
-    <view class="product-item van-hairline--bottom">
-			<van-skeleton avatar-size="5.8rem" avatar-shape="square" title avatar row="2" loading="{{ loading }}">
-				<view class="product-content">
-					<van-row>
-						<van-col span="8">
-							<image class="image" src="https://dss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2946705659,1994258869&fm=26&gp=0.jpg"></image>
-						</van-col>
-						<van-col span="16">
-              <view><text class="item-title">通道嘉鑫苑小区</text><van-tag class="item-tag" type="primary">标签</van-tag></view> 
-              <view class="area">湘潭市·岳塘区</view>
-              <view class="tags"><text class="van-hairline--surround tag">商业类</text> <text class="van-hairline--surround tag">商业类</text> <text class="van-hairline--surround tag">商业类</text></view>
-              <view class="price-col"><text class="price">12500元/㎡</text><text class="area">建面38-76㎡</text></view>
-            </van-col>
-					</van-row>
-				</view>
-			</van-skeleton>
-		</view>
-	</view>
+  <van-sticky>
+    <van-dropdown-menu>
+      <van-dropdown-item id="areaitem" title="{{areaTitle?areaTitle:'区域'}}">
+        <van-tree-select items="{{ areaList }}" active-id="{{activeId}}" bind:click-nav="onClickNav" bind:click-item="onClickItem" />
+
+      </van-dropdown-item>
+      <van-dropdown-item id="priceitem" title="{{priceActiveId!=0?priceTitle:'价格'}}">
+        <van-tree-select items="{{ priceInterval }}" active-id="{{priceActiveId}}" main-active-index="{{priceActiveIndex }}" bind:click-nav="onClickPriceNav" bind:click-item="onClickPriceItem" />
+
+      </van-dropdown-item>
+      <van-dropdown-item  id="houseTypeitem" title="户型{{selectNum==0?'':'('+selectNum+')'}}">
+        <view class="hxwk">
+        <van-button wx:for="{{houseType}}" wx:key="index" custom-class="hxclass" type="primary" 
+        bindtap="clickHouseType"
+        data-id="{{index}}"
+        color="#f8f8f8" custom-style="{{item.selectd?'color:#1989fa':'color:#000'}}" size="small">{{item.text}}</van-button>
+        </view>
+        <van-button type="info" block bind:click="onHouseTypeConfirm">
+          确定
+        </van-button>
+      </van-dropdown-item>
+      <van-dropdown-item bind:change="sortChange" value="{{ where.sort }}" title="排序" options="{{ sortList }}" />
+    </van-dropdown-menu>
+  </van-sticky>
+  <van-grid border="{{false}}" square>
+    <van-grid-item text="厦门区域">
+      <van-icon slot="icon" size="40" name="https://ke-image.ljcdn.com/materials/appindexconf/d5592269bafbe134453afb01c5612658.png" />
+    </van-grid-item>
+    <van-grid-item text="漳州区域">
+      <van-icon slot="icon" size="40" name="https://ke-image.ljcdn.com/materials/appindexconf/94250adc5e77f9b816f77032e27a8412.png" />
+    </van-grid-item>
+    <van-grid-item text="泉州区域">
+      <van-icon slot="icon" size="40" name="https://ke-image.ljcdn.com/materials/appindexconf/44b50fa3627b67a9102c82f96ebd9189.png" />
+    </van-grid-item>
+    <van-grid-item text="其他区域">
+      <van-icon slot="icon" size="40" name="https://ke-image.ljcdn.com/materials/appindexconf/d10df2594bba41993ad72a7618c5727d.png" />
+    </van-grid-item>
+  </van-grid>
+  <!-- 间隔边框 -->
+  <view class="interval van-hairline--top-bottom"></view>
+  <view class="product-list">
+       <product-list class="van-hairline--bottom" wx:for="{{products}}" product="{{item}}" bindtap="goProduct" data-id="{{item.id}}">
+    </product-list>
+  </view>
+
+  <view class="interval"></view>
+  <view class="interval"></view>
+  <view class="interval"></view>
+  <view class="interval"></view>
+  <view class="interval"></view>
 </view>

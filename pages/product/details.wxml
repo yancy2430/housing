@@ -1,56 +1,119 @@
 <view class="container">
   <view class="head">
     <view>
-      <p class="title">融创大同府</p>
-      <van-tag type="primary">在售</van-tag>
+      <p class="title">{{product.details.productName}}</p>
+      <van-tag type="primary">
+        <text wx:if="{{product.details.sellState==1}}">售卖</text>
+        <text wx:if="{{product.details.sellState==2}}">预售</text>
+        <text wx:if="{{product.details.sellState==0}}">未开盘</text>
+        <text wx:if="{{product.details.sellState==3}}">已售完</text>
+      </van-tag>
     </view>
     <view class="tags">
-      <text class="van-hairline--surround tag">商业类</text>
-      <text class="van-hairline--surround tag">商业类</text>
-      <text class="van-hairline--surround tag">商业类</text>
+      <!-- <text class="van-hairline--surround tag">{{product.details.productFeature}}</text> -->
     </view>
     <view>
       <van-row>
         <van-col span="16">
-          <image class="bg_img" src="http://a3.att.hudong.com/68/61/300000839764127060614318218_950.jpg"></image>
+          <image class="bg_img" src="http://weixin.tdeado.com/{{product.details.cover}}"></image>
         </van-col>
         <van-col span="8">
-          <view class="sm_img"><image src="http://a3.att.hudong.com/68/61/300000839764127060614318218_950.jpg"></image></view>
-          <view class="sm_img"><image src="http://a3.att.hudong.com/68/61/300000839764127060614318218_950.jpg"></image></view>
+          <view class="sm_img">
+            <image src="http://weixin.tdeado.com/{{product.covers[0].image}}"></image>
+          </view>
+          <view class="sm_img" bindtap="toPhoto" data-id="{{product.details.id}}">
+            <image src="http://weixin.tdeado.com/{{product.covers[1].image}}"></image>
+            <view class="overlay">+55\n查看更多</view>
+          </view>
         </van-col>
       </van-row>
     </view>
     <view class="price-info">
       <van-row>
         <van-col span="12" class="van-hairline--right">
-          <view class="sm-title">参考价格（均价/总价）</view>
-          <view class="sm-text-red">24000元/252万</view>
+          <view class="sm-title">参考价格（均价）</view>
+          <view class="sm-text-red">{{product.details.averagePrice}}元</view>
         </van-col>
         <van-col span="12">
           <view class="sm-title">建筑面积</view>
-          <view class="sm-text-red">105-125㎡</view>
+          <view class="sm-text-red">{{product.details.constructionArea}}㎡</view>
         </van-col>
       </van-row>
     </view>
     <view class="detail">
       <van-row custom-class="detail-item">
-        <van-col span="12" class="van-hairline--right">
-          <view>类型：<text>底商</text></view>
-        </van-col>
-        <van-col span="12">
-          <view>户型：<text>暂无信息</text></view>
-        </van-col>
-      </van-row>
-      <van-row  custom-class="detail-item">
-        <van-col span="12" class="van-hairline--right">
-          <view>结构：<text>塔楼、塔板结合</text></view>
-        </van-col>
-        <van-col span="12">
-          <view>开盘：<text>2019.08.23</text></view>
+        <van-col span="12" class="van-hairline--right" wx:for="{{product.basis[0].list}}" wx:if="{{index<4}}">
+          <view>{{item.name}}：
+            <text>{{item.basisValue}}</text>
+          </view>
         </van-col>
       </van-row>
-      <view class="detail-item">更多：<text>产权年限、装修标准、开发商...</text></view>
+      <van-row>
+        <van-col span="24">
+          <view>楼盘地址：
+            <text>{{product.details.address}}</text>
+          </view>
+        </van-col>
+      </van-row>
+      <view class="detail-item" bindtap="toBasis" data-id="{{product.details.id}}">更多：
+        <text>产权年限、装修标准、开发商...</text>
+      </view>
     </view>
   </view>
-	<view class="interval van-hairline--top-bottom"></view>
+  <view class="interval van-hairline--top-bottom"></view>
+  <block wx:if="{{product.coupons.lenght>0}}">
+    <van-cell-group>
+      <van-cell title="优惠信息" />
+      <view class="coupons-list">
+
+        <view class="coupons-item" wx:for="{{product.coupons}}">
+          <van-row>
+            <van-col span="10">
+              <view class="left-item">
+                <view>
+                  <text class="money">2000</text>
+                  <text class="unit">￥</text>
+                </view>
+                <view class="desc">新手注册专享优惠大礼包</view>
+              </view>
+            </van-col>
+            <van-col span="8">
+              <view class="right-item">
+                <view class="condition">满500元使用</view>
+                <view class="time">使用期限2019-12-15至2019-12-30</view>
+              </view>
+
+            </van-col>
+          </van-row>
+        </view>
+      </view>
+    </van-cell-group>
+    <view class="interval"></view>
+  </block>
+  <block wx:for="{{product.basis}}" wx:key="index" wx:if="{{item.list.lenght!=0}}">
+    <van-cell-group>
+      <van-cell title="{{item.name}}" />
+      <view class="coupons-list">
+        <view class="detail head">
+          <view class="detail-item" wx:for="{{item.list}}">{{item.name}}：
+            <text>{{item.basisValue}}</text>
+          </view>
+        </view>
+      </view>
+    </van-cell-group>
+    <view class="interval"></view>
+  </block>
+
+  <view class="interval"></view>
+  <view class="interval"></view>
+  <view class="interval"></view>
+  <view class="interval"></view>
+  <view class="interval"></view>
 </view>
+<van-goods-action>
+  <van-goods-action-icon icon="{{product.focus==1?'like':'like-o'}}" icon-class="{{product.focus==1?'like':'nolike'}}" text="关注" bind:click="focus" />
+  <van-goods-action-icon icon="upgrade" open-type='share' text="分享" bind:click="share" />
+  <van-goods-action-button text="在线咨询" type="warning" open-type='contact' send-message-title="{{product.details.productName}}" show-message-card="{{true}}" session-from='' />
+  <van-goods-action-button text="免费致电" bind:click="onClickCall" />
+
+</van-goods-action>

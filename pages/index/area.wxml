@@ -1,0 +1,16 @@
+<van-search value="{{ searchValue }}"   bind:change="onChange" placeholder="搜索城市名" />
+
+<van-tag wx:if="{{area.name}}" custom-class="areaHot" type="danger" size="large" color="#f8f8f8" text-color="#222222" >
+  <van-icon name="location-o" size="10px" />{{area.name}}
+</van-tag>
+
+<van-index-bar scroll-top="{{ scrollTop }}">
+
+  <view wx:for="{{allArea}}" wx:key="index">
+  
+    <van-index-anchor index="{{index}}" />
+    <van-cell wx:for="{{item}}" wx:key="i" title="{{item.name}}" bindtap="selectArea" data-id="{{item.id}}" data-name="{{item.name}}" />
+ 
+  </view>
+
+</van-index-bar>

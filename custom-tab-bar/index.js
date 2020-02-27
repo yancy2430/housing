@@ -20,7 +20,7 @@ Component({
       {
         "icon":"newspaper-o",
         "url": "/pages/index/news",
-        "text": "新闻"
+        "text": "证件"
       },
       {
         "icon":"contact",

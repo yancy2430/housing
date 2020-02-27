@@ -1,0 +1,110 @@
+/* pages/product/details.wxss */
+.slide-item{
+  width: 100%;
+  height: 100%;
+}
+.swiper{
+  height: 500rpx;
+}
+.head{
+  padding: 1rem;
+}
+
+.tags{
+  font-size: 0.6rem;
+  padding-top: 0.5rem;
+  color: #888;
+  padding-bottom: 0.8rem;
+}
+.tags .tag{
+  font-size: 0.6rem;
+  padding:1px 0.2rem 0px 0.2rem;
+  margin-right:0.4rem;
+  color: #888;
+}
+.title{
+  font-size: 1.3rem;
+  line-height: 1.1rem;
+  padding-right: 5px;
+  font-weight: 700;
+  color: #000;
+}
+.imgs{
+}
+.bg_img{
+  width: 100%;
+  height: 12.05rem;
+}
+
+.sm_img{
+  width: 100%;
+  height: 6rem;
+  display: block;
+  margin-left: 0.05rem;
+}
+.sm_img:nth-child(2){
+  margin-top: 0.05rem;
+  position: relative;
+}
+.overlay{
+  position: absolute;
+  top:0;
+  left:0;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  color: #fff;
+  white-space:pre-wrap;
+  background-color: rgba(0, 0, 0, 0.5);
+  font-size: 1rem
+}
+.sm_img image{
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.sm-title{
+  font-size: 0.8rem;
+  color: #888;
+}
+
+.sm-text-red{
+  font-size: 1rem;
+  color: red;
+  font-weight: 500;
+}
+.price-info{
+  padding-top: 0.5rem;
+}
+.detail{
+  padding-top: 0.5rem;
+  font-size: 1rem;
+  color: #888;
+}
+.detail text{
+  color: #444;
+}
+.detail-item{
+  padding-top: 0.5rem;
+}
+.share{
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  margin-bottom: 10px;
+}
+.coupons{
+  width: 100%;
+  height: 20vw;
+}
+.coupons-list{
+  padding: 1vw;
+}
+.title{
+  color: #444;
+  font-size: 1rem;
+  padding: 10px 0;
+}

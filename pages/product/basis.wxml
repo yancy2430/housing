@@ -1,0 +1,13 @@
+<view class="container">
+  <view class="">
+    <block wx:for="{{basis}}">
+      <view class="detail head">
+        <view class="title">{{item.name}}</view>
+        <view class="detail-item" wx:for="{{item.list}}">{{item.name}}：
+          <text>{{item.basisValue}}</text>
+        </view>
+      </view>
+      <view class="interval van-hairline--top-bottom"></view>
+    </block>
+  </view>
+</view>

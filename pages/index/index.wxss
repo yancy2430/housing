@@ -3,6 +3,7 @@
 .product-item{
   padding-top: 10px;
   padding-bottom: 10px;
+  background: #fff;
 }
 .product-content{
   padding-left: 1rem;
@@ -49,7 +50,13 @@
 }
 
 .image{
-  width: 5.8rem;
-  height: 5.8rem;
+  width: 28vw;
+  height: 22vw;
   display:block;
+}
+.area-text{
+font-size: .8rem;
+line-height: 2rem;
+padding: 0 5px;
+
 }

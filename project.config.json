@@ -7,14 +7,13 @@
 		"urlCheck": false,
 		"es6": true,
 		"postcss": true,
-		"preloadBackgroundData": false,
 		"minified": true,
 		"newFeature": true,
 		"coverView": true,
 		"nodeModules": true,
 		"autoAudits": false,
 		"showShadowRootInWxmlPanel": true,
-		"scopeDataCheck": false,
+		"scopeDataCheck": true,
 		"checkInvalidKey": true,
 		"checkSiteMap": true,
 		"uploadWithSourceMap": true,
@@ -22,11 +21,12 @@
 			"ignore": [],
 			"disablePlugins": [],
 			"outputPath": ""
-		}
+		},
+		"preloadBackgroundData": false
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.10.0",
-	"appid": "wxb6509d8d0e08ea0a",
+	"libVersion": "2.10.1",
+	"appid": "wx6b313c9e33411ede",
 	"projectname": "housing",
 	"debugOptions": {
 		"hidedInDevtools": []

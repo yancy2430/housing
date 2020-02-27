@@ -1,0 +1,4 @@
+  <view class="product-list">
+       <product-list class="van-hairline--bottom" wx:for="{{products}}" wx:key="index" product="{{item}}" bindtap="goProduct" data-id="{{item.id}}">
+    </product-list>
+  </view>

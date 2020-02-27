@@ -1,2 +1,74 @@
 <!--pages/me/me.wxml-->
-<text>pages/me/me.wxml</text>
+<view class="container">
+  <view class="head">
+    <van-row>
+      <van-col>
+
+        <van-image custom-class="avater" round fit="cover" src="{{userInfo.avatar}}" />
+      </van-col>
+      <van-col>
+        <!-- <button open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">请先登录</button> -->
+        <view class="name">
+          <block wx:if="{{userInfo}}">
+            {{userInfo.username}}
+          </block>
+          <block wx:else>
+            <button class="van-cell-text textButton name" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">注册/登录</button>
+          </block>
+
+        </view>
+        <!-- <view class="desc">{{userInfo.username}}</view> -->
+      </van-col>
+
+    </van-row>
+  </view>
+
+  <view class="tops">
+    <van-row>
+      <van-col span="8">
+        <view class="topitem" bindtap="toCoupons">
+          <view class="topnum">{{countData.coupons}}</view>
+          <view class="toptext">优惠券</view>
+        </view>
+      </van-col>
+      <van-col span="8">
+        <view class="topitem" bindtap="toFocus">
+
+          <view class="topnum">{{countData.focus}}</view>
+          <view class="toptext">关注</view>
+        </view>
+      </van-col>
+      <van-col span="8">
+        <view class="topitem" bindtap="toHistory">
+
+          <view class="topnum">{{countData.history}}</view>
+          <view class="toptext">足迹</view>
+        </view>
+      </van-col>
+    </van-row>
+  </view>
+  <view class="interval"></view>
+  <van-cell-group>
+    <van-cell open-type="getPhoneNumber" icon="phone-o" border="{{false}}" value="{{userInfo.phone}}" is-link>
+      <view slot="title">
+        <button class="van-cell-text textButton" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">绑定手机号 </button>
+      </view>
+    </van-cell>
+  </van-cell-group>
+  <!-- <view class="interval"></view>
+  <van-cell-group>
+    <van-cell icon="browsing-history-o" link-type="navigateTo" url="/pages/records/records" title="客户浏览记录" is-link/>
+  </van-cell-group> -->
+  <view class="interval"></view>
+  <van-grid column-num="4">
+    <van-grid-item icon="photo-o" text="浏览记录" />
+    <van-grid-item icon="photo-o" text="文字" />
+    <van-grid-item icon="photo-o" text="文字" />
+    <van-grid-item icon="photo-o" text="文字" />
+    <van-grid-item icon="photo-o" text="文字" />
+    <van-grid-item icon="photo-o" text="文字" />
+    <van-grid-item icon="photo-o" text="文字" />
+    <van-grid-item icon="photo-o" text="文字" />
+  </van-grid>
+
+</view>

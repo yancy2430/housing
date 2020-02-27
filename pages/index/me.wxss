@@ -1,1 +1,83 @@
 /* pages/me/me.wxss */
+
+.container {
+}
+
+.head {
+  height: 24vw;
+  background: url(http://weixin.tdeado.com/static/house/mebg.png) no-repeat center center;
+  background-size: cover;
+}
+
+.avater {
+  width: 14vw;
+  height: 14vw;
+  margin: 5vw 4vw 3vw 8vw;
+}
+
+
+.desc {
+  color: #fff;
+  font-size: 0.8rem;
+}
+
+.textButton {
+  margin: 0;
+  box-sizing: none;
+  text-align: left;
+  border-radius: 0px;
+  -webkit-flex: 1;
+  flex: 1;
+  font-size: 14px;
+  font-weight: 400;
+  color: #323233;
+  line-height: 24px;
+  padding: 0;
+  width: 100%;
+  background-color: transparent;
+}
+
+.textButton::after {
+  content: " ";
+  width: 200%;
+  height: 200%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border: 0px solid rgba(0, 0, 0, 0.2);
+  -webkit-transform: scale(0.5);
+  transform: scale(0.5);
+  -webkit-transform-origin: 0 0;
+  transform-origin: 0 0;
+  box-sizing: border-box;
+  border-radius: 10px;
+}
+
+.name {
+  color: #fff;
+  margin-top: 8.2vw;
+  margin-bottom: 0.5vw;
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+.tops{
+  width: 100%;
+}
+.topitem{
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  white-space:pre-wrap;
+  padding: 4vw 5vw;
+}
+.topnum{
+  color: #333;
+  font-size: 1.3rem;
+  font-weight: 400;
+
+}
+.toptext{
+  color: #666;
+  font-size: 0.8rem;
+
+}

@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "product-list": "/pages/component/product-list",
+    "van-button": "@vant/weapp/button/index",
+    "van-panel": "@vant/weapp/panel/index"
+  }
+}

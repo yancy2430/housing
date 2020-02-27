@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "product-list": "/pages/component/product-list"
+    }
+}

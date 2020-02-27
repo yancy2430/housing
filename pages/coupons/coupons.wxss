@@ -1,0 +1,50 @@
+/* pages/coupons/coupons.wxss */
+
+page {
+  background: #f8f8f8;
+}
+
+.coupons-item {
+  height: 25vw;
+  width: 92vw;
+  margin: 4vw 4vw 0vw 4vw;
+  background: url(https://weixin.tdeado.com/static/house/coupons1.png) no-repeat center center;
+  background-size: cover;
+}
+
+.left-item {
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  white-space: pre-wrap;
+  height: 21vw;
+  padding-top: 4vw;
+  padding-left: 2vw;
+}
+.right-item{
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  white-space: pre-wrap;
+  height: 19vw;
+  padding-top: 6vw;
+
+}
+.money {
+  font-size: 2rem;
+  font-weight: 500;
+}
+.condition{
+  font-size: 1.2rem;
+}
+.time{
+  padding-top: 1vw;
+  font-size: 0.7rem;
+}
+
+
+.desc {
+  font-size: 0.8rem;
+}

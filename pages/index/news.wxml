@@ -1,2 +1,8 @@
-<!--pages/news/news.wxml-->
-<text>pages/news/news.wxml</text>
+<view class="container">
+  <van-grid column-num="4">
+    <van-grid-item use-slot wx:for="{{list}}" wx:key="index" data-id="{{item.id}}" bindtap="toArticle" >
+    <van-image width="16vw" height="16vw" round src="{{item.cover}}"/>
+    <view style="width: 21.5vw;font-size:0.8rem;overflow: hidden;white-space: nowrap;">{{item.title}}</view>
+    </van-grid-item>
+  </van-grid>
+</view>
