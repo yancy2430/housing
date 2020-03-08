@@ -1,0 +1,10 @@
+page {
+  background: url(http://weixin.tdeado.com/static/house/qrcode.png) no-repeat center center;
+  background-size: cover;
+}
+
+.qrcode {
+  position: absolute;
+  bottom: 28vh;
+  left: 25vw;
+}

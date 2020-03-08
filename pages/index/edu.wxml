@@ -1,4 +1,9 @@
 <view class="container">
+  <van-search shape="round" value="{{ value }}" placeholder="请输入搜索关键词" use-action-slot bind:change="onChange" bind:search="onSearch">
+    <view slot="label" bind:tap="onClick">
+      <text class="area-text" bindtap="toArea">{{area.name}}</text>
+    </view>
+  </van-search>
   <van-grid column-num="4">
     <van-grid-item use-slot wx:for="{{list}}" wx:key="index" data-id="{{item.id}}" bindtap="toArticle" >
     <van-image width="16vw" height="16vw" round src="{{item.cover}}"/>

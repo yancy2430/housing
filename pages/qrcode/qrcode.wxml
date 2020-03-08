@@ -1,0 +1,8 @@
+<view>
+
+<van-image class="qrcode"
+  width="50vw"
+  height="50vw"
+  src="{{qrcode}}"
+/>
+</view>

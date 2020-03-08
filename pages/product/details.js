@@ -15,18 +15,15 @@ Page({
     }
     return {
       title: '分享' + this.data.product.details.productName,
-      path: '/pages/product/details?id=' + this.data.product.details.id+"&userId=1"
+      path: '/pages/product/details?id=' + this.data.product.details.id + "&scene=" + wx.getStorageSync('scene')
     }
   },
   onLoad: function(option) {
-    console.log("userId=" + option.userId)
+    console.log("scene=" + option.scene)
     let that = this
     this.setData({
       token: wx.getStorageSync("token")
-    })
-
-
- 
+    }) 
     console.log(that.data.token)
     wx.request({
       url: 'https://weixin.tdeado.com/miniapp/details?id=' + option.id,
@@ -62,6 +59,7 @@ Page({
   },
   focus(e) {
     let that = this
+
     wx.request({
       url: 'https://weixin.tdeado.com/miniapp/focus?id=' + this.data.product.details.id,
       data: {},

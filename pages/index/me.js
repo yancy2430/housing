@@ -24,7 +24,8 @@ Page({
     this.getTabBar().init();
     let that = this;
     this.setData({
-      token: wx.getStorageSync("token")
+      token: wx.getStorageSync("token"),
+      scene: wx.getStorageSync("scene"),
     })
 
 
@@ -46,7 +47,7 @@ Page({
             },
             fail() {
 
-              this.getLogin()
+              that.getLogin()
             }
           })
         } else {
@@ -68,9 +69,9 @@ Page({
     let res = e.detail;
     let that = this;
     if(this.data.sessionKey){
-      this.getToken(res);
+      that.getToken(res);
     }else{
-      this.getLogin()
+      that.getLogin()
     }
     
     
@@ -122,6 +123,7 @@ Page({
         rawData: res.rawData,
         encryptedData: res.encryptedData,
         iv: res.iv,
+        scene: that.data.scene
       },
       success(res) {
         console.log(res.data)

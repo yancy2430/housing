@@ -55,20 +55,15 @@
       </view>
     </van-cell>
   </van-cell-group>
-  <!-- <view class="interval"></view>
-  <van-cell-group>
-    <van-cell icon="browsing-history-o" link-type="navigateTo" url="/pages/records/records" title="客户浏览记录" is-link/>
-  </van-cell-group> -->
   <view class="interval"></view>
-  <van-grid column-num="4">
-    <van-grid-item icon="photo-o" text="浏览记录" />
-    <van-grid-item icon="photo-o" text="文字" />
-    <van-grid-item icon="photo-o" text="文字" />
-    <van-grid-item icon="photo-o" text="文字" />
-    <van-grid-item icon="photo-o" text="文字" />
-    <van-grid-item icon="photo-o" text="文字" />
-    <van-grid-item icon="photo-o" text="文字" />
-    <van-grid-item icon="photo-o" text="文字" />
-  </van-grid>
-
+  <van-cell-group>
+    <van-cell icon="browsing-history-o" link-type="navigateTo" url="/pages/qrcode/qrcode" title="我的分享码" is-link/>
+    <van-cell icon="browsing-history-o" link-type="navigateTo" url="/pages/records/records" title="客户浏览记录" is-link/>
+  </van-cell-group>
+  <view class="interval"></view>
+  <van-cell-group>
+    <van-cell icon="browsing-history-o" link-type="navigateTo" url="/pages/records/records" title="关注服务号" is-link/>
+    <van-cell icon="browsing-history-o" link-type="navigateTo" url="/pages/records/records" title="在线咨询" is-link/>
+    <van-cell icon="browsing-history-o" link-type="navigateTo" url="/pages/records/records" title="关于我们" is-link/>
+  </van-cell-group>
 </view>

@@ -3,11 +3,6 @@ Component({
 		active: 0,
 		list: [
       {
-        "icon":"home-o",
-        "url": "/pages/index/index",
-        "text": "首页"
-      },
-      {
         "icon":"hotel-o",
         "url": "/pages/index/settle",
         "text": "落户"
@@ -21,6 +16,11 @@ Component({
         "icon":"newspaper-o",
         "url": "/pages/index/news",
         "text": "证件"
+      },
+      {
+        "icon": "home-o",
+        "url": "/pages/index/index",
+        "text": "新房"
       },
       {
         "icon":"contact",

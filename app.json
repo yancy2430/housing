@@ -7,14 +7,15 @@
     "van-tag": "@vant/weapp/tag/index"
   },
   "pages": [
+    "pages/index/settle",
     "pages/index/index",
     "pages/login/login",
+    "pages/qrcode/qrcode",
     "pages/coupons/coupons",
     "pages/article/article",
     "pages/product/list",
     "pages/product/photo",
     "pages/product/details",
-    "pages/index/settle",
     "pages/index/edu",
     "pages/index/news",
     "pages/index/me",
@@ -33,7 +34,7 @@
   "window": {
     "backgroundColor": "#FFFFFF",
     "navigationBarBackgroundColor": "#0C74F9",
-    "navigationBarTitleText": "房产小程序",
+    "navigationBarTitleText": "厦门便民宝",
     "navigationBarTextStyle": "white"
   },
   "tabBar": {

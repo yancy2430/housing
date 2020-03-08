@@ -5,5 +5,7 @@
     "van-icon": "@vant/weapp/icon/index",
     "van-grid-item": "@vant/weapp/grid-item/index",
     "van-search": "@vant/weapp/search/index"
-  }
+  },
+
+  "navigationBarTitleText": "新房优惠"
 }

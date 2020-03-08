@@ -3,13 +3,21 @@ const app = getApp()
 Page({
   data:{
 
-    token: wx.getStorageSync('token')
+    token: wx.getStorageSync('token'),
+    
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     let that = this;
+    if (options.scene){
+
+      wx.setStorage({
+        key: "scene",
+        data: options.scene
+      })
+    }
    
     wx.getStorage({
       key: 'sessionKey',
@@ -113,8 +121,31 @@ Page({
   },
   getToken(res) {
     let that = this;
-    wx.switchTab({
-      url: '/pages/index/me'
+    //发起登录请求
+    wx.request({
+      url: 'https://weixin.tdeado.com/miniapp/info',
+      data: {
+        sessionKey: that.data.sessionKey,
+        signature: res.signature,
+        rawData: res.rawData,
+        encryptedData: res.encryptedData,
+        iv: res.iv,
+        scene: that.data.scene
+      },
+      success(res) {
+        console.log(res.data)
+        that.setData({
+          userInfo: res.data.data.userInfo
+        })
+        wx.setStorage({
+          key: "token",
+          data: res.data.data.token
+        })
+
+        wx.switchTab({
+          url: '/pages/index/index'
+        })
+      }
     })
   },
   getPhoneNumber(e) {
