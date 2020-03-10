@@ -110,14 +110,14 @@
   <view class="interval"></view>
   <view class="interval"></view>
 </view>
-<van-goods-action>
+<van-goods-action wx:if="{{staff}}">
   <van-goods-action-icon icon="{{product.focus==1?'like':'like-o'}}" icon-class="{{product.focus==1?'like':'nolike'}}" text="关注" bind:click="focus" />
   <van-goods-action-icon icon="upgrade" open-type='share' text="分享" bind:click="share" />
   <van-goods-action-button text="报备" type="warning" open-type='contact' send-message-title="{{product.details.productName}}" show-message-card="{{true}}" session-from='' />
 </van-goods-action>
-<!-- <van-goods-action>
+<van-goods-action  wx:if="{{!staff}}">
   <van-goods-action-icon icon="{{product.focus==1?'like':'like-o'}}" icon-class="{{product.focus==1?'like':'nolike'}}" text="关注" bind:click="focus" />
   <van-goods-action-icon icon="upgrade" open-type='share' text="分享" bind:click="share" />
   <van-goods-action-button text="在线咨询" type="warning" open-type='contact' send-message-title="{{product.details.productName}}" show-message-card="{{true}}" session-from='' />
   <van-goods-action-button text="免费致电" bind:click="onClickCall" />
-</van-goods-action> -->
+</van-goods-action>

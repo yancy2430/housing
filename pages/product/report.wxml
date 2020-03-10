@@ -1,0 +1,37 @@
+<van-cell-group>
+  <van-field
+    value="{{ username }}"
+    required
+    clearable
+    label="姓名"
+    placeholder="请输入客户姓名"
+    bind:click-icon="onClickIcon"
+  />
+  <van-field
+    value="{{ mobile }}"
+    required
+    clearable
+    label="电话"
+    placeholder="请输入客户联系电话"
+    bind:click-icon="onClickIcon"
+  />
+  <van-field
+    value="请选择预约时间"
+    disabled
+    required
+    label="预约时间"
+    bindtap="showPopup"
+  />
+
+
+</van-cell-group>
+<van-popup show="{{ show }}" position="bottom"
+ bind:close="onClose">
+<van-datetime-picker
+  type="datetime"
+  value="{{ currentDate }}"
+  min-date="{{ minDate }}"
+  max-date="{{ maxDate }}"
+  bind:input="onInput"
+/>
+</van-popup>

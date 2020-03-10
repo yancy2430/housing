@@ -26,8 +26,9 @@ Page({
     this.setData({
       token: wx.getStorageSync("token"),
       scene: wx.getStorageSync("scene"),
+      staff:wx.getStorageSync('isStaff')
     })
-
+    
 
     // 查看是否授权
     wx.getSetting({

@@ -137,6 +137,16 @@ Page({
         that.setData({
           userInfo: res.data.data.userInfo
         })
+
+        wx.setStorage({
+          key: "userInfo",
+          data: res.data.data.userInfo
+        })
+        wx.setStorage({
+          key: "isStaff",
+          data: res.data.data.isStaff
+        })
+        
         wx.setStorage({
           key: "token",
           data: res.data.data.token

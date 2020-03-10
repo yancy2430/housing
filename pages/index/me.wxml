@@ -47,17 +47,18 @@
 			</van-col>
 		</van-row>
 	</view>
+  <block wx:if="{{!staff}}">
 	<view class="interval"></view>
-	<van-cell-group>
+	<van-cell-group >
 		<van-cell open-type="getPhoneNumber" icon="phone-o" border="{{false}}" value="{{userInfo.phone}}" is-link>
 			<view slot="title">
 				<button class="van-cell-text textButton" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">绑定手机号 </button>
 			</view>
 		</van-cell>
 	</van-cell-group>
+  </block>
+  <block wx:if="{{staff}}">
 	<view class="interval"></view>
-
-
 	<van-grid column-num="4">
 		<van-grid-item square link-type="navigateTo" use-slot url="/pages/qrcode/qrcode">
 			<image style="width: 35px; height: 35px;" src="https://img.yzcdn.cn/vant/apple-1.jpg" />
@@ -71,11 +72,12 @@
 			<image style="width: 35px; height: 35px;" src="https://img.yzcdn.cn/vant/apple-1.jpg" />
 			<button open-type="contact" class="btn">在线咨询</button>
 		</van-grid-item>
-		<van-grid-item square use-slot link-type="navigateTo" url="/pages/records/records">
+		<van-grid-item square use-slot >
 			<image style="width: 35px; height: 35px;" src="https://img.yzcdn.cn/vant/apple-1.jpg" />
-			<button class="btn">关于我们</button>
+			<button class="btn" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">绑定手机号</button>
 		</van-grid-item>
 	</van-grid>
+  </block>
 	<view class="interval"></view>
 	<official-account style=""></official-account>
 </view>
