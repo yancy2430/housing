@@ -8,6 +8,7 @@
   },
   "pages": [
     "pages/index/settle",
+    "pages/records/records",
     "pages/index/index",
     "pages/login/login",
     "pages/qrcode/qrcode",
@@ -23,8 +24,7 @@
     "pages/product/basis",
     "pages/index/area",
     "pages/history/history",
-    "pages/focus/focus",
-    "pages/records/records"
+    "pages/focus/focus"
   ],
   "permission": {
     "scope.userLocation": {

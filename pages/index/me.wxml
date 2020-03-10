@@ -1,69 +1,81 @@
 <!--pages/me/me.wxml-->
 <view class="container">
-  <view class="head">
-    <van-row>
-      <van-col>
+	<view class="head">
+		<van-row>
+			<van-col>
 
-        <van-image custom-class="avater" round fit="cover" src="{{userInfo.avatar}}" />
-      </van-col>
-      <van-col>
-        <!-- <button open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">请先登录</button> -->
-        <view class="name">
-          <block wx:if="{{userInfo}}">
-            {{userInfo.username}}
-          </block>
-          <block wx:else>
-            <button class="van-cell-text textButton name" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">注册/登录</button>
-          </block>
+				<van-image custom-class="avater" round fit="cover" src="{{userInfo.avatar}}" />
+			</van-col>
+			<van-col>
+				<!-- <button open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">请先登录</button> -->
+				<view class="name">
+					<block wx:if="{{userInfo}}">
+						{{userInfo.phone}}
+					</block>
+					<block wx:else>
+						<button class="van-cell-text textButton name" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">注册/登录</button>
+					</block>
 
-        </view>
-        <!-- <view class="desc">{{userInfo.username}}</view> -->
-      </van-col>
+				</view>
+				<!-- <view class="desc">{{userInfo.username}}</view> -->
+			</van-col>
 
-    </van-row>
-  </view>
+		</van-row>
+	</view>
 
-  <view class="tops">
-    <van-row>
-      <van-col span="8">
-        <view class="topitem" bindtap="toCoupons">
-          <view class="topnum">{{countData.coupons}}</view>
-          <view class="toptext">优惠券</view>
-        </view>
-      </van-col>
-      <van-col span="8">
-        <view class="topitem" bindtap="toFocus">
+	<view class="tops">
+		<van-row>
+			<van-col span="8">
+				<view class="topitem" bindtap="toCoupons">
+					<view class="topnum">{{countData.coupons}}</view>
+					<view class="toptext">优惠券</view>
+				</view>
+			</van-col>
+			<van-col span="8">
+				<view class="topitem" bindtap="toFocus">
 
-          <view class="topnum">{{countData.focus}}</view>
-          <view class="toptext">关注</view>
-        </view>
-      </van-col>
-      <van-col span="8">
-        <view class="topitem" bindtap="toHistory">
+					<view class="topnum">{{countData.focus}}</view>
+					<view class="toptext">关注</view>
+				</view>
+			</van-col>
+			<van-col span="8">
+				<view class="topitem" bindtap="toHistory">
 
-          <view class="topnum">{{countData.history}}</view>
-          <view class="toptext">足迹</view>
-        </view>
-      </van-col>
-    </van-row>
-  </view>
-  <view class="interval"></view>
-  <van-cell-group>
-    <van-cell open-type="getPhoneNumber" icon="phone-o" border="{{false}}" value="{{userInfo.phone}}" is-link>
-      <view slot="title">
-        <button class="van-cell-text textButton" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">绑定手机号 </button>
-      </view>
-    </van-cell>
-  </van-cell-group>
-  <view class="interval"></view>
-  <van-cell-group>
-    <van-cell icon="browsing-history-o" link-type="navigateTo" url="/pages/qrcode/qrcode" title="我的分享码" is-link/>
-    <van-cell icon="browsing-history-o" link-type="navigateTo" url="/pages/records/records" title="客户浏览记录" is-link/>
-  </van-cell-group>
-  <view class="interval"></view>
-  <van-cell-group>
-    <van-cell icon="browsing-history-o" link-type="navigateTo" url="/pages/records/records" title="关注服务号" is-link/>
-    <van-cell icon="browsing-history-o" link-type="navigateTo" url="/pages/records/records" title="在线咨询" is-link/>
-    <van-cell icon="browsing-history-o" link-type="navigateTo" url="/pages/records/records" title="关于我们" is-link/>
-  </van-cell-group>
+					<view class="topnum">{{countData.history}}</view>
+					<view class="toptext">足迹</view>
+				</view>
+			</van-col>
+		</van-row>
+	</view>
+	<view class="interval"></view>
+	<van-cell-group>
+		<van-cell open-type="getPhoneNumber" icon="phone-o" border="{{false}}" value="{{userInfo.phone}}" is-link>
+			<view slot="title">
+				<button class="van-cell-text textButton" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">绑定手机号 </button>
+			</view>
+		</van-cell>
+	</van-cell-group>
+	<view class="interval"></view>
+
+
+	<van-grid column-num="4">
+		<van-grid-item square link-type="navigateTo" use-slot url="/pages/qrcode/qrcode">
+			<image style="width: 35px; height: 35px;" src="https://img.yzcdn.cn/vant/apple-1.jpg" />
+			<button class="btn">分享二维码</button>
+		</van-grid-item>
+		<van-grid-item square link-type="navigateTo" use-slot url="/pages/records/records">
+			<image style="width: 35px; height: 35px;" src="https://img.yzcdn.cn/vant/apple-1.jpg" />
+			<button class="btn">浏览记录</button>
+		</van-grid-item>
+		<van-grid-item square open-type='contact' use-slot>
+			<image style="width: 35px; height: 35px;" src="https://img.yzcdn.cn/vant/apple-1.jpg" />
+			<button open-type="contact" class="btn">在线咨询</button>
+		</van-grid-item>
+		<van-grid-item square use-slot link-type="navigateTo" url="/pages/records/records">
+			<image style="width: 35px; height: 35px;" src="https://img.yzcdn.cn/vant/apple-1.jpg" />
+			<button class="btn">关于我们</button>
+		</van-grid-item>
+	</van-grid>
+	<view class="interval"></view>
+	<official-account style=""></official-account>
 </view>

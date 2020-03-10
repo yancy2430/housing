@@ -1,4 +1,37 @@
-<van-panel title="落日天涯" desc="测试楼盘" status="18152733661">
-     <product-list class="van-hairline--bottom" wx:for="{{products}}" product="{{item}}" bindtap="goProduct" data-id="{{item.id}}">
-    </product-list>
-</van-panel>
+<van-tabs active="{{ 0 }}" bind:change="onChange">
+	<van-tab title="全部报备">
+		<view class="records">
+			<view class="records-item">
+				<van-row>
+					<van-col span="12" custom-class="name">杨先生</van-col>
+					<van-col span="12" custom-class="date">2020/03/12</van-col>
+				</van-row>
+				<van-row custom-class="row">
+					<van-col span="12" custom-class="tel">18152733661</van-col>
+				</van-row>
+				<van-row custom-class="row">
+					<van-col span="12" custom-class="product-name">嘉鑫苑</van-col>
+					<van-col span="12" custom-class="button">
+						<van-tag>报备失效</van-tag>
+					</van-col>
+				</van-row>
+			</view>
+			<view class="records-item">
+				<van-row>
+					<van-col span="12" custom-class="name">杨先生</van-col>
+					<van-col span="12" custom-class="date">2020/03/12</van-col>
+				</van-row>
+				<van-row custom-class="row">
+					<van-col span="12" custom-class="tel">18152733661</van-col>
+				</van-row>
+				<van-row custom-class="row">
+					<van-col span="12" custom-class="product-name">嘉鑫苑</van-col>
+					<van-col span="12" custom-class="button">
+						<van-tag>报备失效</van-tag>
+					</van-col>
+				</van-row>
+			</view>
+		</view>
+	</van-tab>
+
+</van-tabs>

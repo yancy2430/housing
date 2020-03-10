@@ -1,7 +1,6 @@
 /* pages/me/me.wxss */
 
-.container {
-}
+.container {}
 
 .head {
   height: 24vw;
@@ -60,24 +59,65 @@
   font-size: 1.2rem;
   font-weight: 500;
 }
-.tops{
+
+.tops {
   width: 100%;
 }
-.topitem{
+
+.topitem {
   text-align: center;
   align-items: center;
   justify-content: center;
-  white-space:pre-wrap;
+  white-space: pre-wrap;
   padding: 4vw 5vw;
 }
-.topnum{
+
+.topnum {
   color: #333;
   font-size: 1.3rem;
   font-weight: 400;
 
 }
-.toptext{
+
+.toptext {
   color: #666;
   font-size: 0.8rem;
+
+}
+
+.btn {
+  border: none;
+  position: relative;
+  display:inline-block;
+  margin: 0;
+  padding:0;
+  box-sizing: none;
+  font-size: 0.8rem;
+  text-align: center;
+  text-decoration: none;
+  line-height: 1rem;
+  margin-top: 3px;
+  border-radius: none;
+  -webkit-tap-highlight-color: transparent;
+  overflow: hidden;
+  color: #555;
+  background-color: #ffffffff;
+
+}
+
+.btn::after {
+  content: " ";
+  width: auto;
+  height: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border: 0px solid rgba(0, 0, 0, .2);
+  -webkit-transform: scale(0);
+  transform: scale(0);
+  -webkit-transform-origin: 0 0;
+  transform-origin: 0 0;
+  box-sizing: border-box;
+  border-radius: 0px;
 
 }

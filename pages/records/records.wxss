@@ -1,1 +1,33 @@
 /* pages/records/records.wxss */
+.records {
+  margin:10px;
+}
+.records-item {
+  margin-bottom: 10px;
+  padding: 12px;
+  background: #eee;
+  border-radius: 6px;
+}
+.records-item .name {
+  text-align: left;
+  font-size: 1rem;
+}
+.records-item .date {
+  text-align: right;
+  font-size: .8rem;
+  color: #888;
+}
+.records-item .tel {
+  font-size: 1rem;
+  color: #444;
+}
+.records-item .product-name {
+  font-size: 1rem;
+  color: #555;
+}
+.records-item .button {
+  text-align: right;
+}
+.records-item .row{
+  padding-top: 5px;
+}
