@@ -4,11 +4,12 @@
     "van-row": "@vant/weapp/row/index",
     "van-col": "@vant/weapp/col/index",
     "van-sticky": "@vant/weapp/sticky/index",
+    "van-toast": "@vant/weapp/toast/index",
     "van-tag": "@vant/weapp/tag/index"
   },
   "pages": [
-    "pages/product/report",
     "pages/index/settle",
+    "pages/product/report",
     "pages/records/records",
     "pages/index/index",
     "pages/login/login",

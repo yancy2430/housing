@@ -1,1 +1,4 @@
 /* pages/product/report.wxss */
+.submit{
+  padding: 1rem;
+}

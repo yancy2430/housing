@@ -1,31 +1,16 @@
 <van-tabs active="{{ 0 }}" bind:change="onChange">
-	<van-tab title="全部报备">
+	<van-tab wx:for="{{ reports }}" wx:key="index"  title="{{index}}" >
 		<view class="records">
-			<view class="records-item">
+			<view class="records-item" wx:for="{{item.records}}" wx:key="index">
 				<van-row>
-					<van-col span="12" custom-class="name">杨先生</van-col>
-					<van-col span="12" custom-class="date">2020/03/12</van-col>
+					<van-col span="12" custom-class="name">{{item.name}}</van-col>
+					<van-col span="12" custom-class="date">{{item.makeTime}}</van-col>
 				</van-row>
 				<van-row custom-class="row">
-					<van-col span="12" custom-class="tel">18152733661</van-col>
+					<van-col span="12" custom-class="tel">{{item.mobile}}</van-col>
 				</van-row>
 				<van-row custom-class="row">
-					<van-col span="12" custom-class="product-name">嘉鑫苑</van-col>
-					<van-col span="12" custom-class="button">
-						<van-tag>报备失效</van-tag>
-					</van-col>
-				</van-row>
-			</view>
-			<view class="records-item">
-				<van-row>
-					<van-col span="12" custom-class="name">杨先生</van-col>
-					<van-col span="12" custom-class="date">2020/03/12</van-col>
-				</van-row>
-				<van-row custom-class="row">
-					<van-col span="12" custom-class="tel">18152733661</van-col>
-				</van-row>
-				<van-row custom-class="row">
-					<van-col span="12" custom-class="product-name">嘉鑫苑</van-col>
+					<van-col span="12" custom-class="product-name">{{item.productName}}</van-col>
 					<van-col span="12" custom-class="button">
 						<van-tag>报备失效</van-tag>
 					</van-col>

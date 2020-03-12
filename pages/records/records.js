@@ -19,7 +19,7 @@ Page({
     })
 
     wx.request({
-      url: 'https://weixin.tdeado.com/miniapp/hot', //仅为示例，并非真实的接口地址
+      url: 'https://weixin.tdeado.com/miniapp/reports', //仅为示例，并非真实的接口地址
       data: {},
       header: {
         'token': that.data.token,
@@ -28,7 +28,7 @@ Page({
       success(res) {
         console.log(res.data)
         that.setData({
-          products: res.data.data
+          reports: res.data.data
         })
       }
     })

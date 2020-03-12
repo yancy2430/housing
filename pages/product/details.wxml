@@ -23,7 +23,7 @@
           </view>
           <view class="sm_img" bindtap="toPhoto" data-id="{{product.details.id}}">
             <image src="http://weixin.tdeado.com/{{product.covers[1].image}}"></image>
-            <view class="overlay">+55\n查看更多</view>
+            <view class="overlay">+{{product.covers.length}}\n查看更多</view>
           </view>
         </van-col>
       </van-row>
@@ -113,7 +113,7 @@
 <van-goods-action wx:if="{{staff}}">
   <van-goods-action-icon icon="{{product.focus==1?'like':'like-o'}}" icon-class="{{product.focus==1?'like':'nolike'}}" text="关注" bind:click="focus" />
   <van-goods-action-icon icon="upgrade" open-type='share' text="分享" bind:click="share" />
-  <van-goods-action-button text="报备" type="warning" open-type='contact' send-message-title="{{product.details.productName}}" show-message-card="{{true}}" session-from='' />
+  <van-goods-action-button text="报备" type="warning"  bind:click="onReport" />
 </van-goods-action>
 <van-goods-action  wx:if="{{!staff}}">
   <van-goods-action-icon icon="{{product.focus==1?'like':'like-o'}}" icon-class="{{product.focus==1?'like':'nolike'}}" text="关注" bind:click="focus" />

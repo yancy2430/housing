@@ -62,11 +62,11 @@
 	<van-grid column-num="4">
 		<van-grid-item square link-type="navigateTo" use-slot url="/pages/qrcode/qrcode">
 			<image style="width: 35px; height: 35px;" src="https://img.yzcdn.cn/vant/apple-1.jpg" />
-			<button class="btn">分享二维码</button>
+			<button class="btn">分享记录</button>
 		</van-grid-item>
 		<van-grid-item square link-type="navigateTo" use-slot url="/pages/records/records">
 			<image style="width: 35px; height: 35px;" src="https://img.yzcdn.cn/vant/apple-1.jpg" />
-			<button class="btn">浏览记录</button>
+			<button class="btn">报备记录</button>
 		</van-grid-item>
 		<van-grid-item square open-type='contact' use-slot>
 			<image style="width: 35px; height: 35px;" src="https://img.yzcdn.cn/vant/apple-1.jpg" />
@@ -75,6 +75,14 @@
 		<van-grid-item square use-slot >
 			<image style="width: 35px; height: 35px;" src="https://img.yzcdn.cn/vant/apple-1.jpg" />
 			<button class="btn" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">绑定手机号</button>
+		</van-grid-item>
+		<van-grid-item square link-type="navigateTo" use-slot url="/pages/qrcode/qrcode">
+			<image style="width: 35px; height: 35px;" src="https://img.yzcdn.cn/vant/apple-1.jpg" />
+			<button class="btn">我的二维码</button>
+		</van-grid-item>
+		<van-grid-item square link-type="navigateTo" use-slot url="/pages/qrcode/qrcode">
+			<image style="width: 35px; height: 35px;" src="https://img.yzcdn.cn/vant/apple-1.jpg" />
+			<button class="btn">关于我们</button>
 		</van-grid-item>
 	</van-grid>
   </block>

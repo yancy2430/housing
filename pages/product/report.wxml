@@ -1,11 +1,11 @@
 <van-cell-group>
   <van-field
-    value="{{ username }}"
+    value="{{ name }}"
     required
     clearable
     label="姓名"
     placeholder="请输入客户姓名"
-    bind:click-icon="onClickIcon"
+    bind:change="onChangeName"
   />
   <van-field
     value="{{ mobile }}"
@@ -13,10 +13,10 @@
     clearable
     label="电话"
     placeholder="请输入客户联系电话"
-    bind:click-icon="onClickIcon"
+    bind:change="onChangeMobile"
   />
   <van-field
-    value="请选择预约时间"
+    value="{{selectDate?selectDate:'请选择预约时间'}}"
     disabled
     required
     label="预约时间"
@@ -25,13 +25,21 @@
 
 
 </van-cell-group>
+<view class="submit">
+<van-button type="primary" block bindtap="submit">提交报备</van-button>
+</view>
+
 <van-popup show="{{ show }}" position="bottom"
  bind:close="onClose">
 <van-datetime-picker
+
   type="datetime"
   value="{{ currentDate }}"
   min-date="{{ minDate }}"
   max-date="{{ maxDate }}"
-  bind:input="onInput"
+  formatter="{{ formatter }}"
+  bind:confirm="onConfirm"
 />
 </van-popup>
+<van-toast id="van-toast" />
+<van-toast id="custom-selector" />

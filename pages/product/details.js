@@ -41,6 +41,11 @@ Page({
       }
     })
   },
+  onReport:function(e){
+    wx.navigateTo({
+      url: '/pages/product/report?id=' + this.data.product.details.id,
+    })
+  },
   toPhoto: function(e) {
     console.log(e.currentTarget.dataset.id)
     wx.navigateTo({
