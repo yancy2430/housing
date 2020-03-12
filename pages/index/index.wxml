@@ -8,13 +8,13 @@
     <van-grid-item text="厦门区域" bindtap="toList" data-area="0">
       <van-icon slot="icon" size="40" name="https://ke-image.ljcdn.com/materials/appindexconf/d5592269bafbe134453afb01c5612658.png" />
     </van-grid-item>
-    <van-grid-item text="漳州区域">
+    <van-grid-item text="漳州区域" bindtap="toList">
       <van-icon slot="icon" size="40" name="https://ke-image.ljcdn.com/materials/appindexconf/94250adc5e77f9b816f77032e27a8412.png" />
     </van-grid-item>
-    <van-grid-item text="泉州区域">
+    <van-grid-item text="泉州区域" bindtap="toList">
       <van-icon slot="icon" size="40" name="https://ke-image.ljcdn.com/materials/appindexconf/44b50fa3627b67a9102c82f96ebd9189.png" />
     </van-grid-item>
-    <van-grid-item text="其他区域">
+    <van-grid-item text="其他区域" bindtap="toList">
       <van-icon slot="icon" size="40" name="https://ke-image.ljcdn.com/materials/appindexconf/d10df2594bba41993ad72a7618c5727d.png" />
     </van-grid-item>
   </van-grid>

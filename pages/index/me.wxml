@@ -62,6 +62,10 @@
 	<van-grid column-num="4">
 		<van-grid-item square link-type="navigateTo" use-slot url="/pages/qrcode/qrcode">
 			<image style="width: 35px; height: 35px;" src="https://img.yzcdn.cn/vant/apple-1.jpg" />
+			<button class="btn">消息中心</button>
+		</van-grid-item>
+		<van-grid-item square link-type="navigateTo" use-slot url="/pages/qrcode/qrcode">
+			<image style="width: 35px; height: 35px;" src="https://img.yzcdn.cn/vant/apple-1.jpg" />
 			<button class="btn">分享记录</button>
 		</van-grid-item>
 		<van-grid-item square link-type="navigateTo" use-slot url="/pages/records/records">
