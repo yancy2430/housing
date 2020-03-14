@@ -4,10 +4,10 @@ App({
     
   },
   onShow:function(op){
-    if (!wx.getStorageSync("token") && op.path != 'pages/index/index') {
-      wx.navigateTo({
-        url: '/pages/login/login',
-      })
-    }
+    // if (!wx.getStorageSync("token") && op.path != 'pages/index/index') {
+    //   wx.navigateTo({
+    //     url: '/pages/login/login',
+    //   })
+    // }
   }
 })

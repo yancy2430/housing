@@ -7,5 +7,5 @@
     "van-col": "@vant/weapp/col/index",
     "van-search": "@vant/weapp/search/index"
   },
-  "navigationBarTitleText": "新闻中心"
+  "navigationBarTitleText": "证件护照"
 }

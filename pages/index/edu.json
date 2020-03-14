@@ -7,5 +7,5 @@
     "van-col": "@vant/weapp/col/index",
     "van-search": "@vant/weapp/search/index"
   },
-  "navigationBarTitleText": "教育资讯"
+  "navigationBarTitleText": "入学指南"
 }

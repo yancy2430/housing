@@ -7,7 +7,8 @@ Page({
    */
   data: {
     token: wx.getStorageSync('token'),
-    list:[]
+    list:[],
+    searchValue:""
   },
 	onShow() {
 		this.getTabBar().init();
@@ -16,8 +17,20 @@ Page({
       token: wx.getStorageSync("token")
     })
 
+    this.getNews("");
+  },
+  onChange(e) {
+    this.setData({
+      searchValue: e.detail
+    });
+  },
+  onSearch(){
+    this.getNews(this.data.searchValue)
+  },
+  getNews(key){
+    let that = this;
     wx.request({
-      url: 'https://weixin.tdeado.com/miniapp/settle', 
+      url: 'https://weixin.tdeado.com/miniapp/settle?key='+key, 
       header: {
         'token': that.data.token,
         'content-type': 'application/json' // 默认值
@@ -29,7 +42,7 @@ Page({
         })
       }
     })
-	},
+  },
   toArticle(e){
     wx.navigateTo({
       url: '/pages/article/article?id=' + e.currentTarget.dataset.id,

@@ -16,8 +16,13 @@ Page({
       token: wx.getStorageSync("token")
     })
 
+    this.getNews("");
+
+  },
+  getNews(key){
+    let that = this;
     wx.request({
-      url: 'https://weixin.tdeado.com/miniapp/edu',
+      url: 'https://weixin.tdeado.com/miniapp/edu?key='+key,
       header: {
         'token': that.data.token,
         'content-type': 'application/json' // 默认值
@@ -29,6 +34,14 @@ Page({
         })
       }
     })
+  },
+  onChange(e) {
+    this.setData({
+      searchValue: e.detail
+    });
+  },
+  onSearch(){
+    this.getNews(this.data.searchValue)
   },
   toArticle(e) {
     wx.navigateTo({
