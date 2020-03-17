@@ -50,11 +50,27 @@
   <block wx:if="{{!staff}}">
 	<view class="interval"></view>
 	<van-cell-group >
-		<van-cell open-type="getPhoneNumber" icon="phone-o" border="{{false}}" value="{{userInfo.phone}}" is-link>
+		<van-cell open-type="getPhoneNumber" icon="phone-o" border="{{true}}" value="{{userInfo.phone}}" is-link>
 			<view slot="title">
 				<button class="van-cell-text textButton" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">绑定手机号 </button>
 			</view>
 		</van-cell>
+		<van-cell open-type="getPhoneNumber" icon="phone-o" border="{{true}}" value="咨询最新政策" is-link>
+			<view slot="title">
+				<button class="van-cell-text textButton" open-type="contact" send-message-title="" show-message-card="{{false}}" session-from='' >在线咨询 </button>
+			</view>
+		</van-cell>
+		<van-cell open-type="getPhoneNumber" icon="phone-o" border="{{true}}" value="{{userInfo.phone}}" is-link>
+			<view slot="title">
+				<button class="van-cell-text textButton" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">关于我们 </button>
+			</view>
+		</van-cell>
+		<van-cell open-type="getPhoneNumber" icon="phone-o" border="{{false}}" value="" is-link>
+			<view slot="title">
+				<button class="van-cell-text textButton" open-type="feedback" >意见反馈 </button>
+			</view>
+		</van-cell>
+
 	</van-cell-group>
   </block>
   <block wx:if="{{staff}}">

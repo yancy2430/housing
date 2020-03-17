@@ -9,10 +9,30 @@ Page({
     product: {}
   },
    onShareAppMessage: function (res) {
+    let that = this
     if (res.from === 'button') {
       // 来自页面内转发按钮
       console.log(res.target)
     }
+    wx.request({
+      url: 'https://weixin.tdeado.com/miniapp/saveShareLog',
+      data: {
+        contentId:this.data.product.details.id,
+        type:1,
+        contentName:this.data.product.details.productName
+      },
+      method:"POST",
+      header: {
+        'token': that.data.token,
+        'content-type': 'application/json' // 默认值
+      },
+      success(res) {
+        console.log(res.data)
+        that.setData({
+          product: res.data.data
+        })
+      }
+    })
     return {
       title: '分享' + this.data.product.details.productName,
       path: '/pages/product/details?id=' + this.data.product.details.id + "&scene=" + wx.getStorageSync('scene')

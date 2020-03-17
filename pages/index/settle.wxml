@@ -10,4 +10,9 @@
     <view style="width: 21.5vw;font-size:0.8rem;overflow: hidden;white-space: nowrap;">{{item.title}}</view>
     </van-grid-item>
   </van-grid>
+  <view class="interval"></view>
+  <view class="interval"></view>
+  <view class="interval"></view>
+  <view class="interval"></view>
+  <view class="interval"></view>
 </view>

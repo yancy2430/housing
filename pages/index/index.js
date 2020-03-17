@@ -17,11 +17,7 @@ Page({
     this.setData({
       token: wx.getStorageSync("token")
     })
-    if (!that.data.token) {
-      wx.navigateTo({
-        url: '/pages/login/login',
-      })
-    }
+  
     wx.getStorage({
       key: 'area',
       success(res) {
