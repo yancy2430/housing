@@ -31,11 +31,11 @@ Page({
     this.setData({
       token: wx.getStorageSync("token")
     })
-    if (!that.data.token) {
-      wx.navigateTo({
-        url: '/pages/login/login',
-      })
-    }
+    // if (!that.data.token) {
+    //   wx.navigateTo({
+    //     url: '/pages/login/login',
+    //   })
+    // }
 
     // 查看是否授权
     wx.getSetting({

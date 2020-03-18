@@ -1,3 +1,4 @@
 <web-view src="{{src}}" bindmessage='getMessage'>
 
 </web-view>
+<van-dialog id="van-dialog" />

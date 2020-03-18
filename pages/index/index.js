@@ -11,7 +11,6 @@ Page({
 
   },
   onShow() {
-    
     this.getTabBar().init();
     let that = this;
     this.setData({

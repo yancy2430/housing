@@ -1,4 +1,6 @@
 // pages/article/article.js
+import Dialog from '@vant/weapp/dialog/dialog';
+
 Page({
 
   /**
@@ -13,7 +15,27 @@ Page({
    */
   onLoad: function (options) {
     let that = this;
-    
+    this.setData({
+      token: wx.getStorageSync("token")
+    })
+    try {
+      var value = wx.getStorageSync('articleNum')
+
+      if(value>3 && !token){
+        wx.switchTab({
+          url: '/pages/index/me'
+        })
+        return;
+      }
+   
+      value=value+1
+      wx.setStorageSync('articleNum', value)
+    } catch (e) {
+      // Do something when catch error
+    }
+  
+
+
     this.setData({
       id: options.id,
       src: 'https://weixin.tdeado.com/miniapp/article/' + options.id+'.html'

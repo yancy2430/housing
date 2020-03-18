@@ -18,9 +18,7 @@ Page({
     this.setData({
       token: wx.getStorageSync("token")
     })
-
-    console.log(that.data.token)
-    getNews("");
+    this.getNews("");
   },
   onChange(event) {
     let that = this;

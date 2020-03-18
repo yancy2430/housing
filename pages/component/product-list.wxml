@@ -7,8 +7,8 @@
         <van-col span="16">
           <view>
             <text class="item-title">{{product.productName}}</text>
-            <van-tag class="item-tag" type="primary">
-              <text wx:if="{{product.sellState==1}}">售卖</text>
+            <van-tag size="medium" color="#ee0a24" class="item-tag" type="primary">
+              <text wx:if="{{product.sellState==1}}">购房津贴</text>
               <text wx:if="{{product.sellState==2}}">预售</text>
               <text wx:if="{{product.sellState==0}}">未开盘</text>
               <text wx:if="{{product.sellState==3}}">已售完</text>
