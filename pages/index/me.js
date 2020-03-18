@@ -28,6 +28,7 @@ Page({
       scene: wx.getStorageSync("scene"),
       staff:wx.getStorageSync('isStaff')
     })
+    console.log(staff)
     this.setData({
       token: wx.getStorageSync("token")
     })
@@ -131,7 +132,7 @@ Page({
         rawData: res.rawData,
         encryptedData: res.encryptedData,
         iv: res.iv,
-        scene: that.data.scene
+        scene: wx.getStorageSync('scene')
       },
       success(res) {
         console.log(res.data)
@@ -142,7 +143,13 @@ Page({
           key: "token",
           data: res.data.data.token
         })
-
+        wx.setStorage({
+          key: "isStaff",
+          data: res.data.data.isStaff
+        })
+        that.setData({
+          staff:wx.getStorageSync('isStaff')
+        })
         //发起网络请求
         wx.request({
           url: 'https://weixin.tdeado.com/miniapp/me/count',
@@ -159,6 +166,9 @@ Page({
         })
       }
     })
+  },
+  celltel(){
+wx.makePhoneCall({phoneNumber: this.data.countData.contact })
   },
   getPhoneNumber(e) {
     console.log(e.detail.errMsg)

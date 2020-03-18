@@ -5,6 +5,11 @@ Page({
    * 页面的初始数据
    */
   data: {
+    indicatorDots: true,
+    vertical: false,
+    autoplay: false,
+    interval: 2000,
+    duration: 500,
     active: 0,
     photo: [],
     token: wx.getStorageSync('token'),
@@ -36,6 +41,19 @@ Page({
   onClickShow(e) {
     console.log(e)
     this.setData({ show: true, selectImg: e.currentTarget.dataset.src });
+
+    this.data.selectImg = []
+    for (let index = 0; index < this.data.photo[e.target.dataset.upid].list.length; index++) {
+      const element = this.data.photo[e.target.dataset.upid].list[index];
+   
+
+      this.data.selectImg.push(element.image)
+    }
+
+    this.setData({
+      selectImg: this.data.selectImg,
+      current:e.target.dataset.index
+    })
   },
 
   onClickHide() {

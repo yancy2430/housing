@@ -102,6 +102,11 @@ Page({
       }
     })
   },
+  onTag(e){
+    wx.switchTab({
+      url: e.target.dataset.page
+    })
+  },
   share() {
 
   }

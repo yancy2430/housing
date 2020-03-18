@@ -18,7 +18,7 @@ Page({
         data: options.scene
       })
     }
-   
+    
     wx.getStorage({
       key: 'sessionKey',
       success(res) {
@@ -130,7 +130,7 @@ Page({
         rawData: res.rawData,
         encryptedData: res.encryptedData,
         iv: res.iv,
-        scene: that.data.scene
+        scene: wx.getStorageSync('scene')
       },
       success(res) {
         console.log(res.data)

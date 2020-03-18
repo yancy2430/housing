@@ -11,15 +11,23 @@
 		<van-tab title="预售许可证"></van-tab>
 	</van-tabs>
 </van-sticky> -->
-	<view class="picture" wx:for="{{photo}}" wx:if="{{item.list.length>0}}">
+	<view class="picture" wx:for="{{photo}}" wx:for-index="upid" wx:if="{{item.list.length>0}}">
 		<view class="sm-title">{{item.name}}({{item.list.length}})</view>
 		<view class="images">
-			<image class="image" wx:for="{{item.list}}" src="http://weixin.tdeado.com/{{item.image}}" bindtap="onClickShow" data-src="http://weixin.tdeado.com/{{item.image}}"></image>
+			<image class="image" data-upid="{{upid}}" wx:for="{{item.list}}" wx:key="index" src="http://weixin.tdeado.com/{{item.image}}" bindtap="onClickShow"
+			 data-index="{{index}}" data-src="http://weixin.tdeado.com/{{item.image}}"></image>
 		</view>
 	</view>
   <van-overlay show="{{ show }}" bindtap="onClickHide">
-    <view class="wrapper">
-      <image class="selectImg" src="{{selectImg}}"></image>
+    <view class="wrapper" style="position: absolute;width: 100%;top: 50vh;margin-top: -25vh;">
+			<swiper indicator-dots="{{indicatorDots}}"
+        autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" current="{{current}}" style="width: 100%;height: 100%;margin: auto;" >
+        <block wx:for="{{selectImg}}" wx:key="index">
+          <swiper-item>
+      			<image class="selectImg" src="http://weixin.tdeado.com/{{item}}"></image>
+          </swiper-item>
+        </block>
+      </swiper>
     </view>
   </van-overlay>
 </view>

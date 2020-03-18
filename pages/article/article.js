@@ -21,7 +21,7 @@ Page({
     try {
       var value = wx.getStorageSync('articleNum')
 
-      if(value>3 && !token){
+      if(value>3 && !this.data.token){
         wx.switchTab({
           url: '/pages/index/me'
         })
@@ -29,7 +29,7 @@ Page({
       }
    
       value=value+1
-      wx.setStorageSync('articleNum', value)
+      wx.setStorageSync('articleNum', Number(value))
     } catch (e) {
       // Do something when catch error
     }
