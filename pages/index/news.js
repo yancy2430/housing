@@ -20,7 +20,7 @@ Page({
     })
 
     console.log(that.data.token)
-    
+    getNews("");
   },
   onChange(event) {
     let that = this;

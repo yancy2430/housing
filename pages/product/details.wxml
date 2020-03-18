@@ -90,7 +90,7 @@
     </van-cell-group>
     <view class="interval"></view>
   </block>
-  <block wx:for="{{product.basis}}" wx:key="index" wx:if="{{item.list.lenght!=0}}">
+  <block wx:for="{{product.basis}}" wx:key="index" wx:if="{{index>0}}">
     <van-cell-group>
       <van-cell title="{{item.name}}" />
       <view class="coupons-list">

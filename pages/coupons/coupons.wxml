@@ -2,7 +2,7 @@
 
   <van-tabs active="{{ active }}" bind:change="onChange">
     <van-tab title="未使用">
-      <view class="coupons-item" wx:for="{{5}}">
+      <view class="coupons-item" wx:for="{{0}}">
         <van-row>
           <van-col span="10">
             <view class="left-item">
