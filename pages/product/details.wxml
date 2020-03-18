@@ -110,9 +110,9 @@
 				<view class="detail head">
 
 					<van-tag type="primary" custom-class="tag" size="large">免费落户厦门</van-tag>
-					<van-tag type="success" custom-class="tag" size="large">入学指南</van-tag>
-					<van-tag type="danger" custom-class="tag" size="large">证件护照</van-tag>
-					<van-tag type="warning" custom-class="tag" size="large">购买新房有优惠</van-tag>
+					<van-tag type="success" custom-class="tag" size="large">入学问题解决</van-tag>
+					<van-tag type="danger" custom-class="tag" size="large">证件护照办理</van-tag>
+					<van-tag type="warning" custom-class="tag" size="large">购新房享优惠</van-tag>
 				</view>
 			</view>
 		</van-cell-group>

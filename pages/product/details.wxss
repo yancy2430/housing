@@ -16,7 +16,9 @@
   padding-bottom: 0.8rem;
 }
 .head .tag{
-  margin:10px;
+  margin:8px 2vw 8px 2vw;
+  width: 85vw;
+  padding: 12px 8px;
 }
 .tags .tag{
   font-size: 0.6rem;
