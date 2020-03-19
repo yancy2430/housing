@@ -7,5 +7,6 @@
     "van-col": "@vant/weapp/col/index",
     "van-search": "@vant/weapp/search/index"
   },
-  "navigationBarTitleText": "证件护照"
+  "navigationBarTitleText": "证件护照",
+  "enablePullDownRefresh": true
 }

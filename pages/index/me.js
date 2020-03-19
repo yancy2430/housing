@@ -20,6 +20,10 @@ Page({
       }
     })
   },
+  onPullDownRefresh() {
+    this.isSet()
+  
+  },
   onShow() {
     this.getTabBar().init();
     let that = this;
@@ -28,7 +32,6 @@ Page({
       scene: wx.getStorageSync("scene"),
       staff:wx.getStorageSync('isStaff')
     })
-    console.log(staff)
     this.setData({
       token: wx.getStorageSync("token")
     })
@@ -38,6 +41,13 @@ Page({
     //   })
     // }
 
+    
+    this.isSet()
+    
+
+  },
+  isSet() {
+    let that = this;
     // 查看是否授权
     wx.getSetting({
       success(res) {
@@ -46,7 +56,7 @@ Page({
             success() {
               //session_key 未过期，并且在本生命周期一直有效
               console.log(that.data.sessionKey)
-              if (that.data.sessionKey){
+              if (that.data.sessionKey) {
                 wx.getUserInfo({
                   success: function (res) {
                     that.getToken(res)
@@ -68,10 +78,8 @@ Page({
         console.log(err)
       }
     })
-
-    
-
-  },
+  }
+  ,
   
   bindGetUserInfo(e) {
     console.log(e.detail.userInfo)
@@ -113,6 +121,7 @@ Page({
                   that.getToken(res)
                 }
               })
+
             }
           })
         } else {
@@ -150,6 +159,7 @@ Page({
         that.setData({
           staff:wx.getStorageSync('isStaff')
         })
+        wx.stopPullDownRefresh()
         //发起网络请求
         wx.request({
           url: 'https://weixin.tdeado.com/miniapp/me/count',

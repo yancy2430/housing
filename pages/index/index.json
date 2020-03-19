@@ -7,5 +7,6 @@
     "van-search": "@vant/weapp/search/index"
   },
 
-  "navigationBarTitleText": "新房优惠"
+  "navigationBarTitleText": "新房优惠",
+  "enablePullDownRefresh": true
 }

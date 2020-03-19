@@ -8,6 +8,8 @@ Page({
   data: {
     token: wx.getStorageSync('token'),
     list: []
+  }, onPullDownRefresh() {
+    this.getNews("");
   },
   onShow() {
     this.getTabBar().init();
@@ -32,6 +34,7 @@ Page({
         that.setData({
           list: res.data.data.records
         })
+        wx.stopPullDownRefresh()
       }
     })
   },

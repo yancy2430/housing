@@ -10,6 +10,10 @@ Page({
     list:[],
     searchValue:""
   },
+  onPullDownRefresh() {
+
+    this.getNews("");
+  },
 	onShow() {
 		this.getTabBar().init();
     let that = this;
@@ -40,6 +44,7 @@ Page({
         that.setData({
           list: res.data.data.records
         })
+        wx.stopPullDownRefresh()
       }
     })
   },

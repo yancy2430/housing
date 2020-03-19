@@ -8,5 +8,6 @@
     "van-grid-item": "@vant/weapp/grid-item/index",
     "van-cell-group": "@vant/weapp/cell-group/index"
   },
-  "navigationBarTitleText": "个人中心"
+  "navigationBarTitleText": "个人中心",
+  "enablePullDownRefresh":true
 }

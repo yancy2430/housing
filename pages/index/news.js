@@ -10,6 +10,9 @@ Page({
 
     token: wx.getStorageSync('token'),
     active:0
+  }, onPullDownRefresh() {
+    this.getNews("");
+
   },
   onShow() {
     
@@ -39,6 +42,7 @@ Page({
         that.setData({
           list: res.data.data.records
         })
+        wx.stopPullDownRefresh()
       }
     })
   },

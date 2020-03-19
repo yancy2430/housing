@@ -7,5 +7,6 @@
     "van-col": "@vant/weapp/col/index",
     "van-search": "@vant/weapp/search/index"
   },
-  "navigationBarTitleText": "落户指南"
+  "navigationBarTitleText": "落户指南",
+  "enablePullDownRefresh": true
 }

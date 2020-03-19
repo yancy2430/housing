@@ -9,6 +9,22 @@ Page({
     area: [],
     token: wx.getStorageSync('token')
 
+  }, onPullDownRefresh() {
+    wx.request({
+      url: 'https://weixin.tdeado.com/miniapp/hot', //仅为示例，并非真实的接口地址
+      data: {},
+      header: {
+        'token': that.data.token,
+        'content-type': 'application/json' // 默认值
+      },
+      success(res) {
+        console.log(res.data)
+        that.setData({
+          products: res.data.data
+        })
+        wx.stopPullDownRefresh()
+      }
+    })
   },
   onShow() {
     this.getTabBar().init();
@@ -72,6 +88,7 @@ Page({
         that.setData({
           products: res.data.data
         })
+        wx.stopPullDownRefresh()
       }
     })
 

@@ -10,7 +10,7 @@
 				<!-- <button open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">请先登录</button> -->
 				<view class="name">
 					<block wx:if="{{userInfo}}">
-						{{userInfo.phone}}
+						{{userInfo.nickName}}
 					</block>
 					<block wx:else>
 						<button class="van-cell-text textButton name" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">注册/登录</button>
@@ -50,7 +50,7 @@
   <block wx:if="{{!staff}}">
 	<view class="interval"></view>
 	<van-cell-group >
-		<van-cell open-type="getPhoneNumber" icon="phone-circle-o" border="{{true}}" is-link>
+		<van-cell open-type="getPhoneNumber" icon="phone-circle-o" border="{{true}}" value="{{userInfo.phone}}" is-link>
 			<view slot="title">
 				<button class="van-cell-text textButton" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">绑定手机号 </button>
 			</view>
@@ -68,6 +68,11 @@
 		<van-cell open-type="getPhoneNumber" icon="flower-o" border="{{false}}" is-link>
 			<view slot="title">
 				<button class="van-cell-text textButton" open-type="feedback" >意见反馈 </button>
+			</view>
+		</van-cell>
+		<van-cell open-type="getPhoneNumber" icon="flower-o" border="{{false}}" is-link>
+			<view slot="title">
+				<button class="van-cell-text textButton" open-type="feedback" >退出登录</button>
 			</view>
 		</van-cell>
 
@@ -103,6 +108,10 @@
 		<van-grid-item square link-type="navigateTo" use-slot url="/pages/qrcode/qrcode">
 			<image style="width: 35px; height: 35px;" src="https://img.yzcdn.cn/vant/apple-1.jpg" />
 			<button class="btn">关于我们</button>
+		</van-grid-item>
+		<van-grid-item square link-type="navigateTo" use-slot url="/pages/qrcode/qrcode">
+			<image style="width: 35px; height: 35px;" src="https://img.yzcdn.cn/vant/apple-1.jpg" />
+			<button class="btn">退出登录</button>
 		</van-grid-item>
 	</van-grid>
   </block>
