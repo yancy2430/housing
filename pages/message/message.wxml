@@ -1,11 +1,23 @@
 <!--pages/message/message.wxml-->
-<view class="message">
+<view class="message-l">
+			<image class="avater" src="http://wx.qlogo.cn/mmhead/QnM5bMcic4Z1GvKOIefsviagF4xMHAeqvfzxvNHhhmSvXzia8hSFu5K7g/0"></image>
+	    <text class="content">
+				dawdlawhfa
+			</text>
 
-
-<van-row>
-  <van-col span="8"><image class="avater" src="http://wx.qlogo.cn/mmhead/QnM5bMcic4Z1GvKOIefsviagF4xMHAeqvfzxvNHhhmSvXzia8hSFu5K7g/0"></image></van-col>
-  <van-col span="8">span: 8</van-col>
-  <van-col span="8">span: 8</van-col>
-</van-row>
 </view>
-
+<view class="message-r">
+	<van-row>
+		<van-col span="4">
+			<view class="avater"></view>
+		</van-col>
+		<van-col span="16">
+			<view class="content">
+				dawdlawhfa
+			</view>
+		</van-col>
+		<van-col span="4">
+			<image class="avater" src="http://wx.qlogo.cn/mmhead/QnM5bMcic4Z1GvKOIefsviagF4xMHAeqvfzxvNHhhmSvXzia8hSFu5K7g/0"></image>
+		</van-col>
+	</van-row>
+</view>
