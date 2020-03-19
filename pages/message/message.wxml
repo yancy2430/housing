@@ -1,0 +1,11 @@
+<!--pages/message/message.wxml-->
+<view class="message">
+
+
+<van-row>
+  <van-col span="8"><image class="avater" src="http://wx.qlogo.cn/mmhead/QnM5bMcic4Z1GvKOIefsviagF4xMHAeqvfzxvNHhhmSvXzia8hSFu5K7g/0"></image></van-col>
+  <van-col span="8">span: 8</van-col>
+  <van-col span="8">span: 8</van-col>
+</van-row>
+</view>
+

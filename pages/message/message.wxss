@@ -1,0 +1,12 @@
+/* pages/message/message.wxss */
+.message{
+
+margin:2vw;
+}
+.avater{
+  width: 10vw;
+  height: 10vw;
+  
+  border-radius: 5px;
+
+}

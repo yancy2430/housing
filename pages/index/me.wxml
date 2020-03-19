@@ -13,7 +13,7 @@
 						{{userInfo.nickName}}
 					</block>
 					<block wx:else>
-						<button class="van-cell-text textButton name" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">注册/登录</button>
+						<button class="van-cell-text textButton name" bindtap="toLogin">注册/登录</button>
 					</block>
 
 				</view>

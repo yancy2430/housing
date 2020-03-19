@@ -43,34 +43,12 @@ Page({
             area: res.data
           })
         }else{
-          wx.getLocation({
-            type: 'wgs84',
-            success(res) {
-              console.log(res)
-              wx.request({
-                url: 'https://weixin.tdeado.com/location/cityByGps?longitude=' + res.latitude + '&latitude=' + res.longitude,
-                data: {},
-                header: {
-                  'token': that.data.token,
-                  'content-type': 'application/json' // 默认值
-                },
-                success(res) {
-                  console.log(res.data.data)
-                  wx.setStorage({
-                    key: "area",
-                    data: res.data.data
-                  })
-                  that.setData({
-                    area: res.data.data
-                  })
-                }
-              })
-
-            }
-          })
+          that.location()
+          
         }
       }, fail(err) {
         console.log(err)
+        that.location()
         
       }
     })
@@ -92,6 +70,34 @@ Page({
       }
     })
 
+  },
+  location(){
+    let that = this;
+    wx.getLocation({
+      type: 'wgs84',
+      success(res) {
+        console.log(res)
+        wx.request({
+          url: 'https://weixin.tdeado.com/location/cityByGps?longitude=' + res.latitude + '&latitude=' + res.longitude,
+          data: {},
+          header: {
+            'token': that.data.token,
+            'content-type': 'application/json' // 默认值
+          },
+          success(res) {
+            console.log(res.data.data)
+            wx.setStorage({
+              key: "area",
+              data: res.data.data
+            })
+            that.setData({
+              area: res.data.data
+            })
+          }
+        })
+
+      }
+    })
   },
  goProduct(e) {
     console.log(e.currentTarget.dataset.id)

@@ -35,16 +35,21 @@ Page({
     this.setData({
       token: wx.getStorageSync("token")
     })
-    // if (!that.data.token) {
-    //   wx.navigateTo({
-    //     url: '/pages/login/login',
-    //   })
-    // }
+    if (!that.data.token) {
+      wx.navigateTo({
+        url: '/pages/login/login',
+      })
+    }
 
     
     this.isSet()
     
 
+  },
+  toLogin(e){
+    wx.navigateTo({
+      url: '/pages/login/login',
+    })
   },
   isSet() {
     let that = this;
