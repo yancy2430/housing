@@ -66,7 +66,7 @@ Page({
       }
   
   },
-  getUserInfo(event) {
+  getPhonenumber(event) {
     console.log(event.detail);
   },
   onClose() {

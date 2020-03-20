@@ -19,9 +19,11 @@
 <van-dialog
   use-slot
   title="浏览超过限制"
+  confirm-button-text="授权"
   show="{{ show }}"
   show-cancel-button
-  confirm-button-open-type="getUserInfo"
+  confirm-button-open-type="getPhoneNumber"
+  bind:getphonenumber="getPhonenumber"
   bind:close="onClose"
   bind:getuserinfo="getUserInfo"
 >

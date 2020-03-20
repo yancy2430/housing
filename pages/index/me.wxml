@@ -109,7 +109,7 @@
 			<image style="width: 35px; height: 35px;" src="https://img.yzcdn.cn/vant/apple-1.jpg" />
 			<button class="btn">关于我们</button>
 		</van-grid-item>
-		<van-grid-item square link-type="navigateTo" use-slot url="/pages/qrcode/qrcode">
+		<van-grid-item square bindtap="clearCache" use-slot>
 			<image style="width: 35px; height: 35px;" src="https://img.yzcdn.cn/vant/apple-1.jpg" />
 			<button class="btn">退出登录</button>
 		</van-grid-item>

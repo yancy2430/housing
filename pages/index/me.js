@@ -9,6 +9,14 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    
+  },
+  onPullDownRefresh() {
+    this.isSet()
+  
+  },
+  onShow() {
+    this.getTabBar().init();
     let that = this;
     wx.getStorage({
       key: 'sessionKey',
@@ -19,14 +27,6 @@ Page({
         })
       }
     })
-  },
-  onPullDownRefresh() {
-    this.isSet()
-  
-  },
-  onShow() {
-    this.getTabBar().init();
-    let that = this;
     this.setData({
       token: wx.getStorageSync("token"),
       scene: wx.getStorageSync("scene"),
@@ -220,5 +220,8 @@ wx.makePhoneCall({phoneNumber: this.data.countData.contact })
     wx.navigateTo({
       url: '/pages/history/history',
     })
+  }, clearCache(){
+    wx.clearStorage()
+
   }
 })
