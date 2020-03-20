@@ -7,7 +7,7 @@ Page({
   data: {
     loading: false,
     area: [],
-    token: wx.getStorageSync('token')
+    token: wx.getStorageSync("user").token
 
   }, onPullDownRefresh() {
     wx.request({
@@ -30,7 +30,7 @@ Page({
     this.getTabBar().init();
     let that = this;
     this.setData({
-      token: wx.getStorageSync("token")
+      token: wx.getStorageSync("user").token
     })
   
     wx.getStorage({
@@ -43,12 +43,12 @@ Page({
             area: res.data
           })
         }else{
-          that.location()
+          // that.location()
           
         }
       }, fail(err) {
         console.log(err)
-        that.location()
+        // that.location()
         
       }
     })

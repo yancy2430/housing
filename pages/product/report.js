@@ -38,7 +38,7 @@ Page({
     console.log(options)
     this.setData({
       productId: options.id,
-      token: wx.getStorageSync("token")
+      token: wx.getStorageSync("user").token
     }) 
   },
   submit(){

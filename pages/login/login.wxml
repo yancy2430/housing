@@ -1,6 +1,6 @@
 <view class="wp">
 <view class="loginBtn">
-<van-button round type="primary" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo" block color="linear-gradient(to right, #4bb0ff, #6149f6)">注册/登录</van-button>
+<van-button round type="primary" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" block color="linear-gradient(to right, #4bb0ff, #6149f6)">微信授权登录</van-button>
 
 </view>
 </view>

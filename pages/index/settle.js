@@ -1,5 +1,7 @@
 // pages/settle/settle.js
 const app = getApp()
+var login = require('../../login.js');
+
 
 Page({
   /**
@@ -10,6 +12,15 @@ Page({
     list:[],
     searchValue:""
   },
+  onLoad(){
+    let that = this;
+    wx.request({
+      url: 'https://weixin.tdeado.com/miniapp/check',
+      success(res){
+        wx.setStorageSync('checkNum', Number(res.data.data))
+      }
+    })
+  },
   onPullDownRefresh() {
 
     this.getNews("");
@@ -18,7 +29,7 @@ Page({
 		this.getTabBar().init();
     let that = this;
     this.setData({
-      token: wx.getStorageSync("token")
+      token: wx.getStorageSync("user").token
     })
 
     this.getNews("");
@@ -52,7 +63,7 @@ Page({
     let that = this;
     var value = wx.getStorageSync('articleNum')
 
-      if(value>3 && !this.data.token){
+      if(value>wx.getStorageSync('checkNum') && !wx.getStorageSync('user')){
         that.setData({
           show:true
         })
@@ -66,11 +77,13 @@ Page({
       }
   
   },
-  getPhonenumber(event) {
-    console.log(event.detail);
+  onConfirm(){
+      login.login(this)
+  },
+  getPhonenumber(e) {
+    login.getTokenByPhone(this,e)
   },
   onClose() {
     this.setData({ show: false });
-   
   },
 })

@@ -1,4 +1,6 @@
 <view class="container">
+
+
   <van-search shape="round" value="{{ searchValue }}" placeholder="请输入搜索关键词" use-action-slot bind:change="onChange" bind:search="onSearch">
     <view slot="label" bind:tap="onClick">
       <text class="area-text" bindtap="toArea">{{area.name}}</text>
@@ -18,14 +20,14 @@
 </view>
 <van-dialog
   use-slot
-  title="浏览超过限制"
+  title=""
   confirm-button-text="授权"
   show="{{ show }}"
   show-cancel-button
+  bind:confirm="onConfirm"
   confirm-button-open-type="getPhoneNumber"
   bind:getphonenumber="getPhonenumber"
   bind:close="onClose"
-  bind:getuserinfo="getUserInfo"
 >
 <view class="text">授权实时掌握一手资讯</view>
 </van-dialog>

@@ -42,7 +42,7 @@ Page({
     console.log("scene=" + option.scene)
     let that = this
     this.setData({
-      token: wx.getStorageSync("token"),
+      token: wx.getStorageSync("user").token,
       staff:wx.getStorageSync('isStaff')
     }) 
     console.log(that.data.token)

@@ -28,7 +28,7 @@ Page({
   onShow: function () {
     let that = this;
     this.setData({
-      token: wx.getStorageSync("token")
+      token: wx.getStorageSync("user").token
     })
     //发起网络请求
     wx.request({

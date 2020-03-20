@@ -1,12 +1,12 @@
 // pages/settle/settle.js
 const app = getApp()
+var login = require('../../login.js');
 
 Page({
   /**
    * 页面的初始数据
    */
   data: {
-    token: wx.getStorageSync('token'),
     list: []
   }, onPullDownRefresh() {
     this.getNews("");
@@ -15,7 +15,7 @@ Page({
     this.getTabBar().init();
     let that = this;
     this.setData({
-      token: wx.getStorageSync("token")
+      token: wx.getStorageSync("user").token
     })
 
     this.getNews("");
@@ -47,9 +47,31 @@ Page({
     this.getNews(this.data.searchValue)
   },
   toArticle(e) {
-    wx.navigateTo({
-      url: '/pages/article/article?id=' + e.currentTarget.dataset.id,
-    })
-  }
+    let that = this;
+    var value = wx.getStorageSync('articleNum')
+
+      if(value>wx.getStorageSync('checkNum') && !wx.getStorageSync('user')){
+        that.setData({
+          show:true
+        })
+       
+        return;
+      }else{
+        wx.navigateTo({
+          url: '/pages/article/article?id=' + e.currentTarget.dataset.id,
+        })
+        
+      }
+  
+  },
+  onConfirm(){
+      login.login(this)
+  },
+  getPhonenumber(e) {
+    login.getTokenByPhone(this,e)
+  },
+  onClose() {
+    this.setData({ show: false });
+  },
 
 })

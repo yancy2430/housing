@@ -16,3 +16,17 @@
   <view class="interval"></view>
   <view class="interval"></view>
 </view>
+
+<van-dialog
+  use-slot
+  title=""
+  confirm-button-text="授权"
+  show="{{ show }}"
+  show-cancel-button
+  bind:confirm="onConfirm"
+  confirm-button-open-type="getPhoneNumber"
+  bind:getphonenumber="getPhonenumber"
+  bind:close="onClose"
+>
+<view class="text">授权实时掌握一手资讯</view>
+</van-dialog>

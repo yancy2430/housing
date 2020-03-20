@@ -24,3 +24,8 @@
   color: #666;
   font-size: .8rem;
 }
+.text{
+  text-align: center;
+  padding: 20px 10px 20px 10px;
+  color: #666;
+}

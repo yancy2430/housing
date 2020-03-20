@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    token: wx.getStorageSync('token')
+    token: wx.getStorageSync("user").token
 
   },
   /**
@@ -14,7 +14,7 @@ Page({
   onLoad: function(options) {
     let that = this;
     this.setData({
-      token: wx.getStorageSync("token")
+      token: wx.getStorageSync("user").token
     })
 
     wx.request({

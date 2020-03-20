@@ -14,7 +14,7 @@ Page({
    */
   onLoad: function (options) {
     this.setData({
-      token: wx.getStorageSync("token")
+      token: wx.getStorageSync("user").token
     })
 
   },

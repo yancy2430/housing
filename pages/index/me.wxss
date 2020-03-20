@@ -9,9 +9,14 @@
 }
 
 .avater {
-  width: 14vw;
-  height: 14vw;
-  margin: 5vw 4vw 3vw 8vw;
+  overflow:hidden;  
+  display: block;  
+  width: 90rpx;  
+  height: 90rpx;  
+  margin: 35rpx 20rpx 20rpx 70rpx;
+  border-radius: 50%;  
+  border: 2px solid #fff;  
+  /* box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);   */
 }
 
 

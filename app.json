@@ -13,7 +13,6 @@
     "pages/product/report",
     "pages/records/records",
     "pages/index/index",
-    "pages/login/login",
     "pages/qrcode/qrcode",
     "pages/coupons/coupons",
     "pages/article/article",
