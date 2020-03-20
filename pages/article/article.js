@@ -1,5 +1,4 @@
 // pages/article/article.js
-import Dialog from '@vant/weapp/dialog/dialog';
 
 Page({
 
@@ -7,9 +6,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    login:true
+  
   },
-
   /**
    * 生命周期函数--监听页面加载
    */
@@ -21,21 +20,12 @@ Page({
     try {
       var value = wx.getStorageSync('articleNum')
 
-      if(value>3 && !this.data.token){
-        wx.switchTab({
-          url: '/pages/index/me'
-        })
-        return;
-      }
-   
+     
       value=value+1
       wx.setStorageSync('articleNum', Number(value))
     } catch (e) {
       // Do something when catch error
     }
-  
-
-
     this.setData({
       id: options.id,
       src: 'https://weixin.tdeado.com/miniapp/article/' + options.id+'.html'

@@ -16,3 +16,14 @@
   <view class="interval"></view>
   <view class="interval"></view>
 </view>
+<van-dialog
+  use-slot
+  title="浏览超过限制"
+  show="{{ show }}"
+  show-cancel-button
+  confirm-button-open-type="getUserInfo"
+  bind:close="onClose"
+  bind:getuserinfo="getUserInfo"
+>
+<view class="text">授权实时掌握一手资讯</view>
+</van-dialog>

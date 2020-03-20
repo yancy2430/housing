@@ -1,23 +1,32 @@
 <!--pages/message/message.wxml-->
-<view class="message-l">
-			<image class="avater" src="http://wx.qlogo.cn/mmhead/QnM5bMcic4Z1GvKOIefsviagF4xMHAeqvfzxvNHhhmSvXzia8hSFu5K7g/0"></image>
-	    <text class="content">
-				dawdlawhfa
-			</text>
+<view class="wp">
+	<view class="message">
+		<image class="avater" src="http://wx.qlogo.cn/mmhead/QnM5bMcic4Z1GvKOIefsviagF4xMHAeqvfzxvNHhhmSvXzia8hSFu5K7g/0"></image>
+		<view class="content">
+			dawdlawhfa
+		</view>
+		<image class="avater"></image>
 
-</view>
-<view class="message-r">
-	<van-row>
-		<van-col span="4">
-			<view class="avater"></view>
-		</van-col>
-		<van-col span="16">
-			<view class="content">
-				dawdlawhfa
-			</view>
-		</van-col>
-		<van-col span="4">
-			<image class="avater" src="http://wx.qlogo.cn/mmhead/QnM5bMcic4Z1GvKOIefsviagF4xMHAeqvfzxvNHhhmSvXzia8hSFu5K7g/0"></image>
-		</van-col>
-	</van-row>
+	</view>
+	<view class="message">
+		<image class="avater"></image>
+		<view class="content">
+			dawdlawhfadawdlawhfadawdlawhfadawdlawhfadawdlawhfadawdlawhfadawdlawhfadawdlawhfa
+		</view>
+		<image class="avater" src="http://wx.qlogo.cn/mmhead/QnM5bMcic4Z1GvKOIefsviagF4xMHAeqvfzxvNHhhmSvXzia8hSFu5K7g/0"></image>
+	</view>
+
+	<view class="editor van-hairline--top" style="bottom:{{bottom}}px">
+		<van-icon class="icon-l" name="phone-circle-o" size="30px" />
+		<input class="weui-input" auto-focus adjust-position="{{false}}" bindfocus="foucus" bindblur="blur" placeholder="" confirm-type="send" />
+		<van-icon class="icon-r" name="add-o" size="30px" />
+	</view>
+	<view class="time">2020-03-20 11:21:31</view>
+	<view class="message">
+		<image class="avater" src="http://wx.qlogo.cn/mmhead/QnM5bMcic4Z1GvKOIefsviagF4xMHAeqvfzxvNHhhmSvXzia8hSFu5K7g/0"></image>
+		<view class="content">
+			<image class="img" src="https://dss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2534506313,1688529724&fm=26&gp=0.jpg"></image>
+		</view>
+		<image class="avater"></image>
+	</view>
 </view>

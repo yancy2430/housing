@@ -1,24 +1,61 @@
 /* pages/message/message.wxss */
 page{
-  background: #f8f8f8;
+  background: #f6f6f6;
 }
-.message-l{
-
+.wp{
+  margin: 2vw; 
 }
-.message-r{
-  float: right;
+.message{
+  width: 96vw;
+  display: flex;
+  flex-direction: row;
 }
 .content{
+  width: 59vw;
   background: #ffffff;
   margin:2vw;
   padding:10px;
   border-radius: 5px;
+  overflow-wrap: break-word
 }
 .avater{
   width: 10vw;
   height: 10vw;
   margin:2vw;
-  
   border-radius: 5px;
+  display: inline-flex;
+}
 
+.editor{
+  display: flex;
+  background: #fafafa;
+  height: 50px;
+  width: 100vw;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+}
+.weui-input{
+  height: 34px;
+  margin:8px 0px;
+  padding:0 10px;
+  background: #ffffff;
+  border-radius: 3px;
+  width: 100%;
+}
+.icon-l{
+  padding:10px;
+  
+}
+.icon-r{
+  padding:10px;
+}
+.img{
+  width: 100%;
+}
+.time{
+  text-align: center;
+  font-size: 14px;
+  color: #aaa;
+  padding:5px 5px 2px 5px;
 }

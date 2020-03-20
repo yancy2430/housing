@@ -1,3 +1,9 @@
 /* pages/settle/settle.wxss */
 .container{
+  position: relative;
+}
+.text{
+  text-align: center;
+  padding: 10px 10px 20px 10px;
+  color: #666;
 }

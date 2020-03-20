@@ -49,8 +49,28 @@ Page({
     })
   },
   toArticle(e){
-    wx.navigateTo({
-      url: '/pages/article/article?id=' + e.currentTarget.dataset.id,
-    })
-  }
+    let that = this;
+    var value = wx.getStorageSync('articleNum')
+
+      if(value>3 && !this.data.token){
+        that.setData({
+          show:true
+        })
+       
+        return;
+      }else{
+        wx.navigateTo({
+          url: '/pages/article/article?id=' + e.currentTarget.dataset.id,
+        })
+        
+      }
+  
+  },
+  getUserInfo(event) {
+    console.log(event.detail);
+  },
+  onClose() {
+    this.setData({ show: false });
+   
+  },
 })
