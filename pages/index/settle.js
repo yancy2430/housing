@@ -13,6 +13,28 @@ Page({
     searchValue:""
   },
   onLoad(){
+
+    let socketOpen = false
+    const socketMsgQueue = []
+    console.log("开始初始化")
+
+    wx.connectSocket({
+      url: 'ws://127.0.0.1:3456',
+      header:{
+        'content-type': 'application/json'
+      },
+      protocols: ['protocol1']
+    })
+    wx.onSocketOpen(function(h){
+
+      console.log(h)
+    });
+    wx.onSocketError(function(err){
+
+      console.log(err)
+    })
+
+
     let that = this;
     wx.request({
       url: 'https://weixin.tdeado.com/miniapp/check',
