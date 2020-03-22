@@ -14,6 +14,7 @@ Page({
   },
   onLoad(){
 
+    let that = this;
     let socketOpen = false
     const socketMsgQueue = []
     console.log("开始初始化")
@@ -22,26 +23,40 @@ Page({
       url: 'ws://127.0.0.1:3456',
       header:{
         'content-type': 'application/json'
-      },
-      protocols: ['protocol1']
+      }
     })
     wx.onSocketOpen(function(h){
 
-      console.log(h)
+      console.log("链接成功")
+      wx.sendSocketMessage({
+        data:that.str2ab("test")
+      })
+
     });
     wx.onSocketError(function(err){
 
-      console.log(err)
+      console.log("链接失败")
     })
 
 
-    let that = this;
     wx.request({
       url: 'https://weixin.tdeado.com/miniapp/check',
       success(res){
         wx.setStorageSync('checkNum', Number(res.data.data))
       }
     })
+  },
+   ab2str(buf) {
+    return String.fromCharCode.apply(null, new Uint16Array(buf));
+  }
+  ,
+   str2ab(str) {
+    var buf = new ArrayBuffer(str.length*2); // 2 bytes for each char
+    var bufView = new Uint16Array(buf);
+    for (var i=0, strLen=str.length; i<strLen; i++) {
+      bufView[i] = str.charCodeAt(i);
+    }
+    return buf;
   },
   onPullDownRefresh() {
 
