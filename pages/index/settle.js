@@ -1,6 +1,7 @@
 // pages/settle/settle.js
 const app = getApp()
 var login = require('../../login.js');
+var binUtil = require('../../utils/binUtil.js');
 
 
 Page({
@@ -9,10 +10,10 @@ Page({
    */
   data: {
     token: wx.getStorageSync('token'),
-    list:[],
-    searchValue:""
+    list: [],
+    searchValue: ""
   },
-  onLoad(){
+  onLoad() {
 
     let that = this;
     let socketOpen = false
@@ -21,19 +22,24 @@ Page({
 
     wx.connectSocket({
       url: 'ws://127.0.0.1:3456',
-      header:{
+      header: {
         'content-type': 'application/json'
       }
     })
-    wx.onSocketOpen(function(h){
+    wx.onSocketOpen(function (h) {
 
       console.log("链接成功")
       wx.sendSocketMessage({
-        data:that.str2ab("test")
+        data: binUtil.strToBinary('{"key":"client_bind","data":{"appVersion":"1.0.0","osVersion":"80.0.3987.132","channel":"browser","packageName":"com.farsunset.cim","device":"Chrome","deviceId":"8943c89645724ecc8099812e0695fd84","account":"1234"},"timestamp":1584867292991}'),
       })
 
     });
-    wx.onSocketError(function(err){
+    wx.onSocketMessage(function callback(res){
+
+      console.log(res)
+    });
+
+    wx.onSocketError(function (err) {
 
       console.log("链接失败")
     })
@@ -41,19 +47,18 @@ Page({
 
     wx.request({
       url: 'https://weixin.tdeado.com/miniapp/check',
-      success(res){
+      success(res) {
         wx.setStorageSync('checkNum', Number(res.data.data))
       }
     })
   },
-   ab2str(buf) {
+  ab2str(buf) {
     return String.fromCharCode.apply(null, new Uint16Array(buf));
-  }
-  ,
-   str2ab(str) {
-    var buf = new ArrayBuffer(str.length*2); // 2 bytes for each char
+  },
+  str2ab(str) {
+    var buf = new ArrayBuffer(str.length * 2); // 2 bytes for each char
     var bufView = new Uint16Array(buf);
-    for (var i=0, strLen=str.length; i<strLen; i++) {
+    for (var i = 0, strLen = str.length; i < strLen; i++) {
       bufView[i] = str.charCodeAt(i);
     }
     return buf;
@@ -62,8 +67,8 @@ Page({
 
     this.getNews("");
   },
-	onShow() {
-		this.getTabBar().init();
+  onShow() {
+    this.getTabBar().init();
     let that = this;
     this.setData({
       token: wx.getStorageSync("user").token
@@ -76,18 +81,18 @@ Page({
       searchValue: e.detail
     });
   },
-  onSearch(){
+  onSearch() {
     this.getNews(this.data.searchValue)
   },
-  getNews(key){
+  getNews(key) {
     let that = this;
     wx.request({
-      url: 'https://weixin.tdeado.com/miniapp/settle?key='+key, 
+      url: 'https://weixin.tdeado.com/miniapp/settle?key=' + key,
       header: {
         'token': that.data.token,
         'content-type': 'application/json' // 默认值
       },
-      success(res){
+      success(res) {
         console.log(res.data.data.records)
         that.setData({
           list: res.data.data.records
@@ -96,31 +101,33 @@ Page({
       }
     })
   },
-  toArticle(e){
+  toArticle(e) {
     let that = this;
     var value = wx.getStorageSync('articleNum')
 
-      if(value>wx.getStorageSync('checkNum') && !wx.getStorageSync('user')){
-        that.setData({
-          show:true
-        })
-       
-        return;
-      }else{
-        wx.navigateTo({
-          url: '/pages/article/article?id=' + e.currentTarget.dataset.id,
-        })
-        
-      }
-  
+    if (value > wx.getStorageSync('checkNum') && !wx.getStorageSync('user')) {
+      that.setData({
+        show: true
+      })
+
+      return;
+    } else {
+      wx.navigateTo({
+        url: '/pages/article/article?id=' + e.currentTarget.dataset.id,
+      })
+
+    }
+
   },
-  onConfirm(){
-      login.login(this)
+  onConfirm() {
+    login.login(this)
   },
   getPhonenumber(e) {
-    login.getTokenByPhone(this,e)
+    login.getTokenByPhone(this, e)
   },
   onClose() {
-    this.setData({ show: false });
+    this.setData({
+      show: false
+    });
   },
 })
