@@ -1,6 +1,4 @@
 syntax = "proto3";
-package com.farsunset.cim.sdk.server.model.proto;
-option java_outer_classname="SessionProto";
 message Model {
    int64 id = 1;
    string account = 2;

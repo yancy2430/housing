@@ -1,7 +1,4 @@
 syntax = "proto3";
-package com.farsunset.cim.sdk.server.model.proto;
-option java_outer_classname="ReplyBodyProto";
-
 message Model {
    string key = 1;
    string code = 2;

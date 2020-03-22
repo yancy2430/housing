@@ -1,6 +1,4 @@
 syntax = "proto3";
-package com.farsunset.cim.sdk.server.model.proto;
-option java_outer_classname="MessageProto";
 message Model {
    int64 id = 1;
    string action = 2;

@@ -1,6 +1,4 @@
 syntax = "proto3";
-package com.farsunset.cim.sdk.server.model.proto;
-option java_outer_classname="SentBodyProto";
 
 message Model {
    string key = 1;
