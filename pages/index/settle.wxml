@@ -7,9 +7,9 @@
     </view>
   </van-search>
   <van-grid column-num="4">
-    <van-grid-item use-slot wx:for="{{list}}" wx:key="index" data-id="{{item.id}}" bindtap="toArticle" >
-    <van-image width="16vw" height="16vw" round src="{{item.cover}}"/>
-    <view style="width: 21.5vw;font-size:0.8rem;overflow: hidden;white-space: nowrap;text-align: center;">{{item.title}}</view>
+    <van-grid-item use-slot wx:for="{{list}}" wx:key="index" data-id="{{item.id}}" bindtap="toArticle">
+      <van-image width="16vw" height="16vw" round src="{{item.cover}}" />
+      <view style="width: 21.5vw;font-size:0.8rem;overflow: hidden;white-space: nowrap;text-align: center;">{{item.title}}</view>
     </van-grid-item>
   </van-grid>
   <view class="interval"></view>
@@ -18,16 +18,8 @@
   <view class="interval"></view>
   <view class="interval"></view>
 </view>
-<van-dialog
-  use-slot
-  title=""
-  confirm-button-text="授权"
-  show="{{ show }}"
-  show-cancel-button
-  bind:confirm="onConfirm"
-  confirm-button-open-type="getPhoneNumber"
-  bind:getphonenumber="getPhonenumber"
-  bind:close="onClose"
->
-<view class="text">授权实时掌握一手资讯</view>
+<van-dialog use-slot  confirm-button-text="授权" show="{{ show }}" show-cancel-button bind:confirm="onConfirm" confirm-button-open-type="getPhoneNumber" bind:getphonenumber="getPhonenumber" bind:close="onClose">
+  <view style="padding: 1vw;background-color: #1989fa;">
+  <van-button icon="https://weixin.tdeado.com/static/house/wxlogo.png" custom-style="padding: 1vw;" custom-class="showbutton" block type="info" >微信授权登录</van-button>
+  </view>
 </van-dialog>

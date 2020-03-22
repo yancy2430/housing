@@ -47,8 +47,8 @@ Page({
 
   },
   toLogin(e) {
-    wx.navigateTo({
-      url: '/pages/login/login',
+    this.setData({
+      show: true
     })
   },
 
@@ -81,5 +81,25 @@ Page({
       phone:""
     })
 
-  }
+  },
+  onConfirm() {
+    login.login(this)
+  },
+  getPhonenumber(e) {
+    let that = this;
+    login.getTokenByPhone(this, e,function yes(res){
+
+      that.isSet()
+      if (wx.getStorageSync('user').token) {
+        that.setData({
+          login: true,
+          phone: wx.getStorageSync('user').userInfo.phone,
+          staff: wx.getStorageSync('user').isStaff
+        })
+      }
+    })
+  },
+  onClose() {
+    this.setData({ show: false });
+  },
 })

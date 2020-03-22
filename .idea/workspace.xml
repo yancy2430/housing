@@ -3,6 +3,17 @@
   <component name="ChangeListManager">
     <list default="true" id="fdca6231-94d1-49ca-9328-fccdfd1b7ee3" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/index/edu.wxml" beforeDir="false" afterPath="$PROJECT_DIR$/pages/index/edu.wxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/index/edu.wxss" beforeDir="false" afterPath="$PROJECT_DIR$/pages/index/edu.wxss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/index/me.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/index/me.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/index/me.json" beforeDir="false" afterPath="$PROJECT_DIR$/pages/index/me.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/index/me.wxml" beforeDir="false" afterPath="$PROJECT_DIR$/pages/index/me.wxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/index/news.wxml" beforeDir="false" afterPath="$PROJECT_DIR$/pages/index/news.wxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/index/news.wxss" beforeDir="false" afterPath="$PROJECT_DIR$/pages/index/news.wxss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/index/settle.json" beforeDir="false" afterPath="$PROJECT_DIR$/pages/index/settle.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/index/settle.wxml" beforeDir="false" afterPath="$PROJECT_DIR$/pages/index/settle.wxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/index/settle.wxss" beforeDir="false" afterPath="$PROJECT_DIR$/pages/index/settle.wxss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/qrcode/qrcode.wxss" beforeDir="false" afterPath="$PROJECT_DIR$/pages/qrcode/qrcode.wxss" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -36,6 +47,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -43,11 +55,31 @@
               <item name="housing" type="b2602c69:ProjectViewProjectNode" />
               <item name="housing" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="housing" type="b2602c69:ProjectViewProjectNode" />
+              <item name="housing" type="462c0819:PsiDirectoryNode" />
+              <item name="pages" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="housing" type="b2602c69:ProjectViewProjectNode" />
+              <item name="housing" type="462c0819:PsiDirectoryNode" />
+              <item name="pages" type="462c0819:PsiDirectoryNode" />
+              <item name="component" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="housing" type="b2602c69:ProjectViewProjectNode" />
+              <item name="housing" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="housing" type="b2602c69:ProjectViewProjectNode" />
+              <item name="housing" type="462c0819:PsiDirectoryNode" />
+              <item name="utils" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -86,15 +118,16 @@
       <option name="presentableId" value="Default" />
       <updated>1583836909996</updated>
       <workItem from="1583836911894" duration="620000" />
-      <workItem from="1584409525546" duration="133000" />
+      <workItem from="1584409525546" duration="502000" />
+      <workItem from="1584796768884" duration="102000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="753000" />
+    <option name="totallyTimeSpent" value="1224000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1920" height="984" extended-state="6" />
+    <frame x="0" y="23" width="1920" height="984" extended-state="0" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24960506" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
