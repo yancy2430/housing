@@ -5,15 +5,36 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    messages: [],
+    inputValue:""
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    let that = this;
     let socketOpen = false
     const socketMsgQueue = []
     console.log("开始初始化")
+
+    wx.request({
+      url: 'http://127.0.0.1/im/message/list',
+      header: {
+        token: wx.getStorageSync('user').token,
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      data: {
+        sender: wx.getStorageSync('user').userInfo.id,
+        receiver: wx.getStorageSync('user').sourceId
+      },
+      success(res) {
+        that.setData({
+          messages: res.data.data.records,
+          userId: wx.getStorageSync('user').userInfo.id
+        })
+
+      }
+    })
 
     wx.connectSocket({
       url: 'ws://127.0.0.1:3456',
@@ -25,13 +46,18 @@ Page({
 
       console.log("链接成功")
       wx.sendSocketMessage({
-        data: '{"key":"client_bind","data":{"appVersion":"1.0.0","osVersion":"80.0.3987.132","channel":"browser","packageName":"com.farsunset.cim","device":"Chrome","deviceId":"8943c89645724ecc8099812e0695fd84","account":"'+wx.getStorageSync('user').userInfo.id+'"},"timestamp":1584867292991}',
+        data: '{"key":"client_bind","data":{"appVersion":"1.0.0","osVersion":"80.0.3987.132","channel":"browser","packageName":"com.farsunset.cim","device":"Chrome","deviceId":"8943c89645724ecc8099812e0695fd84","account":"' + wx.getStorageSync('user').userInfo.id + '"},"timestamp":1584867292991}',
       })
 
     });
     wx.onSocketMessage(function callback(res) {
-
-      console.log(res)
+      let data = JSON.parse(res.data);
+      if(data.receiver){
+        that.data.messages.push(data)
+        that.setData({
+          messages:that.data.messages
+        })
+      }
     });
 
     wx.onSocketError(function (err) {
@@ -42,21 +68,37 @@ Page({
 
 
   },
-  onConfirm:function(e){
-      console.log(e.detail)
-      wx.request({
-        url: 'http://127.0.0.1/im/message/send',
-        method:"POST",
-        header:{
-          token:wx.getStorageSync('user').token
-        },
-        data:{
-          receiver:wx.getStorageSync('user').userInfo.id,
-          content:e.detail.value,
-          action:"0"
-        }
-      })
-      
+  onConfirm: function (e) {
+    let that = this;
+    console.log(e.detail)
+
+    let data={
+      sender: wx.getStorageSync('user').userInfo.id,
+      receiver: wx.getStorageSync('user').sourceId,
+      content: e.detail.value,
+      action: "0",
+      timestamp: new Date().getTime()
+    }
+
+    this.data.messages.push(data)
+    this.setData({
+      messages:that.data.messages,
+      inputValue:""
+    })
+
+    wx.request({
+      url: 'http://127.0.0.1/im/message/send',
+      method: "POST",
+      header: {
+        token: wx.getStorageSync('user').token
+      },
+      data: data,
+      success(res){
+
+      }
+    })
+
+
   },
   //输入聚焦
 
