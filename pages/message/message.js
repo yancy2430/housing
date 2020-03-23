@@ -7,7 +7,6 @@ Page({
   data: {
 
   },
-
   /**
    * 生命周期函数--监听页面加载
    */
@@ -43,7 +42,24 @@ Page({
 
 
   },
+  onConfirm:function(e){
+      console.log(e.detail)
+      wx.request({
+        url: 'http://127.0.0.1/im/message/send',
+        method:"POST",
+        header:{
+          token:wx.getStorageSync('user').token
+        },
+        data:{
+          receiver:wx.getStorageSync('user').userInfo.id,
+          content:e.detail.value,
+          action:"0"
+        }
+      })
+      
+  },
   //输入聚焦
+
 
   foucus: function (e) {
 

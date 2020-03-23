@@ -18,7 +18,7 @@
 
 	<view class="editor van-hairline--top" style="bottom:{{bottom}}px">
 		<van-icon class="icon-l" name="phone-circle-o" size="30px" />
-		<input class="weui-input" auto-focus adjust-position="{{false}}" bindfocus="foucus" bindblur="blur" placeholder="" confirm-type="send" />
+		<input class="weui-input" auto-focus adjust-position="{{false}}" bindfocus="foucus" bindblur="blur" placeholder="" bindconfirm="onConfirm" confirm-type="send" />
 		<van-icon class="icon-r" name="add-o" size="30px" />
 	</view>
 	<view class="time">2020-03-20 11:21:31</view>
