@@ -80,7 +80,7 @@ Page({
   },
   onClickCall() {
     wx.makePhoneCall({
-      phoneNumber: '18152733661' //仅为示例，并非真实的电话号码
+      phoneNumber: wx.getStorageSync('sourcePhone') //仅为示例，并非真实的电话号码
     })
   },
   focus(e) {
@@ -105,6 +105,11 @@ Page({
   onTag(e){
     wx.switchTab({
       url: e.target.dataset.page
+    })
+  },
+  onMessage(e){
+    wx.navigateTo({
+      url: '/pages/message/message',
     })
   },
   share() {

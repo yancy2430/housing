@@ -1,15 +1,13 @@
 //app.js
 App({
   onLaunch: function () {
-    
   },
-  
-  onShow:function(op){
-    
+  onShow: function (op) {
+
 
 
   },
-  onHide:function(){
+  onHide: function () {
 
   }
 })

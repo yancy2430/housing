@@ -22,7 +22,7 @@ page{
   width: 10vw;
   height: 10vw;
   margin:2vw;
-  border-radius: 5px;
+  /* border-radius: 5px; */
   display: inline-flex;
 }
 

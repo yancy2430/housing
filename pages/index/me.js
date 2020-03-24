@@ -22,10 +22,15 @@ Page({
       this.setData({
         login: true,
         phone:wx.getStorageSync('user').userInfo.phone,
-        staff:wx.getStorageSync('user').isStaff
+        staff:wx.getStorageSync('user').isStaff,
+        ms:wx.getStorageSync('ms')
       })
     }
     this.isSet()
+
+
+
+
   },
   isSet(){
     let that = this
@@ -44,7 +49,7 @@ Page({
         wx.stopPullDownRefresh()
       }
     })
-
+    
   },
   toLogin(e) {
     this.setData({

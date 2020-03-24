@@ -48,6 +48,7 @@ function getTokenByPhone(that,e,yes){
           key: "user",
           data: res.data.data
         })
+        wx.setStorageSync('sourcePhone', res.data.data.sourcePhone)
         if(yes){
           yes(res.data);
         }

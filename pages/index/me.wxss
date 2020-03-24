@@ -4,7 +4,7 @@
 
 .head {
   height: 24vw;
-  background: url(http://weixin.tdeado.com/static/house/mebg.png) no-repeat center center;
+  background: url(https://weixin.tdeado.com/static/house/mebg.png) no-repeat center center;
   background-size: cover;
 }
 

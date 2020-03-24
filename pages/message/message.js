@@ -18,26 +18,24 @@ Page({
     console.log("开始初始化")
 
     wx.request({
-      url: 'http://127.0.0.1/im/message/list',
+      url: 'https://weixin.tdeado.com/im/message/list',
       header: {
         token: wx.getStorageSync('user').token,
         'content-type': 'application/x-www-form-urlencoded'
       },
       data: {
-        sender: wx.getStorageSync('user').userInfo.id,
-        receiver: wx.getStorageSync('user').sourceId
+        sender: wx.getStorageSync('user').sourceId
       },
       success(res) {
         that.setData({
           messages: res.data.data.records,
           userId: wx.getStorageSync('user').userInfo.id
         })
-
       }
     })
 
     wx.connectSocket({
-      url: 'ws://127.0.0.1:3456',
+      url: 'wss://weixin.tdeado.com/wss/',
       header: {
         'content-type': 'application/json'
       }
@@ -87,7 +85,7 @@ Page({
     })
 
     wx.request({
-      url: 'http://127.0.0.1/im/message/send',
+      url: 'https://weixin.tdeado.com/im/message/send',
       method: "POST",
       header: {
         token: wx.getStorageSync('user').token
