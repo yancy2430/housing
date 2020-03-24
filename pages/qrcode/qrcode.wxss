@@ -1,5 +1,5 @@
 page {
-  background: url(http://weixin.tdeado.com/static/house/qrcode.png) no-repeat center center;
+  background: url(https://weixin.tdeado.com/static/house/qrcode.png) no-repeat center center;
   background-size: cover;
   background-position-y: -40px;
 }
