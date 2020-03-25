@@ -54,9 +54,9 @@
 		<view class="interval"></view>
 		<van-cell-group>
 	
-			<van-cell link-type="navigateTo" url="/pages/message/message" icon="service-o" border="{{true}}" value="咨询最新政策" is-link>
+			<van-cell link-type="navigateTo" url="/pages/message/list" icon="service-o" border="{{true}}" value="咨询最新政策" is-link>
 				<view slot="title">
-					<button class="van-cell-text textButton" >在线咨询 </button>
+					<button class="van-cell-text textButton" >消息中心 </button>
 				</view>
 			</van-cell>
 			<van-cell icon="phone-o" border="{{true}}" value="{{countData.contact}}" is-link>
@@ -80,7 +80,7 @@
 	<block wx:if="{{staff}}">
 		<view class="interval"></view>
 		<van-grid column-num="4">
-			<van-grid-item square link-type="navigateTo" use-slot url="/pages/message/message">
+			<van-grid-item square link-type="navigateTo" use-slot url="/pages/message/list">
 				<van-icon name="chat-o" color="rgb(25, 137, 250)" size="35px"  info="{{ms>0?ms:''}}" />
 
 				<button class="btn">消息中心</button>

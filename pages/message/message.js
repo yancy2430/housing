@@ -12,19 +12,20 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    
     let that = this;
     let socketOpen = false
     const socketMsgQueue = []
-    console.log("开始初始化")
+    console.log(options)
 
     wx.request({
-      url: 'https://weixin.tdeado.com/im/message/list',
+      url: 'http://127.0.0.1/im/message/list',
       header: {
         token: wx.getStorageSync('user').token,
         'content-type': 'application/x-www-form-urlencoded'
       },
       data: {
-        sender: wx.getStorageSync('user').sourceId
+        dialogueId: options.id
       },
       success(res) {
         that.setData({
@@ -51,7 +52,7 @@ Page({
     wx.onSocketMessage(function callback(res) {
       let data = JSON.parse(res.data);
       console.log(data)
-      if (data.key == 'message'){
+      if (data.key == 'message' && options.id==data.data.dialogueId){
         that.data.messages.push(data.data)
         that.setData({
           messages:that.data.messages
@@ -85,7 +86,7 @@ Page({
     })
 
     wx.request({
-      url: 'https://weixin.tdeado.com/im/message/send',
+      url: 'http://127.0.0.1/im/message/send',
       method: "POST",
       header: {
         token: wx.getStorageSync('user').token

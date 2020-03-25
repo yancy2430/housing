@@ -8,8 +8,8 @@
     "van-tag": "@vant/weapp/tag/index"
   },
   "pages": [
-    "pages/message/list",
     "pages/index/settle",
+    "pages/message/list",
     "pages/login/login",
     "pages/message/message",
     "pages/product/report",

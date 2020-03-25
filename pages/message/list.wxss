@@ -18,17 +18,17 @@
   padding-top: 1vw;
   padding-left: 2vw;
   font-size: 1.1rem;
-  width: 66vw;
+  width: 52vw;
 }
 .desc{
-  width: 66vw;
+  width: 52vw;
   padding-left: 2vw;
   font-size: 1rem;
   padding-top: 1vw;
   color: #999;
 }
 .time{
-  width: 6vw;
+  width: 20vw;
   text-align: right;
   padding-left: 2vw;
   font-size: .8rem;
