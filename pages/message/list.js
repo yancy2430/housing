@@ -15,7 +15,7 @@ Page({
   onLoad: function (options) {
     let that = this;
     wx.request({
-      url: 'http://127.0.0.1/im/dialogue/list',
+      url: 'https://weixin.tdeado.com/im/dialogue/list',
       method:"POST",
       header: {
         token: wx.getStorageSync('user').token
