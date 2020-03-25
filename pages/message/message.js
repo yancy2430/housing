@@ -25,11 +25,15 @@ Page({
         'content-type': 'application/x-www-form-urlencoded'
       },
       data: {
-        dialogueId: options.id
+        dialogueId: options.id || '',
+        receiver:options.receiver || wx.getStorageSync('user').sourceId,
       },
       success(res) {
         that.setData({
           messages: res.data.data.records,
+          dialogueId:options.id,
+          sender:options.sender,
+          receiver:options.receiver,
           userId: wx.getStorageSync('user').userInfo.id
         })
       }
@@ -72,9 +76,16 @@ Page({
   onConfirm: function (e) {
     let that = this;
     console.log(e.detail)
+    let receiver
+
+    if(that.data.receiver && that.data.sender){
+      receiver = that.data.receiver==wx.getStorageSync('user').userInfo.id?that.data.sender:that.data.receiver
+    }else{
+      receiver = wx.getStorageSync('user').sourceId
+    }
 
     let data={
-      receiver: wx.getStorageSync('user').sourceId,
+      receiver: receiver,
       content: e.detail.value,
       contentType: "0"
     }

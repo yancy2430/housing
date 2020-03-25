@@ -15,7 +15,7 @@ Page({
   onLoad: function (options) {
     let that = this;
     wx.request({
-      url: 'https://weixin.tdeado.com/im/dialogue/list',
+      url: 'http://127.0.0.1/im/dialogue/list',
       method:"POST",
       header: {
         token: wx.getStorageSync('user').token
@@ -31,7 +31,7 @@ Page({
   toMessage(e){
     console.log(e.currentTarget.dataset)
     wx.navigateTo({
-      url: '/pages/message/message?id='+e.currentTarget.dataset.id,
+      url: '/pages/message/message?id='+e.currentTarget.dataset.id+"&receiver="+e.currentTarget.dataset.receiver+"&sender="+e.currentTarget.dataset.sender,
     })
   }
 
