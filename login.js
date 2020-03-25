@@ -9,7 +9,8 @@ function login(that){
         wx.request({
           url: 'https://weixin.tdeado.com/miniapp/login',
           data: {
-            code: res.code
+            code: res.code,
+            scene: wx.getStorageSync('scene') || ''
           },
           success(res) {
             wx.setStorage({
@@ -36,7 +37,7 @@ function getTokenByPhone(that,e,yes){
     },
     data: {
       openId:wx.getStorageSync('session').openid,
-      unionId:wx.getStorageSync('session').unionid,
+      unionId:wx.getStorageSync('session').unionid || '',
       sessionKey: wx.getStorageSync('session').sessionKey,
       encryptedData: e.detail.encryptedData,
       iv: e.detail.iv,

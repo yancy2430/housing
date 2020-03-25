@@ -8,7 +8,9 @@
     "van-tag": "@vant/weapp/tag/index"
   },
   "pages": [
+    "pages/message/list",
     "pages/index/settle",
+    "pages/login/login",
     "pages/message/message",
     "pages/product/report",
     "pages/records/records",

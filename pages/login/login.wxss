@@ -1,5 +1,5 @@
 .wp {
-  background: url(http://weixin.tdeado.com/static/house/login_bg.png) no-repeat center center;
+  background: url(https://weixin.tdeado.com/static/house/login_bg.png) no-repeat center center;
   background-size: cover;
   height: 100vh;background-position-y: 0px;
 

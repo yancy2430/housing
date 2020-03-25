@@ -110,7 +110,10 @@ Page({
       bottom: e.detail.height
 
     })
-
+    wx.pageScrollTo({
+      duration: 300,
+      selector:".bp"
+    })
   },
   blur: function (e) {
 

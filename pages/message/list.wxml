@@ -1,0 +1,14 @@
+<!--pages/message/list.wxml-->
+<view class="msglist">
+
+  <view class="msgitem van-hairline--bottom">
+    <image class="avatar" src="http://thirdwx.qlogo.cn/mmopen/vi_32/bIp2ka72wPxWBkMeIEiauOYlPH3LHLWqCzW6icN0he1yhH1v5uR7EqISSz7xuWywflGbGg0oeVGGxv7DkqicsOJ9Q/132"></image>
+
+    <view>
+    <view class="title">丽聪哟</view>
+    <view class="desc van-ellipsis">这是最新消息哦</view>
+    </view>
+    <view class="time">21:56</view>
+
+  </view>
+</view>

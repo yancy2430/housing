@@ -2,7 +2,7 @@
     <view class="product-content">
       <van-row>
         <van-col span="8">
-          <image class="image" src="http://weixin.tdeado.com/{{product.cover}}"></image>
+          <image class="image" src="https://weixin.tdeado.com/{{product.cover}}"></image>
         </van-col>
         <van-col span="16">
           <view>

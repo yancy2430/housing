@@ -1,0 +1,37 @@
+/* pages/message/list.wxss */
+
+.msgitem{
+
+  display: flex;
+  flex-direction: row;
+  padding:2vw;
+
+}
+.avatar{
+  width: 15vw;
+  height: 15vw;
+  /* border-radius: 5px; */
+  display: inline-flex;
+}
+.title{
+
+  padding-top: 1vw;
+  padding-left: 2vw;
+  font-size: 1.1rem;
+  width: 66vw;
+}
+.desc{
+  width: 66vw;
+  padding-left: 2vw;
+  font-size: 1rem;
+  padding-top: 1vw;
+  color: #999;
+}
+.time{
+  width: 6vw;
+  text-align: right;
+  padding-left: 2vw;
+  font-size: .8rem;
+  padding-top: 1vw;
+  color: #999;
+}

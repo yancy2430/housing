@@ -1,6 +1,6 @@
 <!--pages/message/message.wxml-->
 <view class="wp">
-	<view class="message" wx:for="{{messages}}" wx:key="index" >
+  <view class="message" wx:for="{{messages}}" wx:key="index" >
 		<image class="avater" src="{{item.sender && item.sender == userId ? '':(item.avatar)}}"></image>
 		<view class="content">
 			{{item.content}}
@@ -11,6 +11,9 @@
 		<block wx:else><image class="avater" src=""></image></block>
 
 	</view>
+  
+	<view class="bp" style="height:{{bottom}}px;">
+  </view>
 	
 
 	<view class="editor van-hairline--top" style="bottom:{{bottom}}px">
@@ -20,4 +23,9 @@
 	</view>
 	<!-- <view class="time">2020-03-20 11:21:31</view> -->
 
+  <view class="interval"></view>
+  <view class="interval"></view>
+  <view class="interval"></view>
+  <view class="interval"></view>
+  <view class="interval"></view>
 </view>
