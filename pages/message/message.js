@@ -19,7 +19,7 @@ Page({
     console.log(options)
 
     wx.request({
-      url: 'http://127.0.0.1/im/message/list',
+      url: 'https://weixin.tdeado.com/im/message/list',
       header: {
         token: wx.getStorageSync('user').token,
         'content-type': 'application/x-www-form-urlencoded'
