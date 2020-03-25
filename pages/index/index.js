@@ -114,5 +114,15 @@ Page({
     wx.navigateTo({
       url: '/pages/index/area',
     })
+  }, onShareAppMessage: function (res) {
+    if (res.from === 'button') {
+      // 来自页面内转发按钮
+      console.log(res.target)
+    }
+
+    return {
+      title: '厦门便民宝' ,
+      path: '/pages/index/settle'
+    }
   }
 })

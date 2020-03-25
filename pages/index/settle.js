@@ -13,10 +13,9 @@ Page({
     list: [],
     searchValue: ""
   },
-  onLoad() {
-
+  onLoad(op) {
+    wx.setStorageSync('scene', op.scene)
     let that = this;
-    
     wx.request({
       url: 'https://weixin.tdeado.com/miniapp/check',
       success(res) {
@@ -101,5 +100,15 @@ Page({
     this.setData({
       show: false
     });
-  },
+  }, onShareAppMessage: function (res) {
+    if (res.from === 'button') {
+      // 来自页面内转发按钮
+      console.log(res.target)
+    }
+
+    return {
+      title: '厦门便民宝' ,
+      path: '/pages/index/settle'
+    }
+  }
 })

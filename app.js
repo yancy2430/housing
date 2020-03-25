@@ -4,7 +4,7 @@ App({
   },
   onShow: function (op) {
 
-
+    console.log(op)
 
   },
   onHide: function () {
