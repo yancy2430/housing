@@ -13,6 +13,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    if(options.scene){
+      wx.setStorageSync('scene', options.scene)
+    }
+    wx.getStorageSync('key')
     let that = this;
     this.setData({
       token: wx.getStorageSync("user").token
@@ -32,14 +36,19 @@ Page({
     })
  
   }, onShareAppMessage: function (res) {
-    if (res.from === 'button') {
-      // 来自页面内转发按钮
-      console.log(res.target)
+    let user = wx.getStorageSync("user")
+    let scene = ''
+    if(user.isStaff){
+      scene = user.userInfo.id
+    }else{
+      scene = user.sourceId
     }
-
+    if(scene=='' || scene == null || scene==undefined){
+      scene = wx.getStorageSync('scene')
+    }
     return {
       title: '分享' ,
-      path: '/pages/article/article?id=' + this.data.id
+      path: '/pages/article/article?id=' + this.data.id +"&scene="+scene
     }
   },
   getMessage(e) {

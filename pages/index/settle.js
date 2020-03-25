@@ -12,9 +12,13 @@ Page({
     token: wx.getStorageSync('token'),
     list: [],
     searchValue: ""
-  },
-  onLoad(op) {
-    wx.setStorageSync('scene', op.scene)
+  },  
+  onLoad: function (options) {
+    if(options.scene){
+      wx.setStorageSync('scene', options.scene)
+    }
+    login.login(this)
+
     let that = this;
     wx.request({
       url: 'https://weixin.tdeado.com/miniapp/check',
@@ -101,14 +105,19 @@ Page({
       show: false
     });
   }, onShareAppMessage: function (res) {
-    if (res.from === 'button') {
-      // 来自页面内转发按钮
-      console.log(res.target)
+    let user = wx.getStorageSync("user")
+    let scene = ''
+    if(user.isStaff){
+      scene = user.userInfo.id
+    }else{
+      scene = user.sourceId
     }
-
+    if(scene=='' || scene == null || scene==undefined){
+      scene = wx.getStorageSync('scene')
+    }
     return {
-      title: '厦门便民宝' ,
-      path: '/pages/index/settle'
+      title: '分享厦门本地宝' ,
+      path: '/pages/index/settle?&scene='+scene
     }
-  }
+  },
 })

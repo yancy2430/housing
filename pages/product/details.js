@@ -33,17 +33,31 @@ Page({
         })
       }
     })
+
+    let user = wx.getStorageSync("user")
+    let scene = ''
+    if(user.isStaff){
+      scene = user.userInfo.id
+    }else{
+      scene = user.sourceId
+    }
+    if(scene=='' || scene == null || scene==undefined){
+      scene = wx.getStorageSync('scene')
+    }
     return {
       title: '分享' + this.data.product.details.productName,
-      path: '/pages/product/details?id=' + this.data.product.details.id + "&scene=" + wx.getStorageSync('scene')
+      path: '/pages/product/details?id=' + this.data.product.details.id + "&scene=" + scene
     }
-  },
-  onLoad: function(option) {
+  },  
+  onLoad: function (options) {
+    if(options.scene){
+      wx.setStorageSync('scene', options.scene)
+    }
     console.log("scene=" + option.scene)
     let that = this
     this.setData({
       token: wx.getStorageSync("user").token,
-      staff:wx.getStorageSync('isStaff')
+      staff:wx.getStorageSync('user').isStaff
     }) 
     console.log(that.data.token)
     wx.request({

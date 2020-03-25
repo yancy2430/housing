@@ -11,7 +11,16 @@ Page({
 
     token: wx.getStorageSync('token'),
     active:0
-  }, onPullDownRefresh() {
+  },  
+  
+  onLoad: function (options) {
+    if(options.scene){
+      wx.setStorageSync('scene', options.scene)
+    }
+
+  }
+  ,
+  onPullDownRefresh() {
     this.getNews("");
 
   },
@@ -81,15 +90,21 @@ Page({
   },
   onClose() {
     this.setData({ show: false });
-  }, onShareAppMessage: function (res) {
-    if (res.from === 'button') {
-      // 来自页面内转发按钮
-      console.log(res.target)
+  }, 
+  onShareAppMessage: function (res) {
+    let user = wx.getStorageSync("user")
+    let scene = ''
+    if(user.isStaff){
+      scene = user.userInfo.id
+    }else{
+      scene = user.sourceId
     }
-
+    if(scene=='' || scene == null || scene==undefined){
+      scene = wx.getStorageSync('scene')
+    }
     return {
-      title: '厦门便民宝' ,
-      path: '/pages/index/settle'
+      title: '分享厦门本地宝' ,
+      path: '/pages/index/settle?&scene='+scene
     }
-  }
+  },
 })

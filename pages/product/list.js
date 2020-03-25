@@ -1,6 +1,12 @@
 // pages/product/list.js
-Page({
+Page({  
+  
+  onLoad: function (options) {
+  if(options.scene){
+    wx.setStorageSync('scene', options.scene)
+  }
 
+  },
   /**
    * 页面的初始数据
    */
@@ -333,6 +339,21 @@ Page({
 
       }
     })
+  },onShareAppMessage: function (res) {
+    let user = wx.getStorageSync("user")
+    let scene = ''
+    if(user.isStaff){
+      scene = user.userInfo.id
+    }else{
+      scene = user.sourceId
+    }
+    if(scene=='' || scene == null || scene==undefined){
+      scene = wx.getStorageSync('scene')
+    }
+    return {
+      title: '分享厦门本地宝' ,
+      path: '/pages/index/settle?&scene='+scene
+    }
   },
 
 })

@@ -2,8 +2,13 @@
 //获取应用实例
 const app = getApp()
 
-Page({
+Page({  
+  onLoad: function (options) {
+  if(options.scene){
+    wx.setStorageSync('scene', options.scene)
+  }
 
+  },
   data: {
     loading: false,
     area: [],
@@ -124,5 +129,20 @@ Page({
       title: '厦门便民宝' ,
       path: '/pages/index/settle'
     }
-  }
+  },onShareAppMessage: function (res) {
+    let user = wx.getStorageSync("user")
+    let scene = ''
+    if(user.isStaff){
+      scene = user.userInfo.id
+    }else{
+      scene = user.sourceId
+    }
+    if(scene=='' || scene == null || scene==undefined){
+      scene = wx.getStorageSync('scene')
+    }
+    return {
+      title: '分享厦门本地宝' ,
+      path: '/pages/index/settle?&scene='+scene
+    }
+  },
 })

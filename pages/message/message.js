@@ -61,6 +61,10 @@ Page({
         that.setData({
           messages:that.data.messages
         })
+        wx.pageScrollTo({
+          duration: 300,
+          selector:".bp"
+        })
       }
       console.log(that.data.messages)
     });

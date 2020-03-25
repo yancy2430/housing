@@ -11,7 +11,10 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
+  onLoad: function (options) {
+    if(options.scene){
+      wx.setStorageSync('scene', options.scene)
+    }
     let that = this;
     this.setData({
       token: wx.getStorageSync("user").token
@@ -41,5 +44,20 @@ Page({
     wx.navigateTo({
       url: '/pages/product/details?id=' + e.currentTarget.dataset.id,
     })
+  },onShareAppMessage: function (res) {
+    let user = wx.getStorageSync("user")
+    let scene = ''
+    if(user.isStaff){
+      scene = user.userInfo.id
+    }else{
+      scene = user.sourceId
+    }
+    if(scene=='' || scene == null || scene==undefined){
+      scene = wx.getStorageSync('scene')
+    }
+    return {
+      title: '分享厦门本地宝' ,
+      path: '/pages/index/settle?&scene='+scene
+    }
   },
 })

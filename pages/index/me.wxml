@@ -54,9 +54,9 @@
 		<view class="interval"></view>
 		<van-cell-group>
 	
-			<van-cell link-type="navigateTo" url="/pages/message/list" icon="service-o" border="{{true}}" value="咨询最新政策" is-link>
+			<van-cell link-type="navigateTo" url="/pages/message/message" icon="service-o" border="{{true}}" value="咨询最新政策" is-link>
 				<view slot="title">
-					<button class="van-cell-text textButton" >消息中心 </button>
+					<button class="van-cell-text textButton" >在线咨询 </button>
 				</view>
 			</van-cell>
 			<van-cell icon="phone-o" border="{{true}}" value="{{countData.contact}}" is-link>
