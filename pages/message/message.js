@@ -86,7 +86,7 @@ Page({
     })
 
     wx.request({
-      url: 'http://127.0.0.1/im/message/send',
+      url: 'https://weixin.tdeado.com/im/message/send',
       method: "POST",
       header: {
         token: wx.getStorageSync('user').token
