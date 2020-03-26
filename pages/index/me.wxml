@@ -89,6 +89,14 @@
 				<van-icon name="upgrade" color="rgb(25, 137, 250)" size="35px" />
 				<button class="btn">分享记录</button>
 			</van-grid-item>
+			<van-grid-item square link-type="navigateTo" use-slot url="/pages/sharelog/sharelog">
+				<van-icon name="upgrade" color="rgb(25, 137, 250)" size="35px" />
+				<button class="btn">客户浏览</button>
+			</van-grid-item>
+			<van-grid-item square link-type="navigateTo" use-slot url="/pages/sharelog/sharelog">
+				<van-icon name="upgrade" color="rgb(25, 137, 250)" size="35px" />
+				<button class="btn">名下客户</button>
+			</van-grid-item>
 			<van-grid-item square link-type="navigateTo" use-slot url="/pages/records/records">
 				<van-icon name="records" color="rgb(25, 137, 250)" size="35px" />
 				<button class="btn">报备记录</button>
