@@ -157,3 +157,12 @@
 .desc {
   font-size: 0.8rem;
 }
+
+.text{
+  text-align: center;
+  color: #666;
+}
+.showbutton{
+  font-size: 1.1rem!important;
+  padding: 0 10px;
+}

@@ -3,12 +3,12 @@
     "van-row": "@vant/weapp/row/index",
     "van-grid": "@vant/weapp/grid/index",
     "van-grid-item": "@vant/weapp/grid-item/index",
-      "van-image": "@vant/weapp/image/index",
+    "van-image": "@vant/weapp/image/index",
     "van-col": "@vant/weapp/col/index",
     "van-search": "@vant/weapp/search/index",
     "van-dialog": "@vant/weapp/dialog/index",
-      "van-button": "@vant/weapp/button/index",
-        "van-popup": "@vant/weapp/popup/index"
+    "van-button": "@vant/weapp/button/index",
+    "van-popup": "@vant/weapp/popup/index"
   },
   "navigationBarTitleText": "落户指南",
   "enablePullDownRefresh": true

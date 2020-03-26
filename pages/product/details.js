@@ -1,4 +1,5 @@
 // pages/product/details.js
+var login = require('../../login.js');
 Page({
 
   /**
@@ -53,18 +54,16 @@ Page({
     if(options.scene){
       wx.setStorageSync('scene', options.scene)
     }
-    console.log("scene=" + option.scene)
     let that = this
     this.setData({
       token: wx.getStorageSync("user").token,
       staff:wx.getStorageSync('user').isStaff
     }) 
-    console.log(that.data.token)
     wx.request({
-      url: 'https://weixin.tdeado.com/miniapp/details?id=' + option.id,
+      url: 'https://weixin.tdeado.com/miniapp/details?id=' + options.id,
       data: {},
       header: {
-        'token': that.data.token,
+        'token': wx.getStorageSync('user').token,
         'content-type': 'application/json' // 默认值
       },
       success(res) {
@@ -122,11 +121,29 @@ Page({
     })
   },
   onMessage(e){
-    wx.navigateTo({
-      url: '/pages/message/message',
+    if (wx.getStorageSync("user") && wx.getStorageSync("user").userInfo && wx.getStorageSync("user").userInfo.phone){
+      wx.navigateTo({
+        url: '/pages/message/message',
+      })
+    }else{
+      this.setData({
+        show: true
+      })
+    }
+    
+    
+  },
+  onConfirm() {
+    login.login(this)
+  },
+  getPhonenumber(e) {
+    let that = this;
+    login.getTokenByPhone(this, e, function yes(res) {
+
+  
     })
   },
-  share() {
-
+  onClose() {
+    this.setData({ show: false });
   }
 })

@@ -29,7 +29,9 @@
     "pages/index/area",
     "pages/history/history",
     "pages/focus/focus",
-    "pages/sharelog/sharelog"
+    "pages/sharelog/sharelog",
+    "pages/customer/customer",
+    "pages/customer/history"
   ],
   "permission": {
     "scope.userLocation": {
