@@ -1,31 +1,27 @@
 <!--pages/message/message.wxml-->
-<view class="wp">
-  <view class="message" wx:for="{{messages}}" wx:key="index" >
-		<image class="avater" src="{{item.sender && item.sender == userId ? '':(item.avatar)}}"></image>
-		<view class="content">
-			{{item.content}}
-		</view>
-		<view class="avater"  wx:if="{{item.sender == userId || !item.sender}}">
-					<open-data type="userAvatarUrl"></open-data>
-		</view>
-		<block wx:else><image class="avater" src=""></image></block>
+<view>
 
-	</view>
-  
-	<view class="bp" style="height:{{bottom}}px;">
-  </view>
-	
+	<scroll-view scroll-y="true" style="height: 91vh;" bindscroll="scroll" scroll-top="{{scrolltop}}">
+		<view class="message wp" wx:for="{{messages}}" wx:key="index">
+			<image class="avater" src="{{item.sender && item.sender == userId ? '':(item.avatar)}}"></image>
+			<view class="content">
+				{{item.content}}
+			</view>
+			<view class="avater" wx:if="{{item.sender == userId || !item.sender}}">
+				<open-data type="userAvatarUrl"></open-data>
+			</view>
+			<block wx:else>
+				<image class="avater" src=""></image>
+			</block>
 
-	<view class="editor van-hairline--top" style="bottom:{{bottom}}px">
+		</view>
+		<view class="sdp"></view>
+	</scroll-view>
+	<view class="editor bp van-hairline--top" style="padding-bottom:{{bottom}}px">
 		<van-icon class="icon-l" name="phone-circle-o" size="30px" />
 		<input value="{{inputValue}}" class="weui-input" auto-focus adjust-position="{{false}}" bindfocus="foucus" bindblur="blur" placeholder="" bindconfirm="onConfirm" confirm-type="send" />
 		<van-icon class="icon-r" name="add-o" size="30px" />
 	</view>
 	<!-- <view class="time">2020-03-20 11:21:31</view> -->
 
-  <view class="interval"></view>
-  <view class="interval"></view>
-  <view class="interval"></view>
-  <view class="interval"></view>
-  <view class="interval"></view>
 </view>

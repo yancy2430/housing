@@ -1,0 +1,6 @@
+<!--pages/sharelog/sharelog.wxml-->
+<view>
+<van-cell-group wx:for="{{list}}" wx:key="key">
+  <van-cell title="{{item.contentName}}" value="{{item.createTime}}" label="{{item.userName}}" border="{{ false }}" />
+</van-cell-group>
+</view>

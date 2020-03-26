@@ -85,7 +85,7 @@
 
 				<button class="btn">消息中心</button>
 			</van-grid-item>
-			<van-grid-item square link-type="navigateTo" use-slot url="/pages/qrcode/qrcode">
+			<van-grid-item square link-type="navigateTo" use-slot url="/pages/sharelog/sharelog">
 				<van-icon name="upgrade" color="rgb(25, 137, 250)" size="35px" />
 				<button class="btn">分享记录</button>
 			</van-grid-item>
@@ -93,21 +93,9 @@
 				<van-icon name="records" color="rgb(25, 137, 250)" size="35px" />
 				<button class="btn">报备记录</button>
 			</van-grid-item>
-			<van-grid-item square open-type='contact' use-slot>
-				<van-icon name="service-o" color="rgb(25, 137, 250)" size="35px" />
-				<button open-type="contact" class="btn">在线咨询</button>
-			</van-grid-item>
-			<van-grid-item square use-slot>
-				<van-icon name="phone-o" color="rgb(25, 137, 250)" size="35px" />
-				<button class="btn" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">绑定手机号</button>
-			</van-grid-item>
 			<van-grid-item square link-type="navigateTo" use-slot url="/pages/qrcode/qrcode">
 				<van-icon name="cluster-o" color="rgb(25, 137, 250)" size="35px"  />
 				<button class="btn">我的二维码</button>
-			</van-grid-item>
-			<van-grid-item square link-type="navigateTo" use-slot url="/pages/qrcode/qrcode">
-				<van-icon name="user-o" color="rgb(25, 137, 250)" size="35px" />
-				<button class="btn">关于我们</button>
 			</van-grid-item>
 			<van-grid-item square bindtap="clearCache" use-slot>
 				<van-icon name="replay" color="rgb(25, 137, 250)" size="35px" />

@@ -9,9 +9,9 @@
   },
   "pages": [
     "pages/index/settle",
+    "pages/message/message",
     "pages/message/list",
     "pages/login/login",
-    "pages/message/message",
     "pages/product/report",
     "pages/records/records",
     "pages/index/index",
@@ -28,7 +28,8 @@
     "pages/product/basis",
     "pages/index/area",
     "pages/history/history",
-    "pages/focus/focus"
+    "pages/focus/focus",
+    "pages/sharelog/sharelog"
   ],
   "permission": {
     "scope.userLocation": {

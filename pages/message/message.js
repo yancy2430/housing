@@ -123,8 +123,8 @@ Page({
 
     that.setData({
 
-      bottom: e.detail.height
-
+      bottom: e.detail.height,
+      scrolltop:5000
     })
     wx.pageScrollTo({
       duration: 300,
