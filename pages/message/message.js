@@ -11,33 +11,30 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
+  onHide:function(){
+     
+    clearTimeout(this.data.id)
+
+  },
   onLoad: function (options) {
-    
+    this.setData({
+      options:options
+    })
     let that = this;
     let socketOpen = false
     const socketMsgQueue = []
     console.log(options)
+    this.getmessages()
+    let id= setInterval(function() {
+      console.log("获取消息")
+      that.getmessages()
+     }, 2000)
+    
 
-    wx.request({
-      url: 'https://weixin.tdeado.com/im/message/list',
-      header: {
-        token: wx.getStorageSync('user').token,
-        'content-type': 'application/x-www-form-urlencoded'
-      },
-      data: {
-        dialogueId: options.id || '',
-        receiver:options.receiver || wx.getStorageSync('user').sourceId,
-      },
-      success(res) {
-        that.setData({
-          messages: res.data.data.records,
-          dialogueId:options.id,
-          sender:options.sender,
-          receiver:options.receiver,
-          userId: wx.getStorageSync('user').userInfo.id
-        })
-      }
-    })
+
+   this.setData({
+     id:id
+   })
 
     wx.connectSocket({
       url: 'wss://weixin.tdeado.com/wss/',
@@ -76,6 +73,29 @@ Page({
 
 
 
+  },
+  getmessages(){
+    let that = this;
+    wx.request({
+      url: 'https://weixin.tdeado.com/im/message/list',
+      header: {
+        token: wx.getStorageSync('user').token,
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      data: {
+        dialogueId: that.data.options.id || '',
+        receiver:that.data.options.receiver || wx.getStorageSync('user').sourceId,
+      },
+      success(res) {
+        that.setData({
+          messages: res.data.data.records,
+          dialogueId:that.data.options.id,
+          sender:that.data.options.sender,
+          receiver:that.data.options.receiver,
+          userId: wx.getStorageSync('user').userInfo.id
+        })
+      }
+    })
   },
   onConfirm: function (e) {
     let that = this;
