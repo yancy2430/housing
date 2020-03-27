@@ -15,7 +15,7 @@ Page({
     wx.request({
       url: 'https://weixin.tdeado.com/miniapp/sharelog',
       header:{
-        token:"7c2f215940c364b93d6518ab51bfc50"
+        token:wx.getStorageSync('user').token
       },
       success(res){
         that.setData({

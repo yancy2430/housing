@@ -51,6 +51,7 @@ Page({
     }
   },  
   onLoad: function (options) {
+    login.login(this)
     if(options.scene){
       wx.setStorageSync('scene', options.scene)
     }

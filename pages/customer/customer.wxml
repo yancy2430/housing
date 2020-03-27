@@ -1,4 +1,4 @@
 <van-cell-group>
-  <van-cell wx:for="{{customers.records}}" title="{{item.phone?item.phone:'未授权'}}" label="{{item.create_time}}" value="{{item.nickName}}" />
+  <van-cell wx:for="{{customers.records}}" title="{{item.phone?item.phone:'未授权'}}" label="{{item.create_time}}" value="{{item.nickName}}" bind:click='onClickCall' data-phone="{{item.phone}}" />
 
 </van-cell-group>

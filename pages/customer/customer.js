@@ -10,7 +10,7 @@ Page({
   onLoad(op){
     let that = this;
     wx.request({
-      url: 'http://127.0.0.1/miniapp/customers',
+      url: 'https://weixin.tdeado.com/miniapp/customers',
       header:{
         token:wx.getStorageSync("user").token
       },
@@ -21,5 +21,7 @@ Page({
       }
     })
 
-  }
+  }  ,onClickCall(e) {
+    wx.makePhoneCall({phoneNumber: e.currentTarget.dataset.phone})
+  },
 })

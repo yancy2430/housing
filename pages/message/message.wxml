@@ -3,7 +3,7 @@
 
 	<scroll-view scroll-y="true" style="height: 91vh;" bindscroll="scroll" scroll-top="{{scrolltop}}">
 		<view class="message wp" wx:for="{{messages}}" wx:key="index">
-			<image class="avater" src="{{item.sender && item.sender == userId ? '':(item.avatar)}}"></image>
+			<image class="avater" src="{{item.sender && item.sender == userId ? '':('http://weixin.tdeado.com/static/house/avatar.jpg')}}"></image>
 			<view class="content">
 				{{item.content}}
 			</view>

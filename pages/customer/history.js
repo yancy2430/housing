@@ -9,11 +9,13 @@ Page({
   },
   onLoad(op){
     this.gethistory("article",1)
+  },onClickCall(e) {
+    wx.makePhoneCall({phoneNumber: e.currentTarget.dataset.phone})
   },
   gethistory(type,page){
     let that = this;
     wx.request({
-      url: 'http://127.0.0.1/miniapp/customerhistory?type='+type+'&page='+page,
+      url: 'https://weixin.tdeado.com/miniapp/customerhistory?type='+type+'&page='+page,
       header: {
         token: wx.getStorageSync("user").token
       },

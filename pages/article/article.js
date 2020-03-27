@@ -13,6 +13,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    login.login(this)
     if(options.scene){
       wx.setStorageSync('scene', options.scene)
     }
@@ -23,8 +24,6 @@ Page({
     })
     try {
       var value = wx.getStorageSync('articleNum')
-
-     
       value=value+1
       wx.setStorageSync('articleNum', Number(value))
     } catch (e) {

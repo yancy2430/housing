@@ -1,7 +1,7 @@
 <van-tabs active="{{ active }}" bind:change="onChange">
   <van-tab title="文章记录">
     <van-cell-group>
-      <van-cell wx:for="{{articles.records}}" wx:key="index" title="{{item.userName}}" value="{{item.createTime}}" label="{{item.title}}" />
+      <van-cell wx:for="{{articles.records}}"  wx:key="index" title="{{item.userName}}" value="{{item.createTime}}" label="{{item.title}}" bind:click='onClickCall' data-phone="{{item.userName}}" />
     </van-cell-group>
   </van-tab>
   <van-tab title="楼盘记录">
