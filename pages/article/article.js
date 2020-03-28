@@ -1,5 +1,6 @@
 // pages/article/article.js
 
+var login = require('../../login.js');
 Page({
 
   /**
@@ -45,6 +46,28 @@ Page({
     if(scene=='' || scene == null || scene==undefined){
       scene = wx.getStorageSync('scene')
     }
+
+
+
+    let that = this
+    wx.request({
+      url: 'https://weixin.tdeado.com/miniapp/saveShareLog',
+      data: {
+        contentId:that.data.id,
+        type:2,
+        contentName:""
+      },
+      method:"POST",
+      header: {
+        'token': that.data.token,
+        'content-type': 'application/json' // 默认值
+      },
+      success(res) {
+    
+      }
+    })
+
+
     return {
       title: '分享' ,
       path: '/pages/article/article?id=' + this.data.id +"&scene="+scene

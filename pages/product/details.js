@@ -11,10 +11,6 @@ Page({
   },
    onShareAppMessage: function (res) {
     let that = this
-    if (res.from === 'button') {
-      // 来自页面内转发按钮
-      console.log(res.target)
-    }
     wx.request({
       url: 'https://weixin.tdeado.com/miniapp/saveShareLog',
       data: {
@@ -28,13 +24,9 @@ Page({
         'content-type': 'application/json' // 默认值
       },
       success(res) {
-        console.log(res.data)
-        that.setData({
-          product: res.data.data
-        })
+    
       }
     })
-
     let user = wx.getStorageSync("user")
     let scene = ''
     if(user.isStaff){

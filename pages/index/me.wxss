@@ -9,13 +9,13 @@
 }
 
 .avater {
-  overflow:hidden;  
-  display: block;  
-  width: 90rpx;  
-  height: 90rpx;  
+  overflow: hidden;
+  display: block;
+  width: 90rpx;
+  height: 90rpx;
   margin: 35rpx 20rpx 20rpx 70rpx;
-  border-radius: 50%;  
-  border: 2px solid #fff;  
+  border-radius: 50%;
+  border: 2px solid #fff;
   /* box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);   */
 }
 
@@ -93,9 +93,9 @@
 .btn {
   border: none;
   position: relative;
-  display:inline-block;
+  display: inline-block;
   margin: 0;
-  padding:0;
+  padding: 0;
   box-sizing: none;
   font-size: 0.8rem;
   text-align: center;
@@ -124,5 +124,11 @@
   transform-origin: 0 0;
   box-sizing: border-box;
   border-radius: 0px;
+
+}
+
+.cell-index--van-cell__left-icon {
+  color: #1989fa;
+  font-size: 35rpx;
 
 }
