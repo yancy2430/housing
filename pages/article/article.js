@@ -47,8 +47,6 @@ Page({
       scene = wx.getStorageSync('scene')
     }
 
-
-
     let that = this
     wx.request({
       url: 'https://weixin.tdeado.com/miniapp/saveShareLog',
@@ -67,16 +65,17 @@ Page({
       }
     })
 
-
     return {
-      title: '分享' ,
-      path: '/pages/article/article?id=' + this.data.id +"&scene="+scene
+      title: that.data.message.title ,
+      path: '/pages/article/article?id=' + this.data.id +"&scene="+scene,
+      imageUrl: that.data.message.image
     }
   },
   getMessage(e) {
     console.log(e)
     let that = this;
-    let shareUrl = e.detail.data[e.detail.data.length - 1];
-    that.shareUrl = JSON.parse(shareUrl);
+    let data = e.detail.data[e.detail.data.length - 1];
+    that.data.message = JSON.parse(data);
+    console.log(data)
   }
 })

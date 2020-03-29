@@ -123,8 +123,6 @@ Page({
         show: true
       })
     }
-    
-    
   },
   onConfirm() {
     login.login(this)

@@ -9,8 +9,14 @@ Page({
   },
   onLoad(op){
     this.gethistory("article",1)
+    this.gethistory("house",2)
   },onClickCall(e) {
     wx.makePhoneCall({phoneNumber: e.currentTarget.dataset.phone})
+  },
+  onChange(event) {
+    this.setData({
+      active:event.detail.name
+    })
   },
   gethistory(type,page){
     let that = this;

@@ -15,17 +15,15 @@
 					<block wx:if="{{login}}">
 						<text class="van-cell-text textButton name">{{phone}}</text>
 					</block>
-					<block wx:else>
+					<block wx:if="{{!login}}">
 						<text class="van-cell-text textButton name" bindtap="toLogin">注册/登录</text>
 					</block>
 
 				</view>
-				<!-- <view class="desc">{{userInfo.username}}</view> -->
 			</van-col>
 
 		</van-row>
 	</view>
-
 	<view class="tops">
 		<van-row>
 			<van-col span="8">
@@ -43,7 +41,6 @@
 			</van-col>
 			<van-col span="8">
 				<view class="topitem" bindtap="toHistory">
-
 					<view class="topnum">{{countData.history}}</view>
 					<view class="toptext">足迹</view>
 				</view>
@@ -54,15 +51,17 @@
 		<view class="interval"></view>
 		<van-cell-group>
 
-			<van-cell size="large" wx:if="{{login}}" link-type="navigateTo" url="/pages/message/message" icon="service-o"  border="{{true}}" value="咨询最新政策" is-link>
-			
+			<van-cell size="large" wx:if="{{login}}" link-type="navigateTo" url="/pages/message/message" icon="service-o" border="{{true}}" value="咨询最新政策" is-link>
+
 				<view slot="title">
-					<button class="van-cell-text textButton">在线咨询 </button>
+					<button class="van-cell-text textButton">在线咨询 <van-tag wx:if="{{ms>0}}" type="danger" round>{{ms}}</van-tag></button>
+					
 				</view>
 			</van-cell>
 			<van-cell size="large" wx:if="{{!login}}" bindtap="toLogin" icon="service-o" border="{{true}}" value="咨询最新政策" is-link>
 				<view slot="title">
 					<button class="van-cell-text textButton">在线咨询 </button>
+					
 				</view>
 			</van-cell>
 

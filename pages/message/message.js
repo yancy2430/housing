@@ -17,6 +17,13 @@ Page({
 
   },
   onLoad: function (options) {
+    if (wx.getStorageSync("user") && wx.getStorageSync("user").userInfo && wx.getStorageSync("user").userInfo.phone){
+
+    }else{
+      this.setData({
+        show: true
+      })
+    }
     this.setData({
       options:options
     })
@@ -25,16 +32,11 @@ Page({
     const socketMsgQueue = []
     console.log(options)
     this.getmessages()
-    let id= setInterval(function() {
+    this.data.id =  setInterval(function() {
       console.log("获取消息")
       that.getmessages()
      }, 2000)
     
-
-
-   this.setData({
-     id:id
-   })
 
     wx.connectSocket({
       url: 'wss://weixin.tdeado.com/wss/',
@@ -87,13 +89,16 @@ Page({
         receiver:that.data.options.receiver || wx.getStorageSync('user').sourceId,
       },
       success(res) {
-        that.setData({
-          messages: res.data.data.records,
-          dialogueId:that.data.options.id,
-          sender:that.data.options.sender,
-          receiver:that.data.options.receiver,
-          userId: wx.getStorageSync('user').userInfo.id
-        })
+        if(res.data.code==0){
+          that.setData({
+            messages: res.data.data.records,
+            dialogueId:that.data.options.id,
+            sender:that.data.options.sender,
+            receiver:that.data.options.receiver,
+            userId: wx.getStorageSync('user').userInfo.id
+          })
+        }
+        
       }
     })
   },
@@ -161,5 +166,18 @@ Page({
 
     })
 
+  },
+  onConfirm() {
+    login.login(this)
+  },
+  getPhonenumber(e) {
+    let that = this;
+    login.getTokenByPhone(this, e, function yes(res) {
+
+  
+    })
+  },
+  onClose() {
+    this.setData({ show: false });
   }
 })

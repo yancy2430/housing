@@ -14,6 +14,24 @@ Page({
     }
 
   },
+  toCoupons() {
+    wx.showToast({
+      title: 'title',
+    })
+    wx.navigateTo({
+      url: '/pages/coupons/coupons',
+    })
+  },
+  toFocus() {
+    wx.navigateTo({
+      url: '/pages/focus/focus',
+    })
+  },
+  toHistory() {
+    wx.navigateTo({
+      url: '/pages/history/history',
+    })
+  },
   onPullDownRefresh() {
     this.isSet()
 
@@ -65,21 +83,6 @@ Page({
       phoneNumber: this.data.countData.contact
     })
 
-  },
-  toCoupons() {
-    wx.navigateTo({
-      url: '/pages/coupons/coupons',
-    })
-  },
-  toFocus() {
-    wx.navigateTo({
-      url: '/pages/focus/focus',
-    })
-  },
-  toHistory() {
-    wx.navigateTo({
-      url: '/pages/history/history',
-    })
   },
   clearCache() {
     wx.clearStorage()
