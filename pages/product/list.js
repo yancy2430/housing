@@ -6,6 +6,12 @@ Page({
     wx.setStorageSync('scene', options.scene)
   }
 
+    this.data.where.area = options.areaId || '';
+    console.log(this.data.where)
+    this.setData({
+      where: this.data.where
+    });
+    this.getProdcut();
   },
   /**
    * 页面的初始数据

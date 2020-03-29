@@ -1,4 +1,5 @@
 // pages/message/message.js
+var login = require('../../login.js');
 Page({
 
   /**
@@ -103,6 +104,7 @@ Page({
     })
   },
   onConfirm: function (e) {
+    console.log(e)
     let that = this;
     console.log(e.detail)
     let receiver
@@ -167,11 +169,18 @@ Page({
     })
 
   },
-  onConfirm() {
+  onConfirmDialog() {
     login.login(this)
   },
   getPhonenumber(e) {
     let that = this;
+    console.log(e)
+    if(e.detail.errMsg=='getPhoneNumber:fail user deny'){
+      wx.navigateBack({
+        delta: 1
+      })
+      return;
+    }
     login.getTokenByPhone(this, e, function yes(res) {
 
   

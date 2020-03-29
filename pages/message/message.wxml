@@ -3,12 +3,11 @@
 
 	<scroll-view scroll-y="true" style="height: 91vh;" bindscroll="scroll" scroll-top="{{scrolltop}}">
 		<view class="message wp" wx:for="{{messages}}" wx:key="index">
-			<block wx:if="{{item.sender && item.sender == userId}}">
-				<image class="avater" src=""></image>
-			</block>
-			<block wx:else>
-				<image class="avater"  src="http://weixin.tdeado.com/static/house/avatar.jpg"></image>
-			</block>
+
+			<image wx:if="{{item.sender && item.sender != userId}}" class="avater" src="http://weixin.tdeado.com/static/house/avatar.jpg"/>
+
+			<image wx:else class="avater" src=""/>
+
 			<view class="content">
 				{{item.content}}
 			</view>
@@ -24,14 +23,14 @@
 	</scroll-view>
 	<view class="editor bp van-hairline--top" style="padding-bottom:{{bottom}}px">
 		<van-icon class="icon-l" name="phone-circle-o" size="30px" />
-		<input value="{{inputValue}}" class="weui-input" auto-focus adjust-position="{{false}}" bindfocus="foucus" bindblur="blur" placeholder="" bindconfirm="onConfirm" confirm-type="send" />
+		<input value="{{inputValue}}" class="weui-input" adjust-position="{{false}}" bindfocus="foucus" bindblur="blur" placeholder="" bindconfirm="onConfirm" confirm-type="send" />
 		<van-icon class="icon-r" name="add-o" size="30px" />
 	</view>
 	<!-- <view class="time">2020-03-20 11:21:31</view> -->
 
 </view>
-<van-dialog use-slot  confirm-button-text="授权" show="{{ show }}" show-cancel-button bind:confirm="onConfirm" confirm-button-open-type="getPhoneNumber" bind:getphonenumber="getPhonenumber" bind:close="onClose">
-  <view style="padding: 1vw;background-color: #1989fa;">
-  <van-button icon="https://weixin.tdeado.com/static/house/wxlogo.png" custom-style="padding: 1vw;" custom-class="showbutton" block type="info" >微信授权登录</van-button>
-  </view>
+<van-dialog use-slot confirm-button-text="授权" show="{{ show }}" bind:confirm="onConfirmDialog" confirm-button-open-type="getPhoneNumber" bind:getphonenumber="getPhonenumber" bind:close="onClose">
+	<view style="padding: 1vw;background-color: #1989fa;">
+		<van-button icon="https://weixin.tdeado.com/static/house/wxlogo.png" custom-style="padding: 1vw;font-size: 1.1rem!important;padding: 0 10px;" custom-class="showbutton" block type="info">微信授权登录</van-button>
+	</view>
 </van-dialog>
