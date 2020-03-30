@@ -16,7 +16,7 @@ App({
     that.globalData.exceptionClose = true;
 
     that.globalData.localSocket = wx.connectSocket({
-      url: "ws://127.0.0.1:3456"
+      url: "wss://weixin.tdeado.com/wss/"
     })
 
     that.globalData.localSocket.onOpen(function (res) {
