@@ -51,14 +51,14 @@
 		<view class="interval"></view>
 		<van-cell-group>
 
-			<van-cell size="large" wx:if="{{login}}" link-type="navigateTo" url="/pages/message/message" icon="service-o" border="{{true}}" value="咨询最新政策" is-link>
+			<van-cell custom-class="coll-item" size="large" wx:if="{{login}}" link-type="navigateTo" url="/pages/message/message" icon="service-o" border="{{true}}" value="咨询最新政策" is-link>
 
 				<view slot="title">
 					<button class="van-cell-text textButton">在线咨询 <van-tag wx:if="{{ms>0}}" type="danger" round>{{ms}}</van-tag></button>
 					
 				</view>
 			</van-cell>
-			<van-cell size="large" wx:if="{{!login}}" bindtap="toLogin" icon="service-o" border="{{true}}" value="咨询最新政策" is-link>
+			<van-cell custom-class="coll-item" size="large" wx:if="{{!login}}" bindtap="toLogin" icon="service-o" border="{{true}}" value="咨询最新政策" is-link>
 				<view slot="title">
 					<button class="van-cell-text textButton">在线咨询 </button>
 					
@@ -66,17 +66,17 @@
 			</van-cell>
 
 
-			<van-cell size="large" icon="phone-o" border="{{true}}" value="{{countData.contact}}" is-link>
+			<van-cell custom-class="coll-item" size="large" icon="phone-o" border="{{true}}" value="{{countData.contact}}" is-link>
 				<view slot="title">
 					<button class="van-cell-text textButton">咨询电话 </button>
 				</view>
 			</van-cell>
-			<van-cell size="large" icon="flower-o" border="{{true}}" is-link>
+			<van-cell custom-class="coll-item" size="large" icon="flower-o" border="{{true}}" is-link>
 				<view slot="title">
 					<button class="van-cell-text textButton" open-type="feedback">意见反馈 </button>
 				</view>
 			</van-cell>
-			<van-cell size="large" icon="replay" border="{{false}}" is-link>
+			<van-cell custom-class="coll-item" size="large" icon="replay" border="{{false}}" is-link>
 				<view slot="title">
 					<button class="van-cell-text textButton" bindtap="clearCache">退出登录</button>
 				</view>
