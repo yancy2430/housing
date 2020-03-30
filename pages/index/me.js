@@ -39,6 +39,8 @@ Page({
   onShow() {
     this.getTabBar().init();
     let that = this;
+    
+
     if (wx.getStorageSync('user').token) {
       this.setData({
         login: true,
@@ -47,6 +49,17 @@ Page({
         ms:wx.getStorageSync('ms')
       })
     }
+    that.getTabBar().setData({
+      ms: wx.getStorageSync('ms')
+    })
+  app.globalData.callback=function(res){
+    that.getTabBar().setData({
+      ms: wx.getStorageSync('ms')
+    })
+    that.setData({
+      ms:wx.getStorageSync('ms')
+    })
+  }
     this.isSet()
 
 
@@ -92,6 +105,8 @@ Page({
       phone:""
     })
 
+    app.globalData.localSocket.close()
+
   },
   onConfirm() {
     login.login(this)
@@ -108,6 +123,7 @@ Page({
           staff: wx.getStorageSync('user').isStaff
         })
       }
+      app.initSocket()
     })
   },
   onClose() {

@@ -1,7 +1,7 @@
 <!--pages/message/message.wxml-->
 <view>
 
-	<scroll-view scroll-y="true" style="height: 91vh;" bindscroll="scroll" scroll-top="{{scrolltop}}">
+	<scroll-view scroll-y="true" style="height: 91vh;" scroll-top="{{scrolltop}}">
 		<view class="message wp" wx:for="{{messages}}" wx:key="index">
 
 			<image wx:if="{{item.sender && item.sender != userId}}" class="avater" src="http://weixin.tdeado.com/static/house/avatar.jpg"/>

@@ -20,6 +20,14 @@ Page({
     login.login(this)
 
     let that = this;
+    that.getTabBar().setData({
+      ms: wx.getStorageSync('ms')
+    })
+    app.globalData.callback=function(res){
+      that.getTabBar().setData({
+        ms: wx.getStorageSync('ms')
+      })
+    }
     wx.request({
       url: 'https://weixin.tdeado.com/miniapp/check',
       success(res) {

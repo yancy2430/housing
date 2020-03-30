@@ -7,14 +7,16 @@ App({
     exceptionClose: true,
     socketMsgQueue: []
   },
-  onLaunch: function () {},
+  onLaunch: function () {
+
+  },
   // 初始化socket
   initSocket() {
     let that = this;
     that.globalData.exceptionClose = true;
 
     that.globalData.localSocket = wx.connectSocket({
-      url: "wss://weixin.tdeado.com/wss/"
+      url: "ws://127.0.0.1:3456"
     })
 
     that.globalData.localSocket.onOpen(function (res) {
@@ -38,6 +40,13 @@ App({
       }
     })
     that.globalData.localSocket.onMessage(function (res) {
+  
+      res = JSON.parse(res.data);
+      if (res.key == "message" && wx.getStorageSync('user')) {
+        var value = wx.getStorageSync('ms') || 0
+        console.log(value+1)
+        wx.setStorageSync('ms', value+1)
+      }
       that.globalData.callback(res);
     })
     that.globalData.localSocket.onError(function (res) {
@@ -46,7 +55,7 @@ App({
     that.globalData.localSocket.onClose(function (res) {
       console.log('WebSocket连接已关闭！readyState=' + that.globalData.localSocket.readyState)
 
-      if (that.globalData.exceptionClose) {
+      if (that.globalData.exceptionClose && wx.getStorageSync('user')) {
         that.initSocket();
       }
 
@@ -60,6 +69,7 @@ App({
         data: JSON.stringify(msg),
         success: function (res) {
           // console.log('发送成功,返回结果为',res)
+          console.log(res)
         }
       })
     } else {
@@ -67,7 +77,7 @@ App({
     }
   },
   onShow: function (options) {
-    if (this.globalData.localSocket.readyState !== 0 && this.globalData.localSocket.readyState !== 1) {
+    if (this.globalData.localSocket.readyState !== 0 && this.globalData.localSocket.readyState !== 1 && wx.getStorageSync('user')) {
       console.log('开始尝试连接WebSocket！readyState=' + this.globalData.localSocket.readyState)
       this.initSocket()
     }

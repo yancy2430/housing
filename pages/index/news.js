@@ -28,6 +28,14 @@ Page({
     
     this.getTabBar().init();
     let that = this;
+    that.getTabBar().setData({
+      ms: wx.getStorageSync('ms')
+    })
+    app.globalData.callback=function(res){
+      that.getTabBar().setData({
+        ms: wx.getStorageSync('ms')
+      })
+    }
     this.setData({
       token: wx.getStorageSync("user").token
     })

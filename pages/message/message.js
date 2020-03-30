@@ -1,4 +1,5 @@
 // pages/message/message.js
+const app = getApp()
 var login = require('../../login.js');
 Page({
 
@@ -7,77 +8,41 @@ Page({
    */
   data: {
     messages: [],
-    inputValue:""
+    inputValue: ""
   },
   /**
    * 生命周期函数--监听页面加载
    */
-  onHide:function(){
-     
-    clearTimeout(this.data.id)
-
+  onHide: function () {
+    wx.setStorageSync('ms', 0)
+  },
+  onUnload() {
+    wx.setStorageSync('ms', 0)
   },
   onLoad: function (options) {
-    if (wx.getStorageSync("user") && wx.getStorageSync("user").userInfo && wx.getStorageSync("user").userInfo.phone){
+    if (wx.getStorageSync("user") && wx.getStorageSync("user").userInfo && wx.getStorageSync("user").userInfo.phone) {
 
-    }else{
+    } else {
       this.setData({
         show: true
       })
     }
     this.setData({
-      options:options
+      options: options
     })
     let that = this;
     let socketOpen = false
     const socketMsgQueue = []
     console.log(options)
     this.getmessages()
-    this.data.id =  setInterval(function() {
-      console.log("获取消息")
+
+    app.globalData.callback = function (data) {
+      console.log(data)
       that.getmessages()
-     }, 2000)
-    
 
-    // wx.connectSocket({
-    //   url: 'wss://weixin.tdeado.com/wss/',
-    //   header: {
-    //     'content-type': 'application/json'
-    //   }
-    // })
-    // wx.onSocketOpen(function (h) {
-
-    //   console.log("链接成功")
-    //   wx.sendSocketMessage({
-    //     data: '{"key":"bind","data":{"appVersion":"1.0.0","osVersion":"80.0.3987.132","channel":"browser","packageName":"com.farsunset.cim","device":"Chrome","deviceId":"8943c89645724ecc8099812e0695fd84"},"timestamp":1584867292991,"token":"' + wx.getStorageSync('user').token + '"}',
-    //   })
-
-    // });
-    // wx.onSocketMessage(function callback(res) {
-    //   let data = JSON.parse(res.data);
-    //   console.log(data)
-    //   if (data.key == 'message' && options.id==data.data.dialogueId){
-    //     that.data.messages.push(data.data)
-    //     that.setData({
-    //       messages:that.data.messages
-    //     })
-    //     wx.pageScrollTo({
-    //       duration: 300,
-    //       selector:".bp"
-    //     })
-    //   }
-    //   console.log(that.data.messages)
-    // });
-
-    // wx.onSocketError(function (err) {
-
-    //   console.log("链接失败")
-    // })
-
-
-
+    }
   },
-  getmessages(){
+  getmessages() {
     let that = this;
     wx.request({
       url: 'https://weixin.tdeado.com/im/message/list',
@@ -87,19 +52,22 @@ Page({
       },
       data: {
         dialogueId: that.data.options.id || '',
-        receiver:that.data.options.receiver || wx.getStorageSync('user').sourceId,
+        receiver: that.data.options.receiver || wx.getStorageSync('user').sourceId,
       },
       success(res) {
-        if(res.data.code==0){
+        if (res.data.code == 0) {
           that.setData({
             messages: res.data.data.records,
-            dialogueId:that.data.options.id,
-            sender:that.data.options.sender,
-            receiver:that.data.options.receiver,
+            dialogueId: that.data.options.id || '',
+            sender: that.data.options.sender || '',
+            receiver: that.data.options.receiver || '',
             userId: wx.getStorageSync('user').userInfo.id
           })
         }
-        
+        that.setData({
+          scrolltop: 50000
+        })
+
       }
     })
   },
@@ -109,13 +77,13 @@ Page({
     console.log(e.detail)
     let receiver
 
-    if(that.data.receiver && that.data.sender){
-      receiver = that.data.receiver==wx.getStorageSync('user').userInfo.id?that.data.sender:that.data.receiver
-    }else{
+    if (that.data.receiver && that.data.sender) {
+      receiver = that.data.receiver == wx.getStorageSync('user').userInfo.id ? that.data.sender : that.data.receiver
+    } else {
       receiver = wx.getStorageSync('user').sourceId
     }
 
-    let data={
+    let data = {
       receiver: receiver,
       content: e.detail.value,
       contentType: "0"
@@ -123,22 +91,23 @@ Page({
 
     this.data.messages.push(data)
     this.setData({
-      messages:that.data.messages,
-      inputValue:""
+      messages: that.data.messages,
+      inputValue: ""
     })
 
-    wx.request({
-      url: 'https://weixin.tdeado.com/im/message/send',
-      method: "POST",
-      header: {
-        token: wx.getStorageSync('user').token
-      },
-      data: data,
-      success(res){
+    app.sendSocketMessage(
 
+      {
+        "key": "message",
+        "data": data,
+        "receiver": receiver,
+        "token": wx.getStorageSync('user').token,
+        "timestamp": new Date().getTime()
       }
+    )
+    that.setData({
+      scrolltop: 50000
     })
-
 
   },
   //输入聚焦
@@ -149,13 +118,12 @@ Page({
     var that = this;
 
     that.setData({
-
       bottom: e.detail.height,
-      scrolltop:5000
+      scrolltop: 5000
     })
     wx.pageScrollTo({
       duration: 300,
-      selector:".bp"
+      selector: ".bp"
     })
   },
   blur: function (e) {
@@ -175,7 +143,7 @@ Page({
   getPhonenumber(e) {
     let that = this;
     console.log(e)
-    if(e.detail.errMsg=='getPhoneNumber:fail user deny'){
+    if (e.detail.errMsg == 'getPhoneNumber:fail user deny') {
       wx.navigateBack({
         delta: 1
       })
@@ -183,10 +151,12 @@ Page({
     }
     login.getTokenByPhone(this, e, function yes(res) {
 
-  
+
     })
   },
   onClose() {
-    this.setData({ show: false });
+    this.setData({
+      show: false
+    });
   }
 })
