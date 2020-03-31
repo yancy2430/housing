@@ -32,7 +32,7 @@ Page({
     }
     this.setData({
       id: options.id,
-      src: 'https://weixin.tdeado.com/miniapp/article/' + options.id+'.html'
+      src: 'https://weixin.tdeado.com/miniapp/article/' + options.id+'.html?token='+wx.getStorageSync('user').token
     })
  
   }, onShareAppMessage: function (res) {
@@ -67,8 +67,8 @@ Page({
 
     return {
       title: that.data.message.title ,
-      path: '/pages/article/article?id=' + this.data.id +"&scene="+scene,
-      imageUrl: that.data.message.image
+      path: '/pages/article/article?id=' + this.data.id +"&scene="+scene
+      // imageUrl: that.data.message.image
     }
   },
   getMessage(e) {
