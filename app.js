@@ -8,6 +8,7 @@ App({
     socketMsgQueue: []
   },
   onLaunch: function () {
+    
 
   },
   // 初始化socket
@@ -80,9 +81,19 @@ App({
     if (this.globalData.localSocket.readyState !== 0 && this.globalData.localSocket.readyState !== 1 && wx.getStorageSync('user')) {
       console.log('开始尝试连接WebSocket！readyState=' + this.globalData.localSocket.readyState)
       this.initSocket()
+      wx.request({
+        url: 'https://weixin.tdeado.com/im/message/unMsgNum',
+        header:{
+          token:wx.getStorageSync('user').token
+        },
+        success(res){
+          wx.setStorageSync('ms', Number(res.data.data))
+        }
+      })
     }
-  },
-  onHide: function () {
 
-  }
+  },
+	onHide:function(){ 
+	},
+  
 })

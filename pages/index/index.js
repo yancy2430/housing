@@ -39,6 +39,17 @@ Page({
       token: wx.getStorageSync("user").token
     })
 
+    that.getTabBar().setData({
+      ms: wx.getStorageSync('ms')
+    })
+    app.globalData.callback = function (res) {
+      that.getTabBar().setData({
+        ms: wx.getStorageSync('ms')
+      })
+      that.setData({
+        ms: wx.getStorageSync('ms')
+      })
+    }
     wx.getStorage({
       key: 'area',
       success(res) {

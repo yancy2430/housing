@@ -7,9 +7,9 @@ Page({
   },
   /**
    * 生命周期函数--监听页面加载
-   */  
+   */
   onLoad: function (options) {
-    if(options.scene){
+    if (options.scene) {
       wx.setStorageSync('scene', options.scene)
     }
 
@@ -39,34 +39,35 @@ Page({
   onShow() {
     this.getTabBar().init();
     let that = this;
-    
+
 
     if (wx.getStorageSync('user').token) {
       this.setData({
         login: true,
-        phone:wx.getStorageSync('user').userInfo.phone,
-        staff:wx.getStorageSync('user').isStaff,
-        ms:wx.getStorageSync('ms')
+        phone: wx.getStorageSync('user').userInfo.phone,
+        staff: wx.getStorageSync('user').isStaff,
+        ms: wx.getStorageSync('ms')
       })
     }
+
     that.getTabBar().setData({
       ms: wx.getStorageSync('ms')
     })
-  app.globalData.callback=function(res){
-    that.getTabBar().setData({
-      ms: wx.getStorageSync('ms')
-    })
-    that.setData({
-      ms:wx.getStorageSync('ms')
-    })
-  }
+    app.globalData.callback = function (res) {
+      that.getTabBar().setData({
+        ms: wx.getStorageSync('ms')
+      })
+      that.setData({
+        ms: wx.getStorageSync('ms')
+      })
+    }
     this.isSet()
 
 
 
 
   },
-  isSet(){
+  isSet() {
     let that = this
     //发起网络请求
     wx.request({
@@ -83,7 +84,7 @@ Page({
         wx.stopPullDownRefresh()
       }
     })
-    
+
   },
   toLogin(e) {
     this.setData({
@@ -100,9 +101,9 @@ Page({
   clearCache() {
     wx.clearStorage()
     this.setData({
-      login:false,
-      countData:{},
-      phone:""
+      login: false,
+      countData: {},
+      phone: ""
     })
 
     app.globalData.localSocket.close()
@@ -113,7 +114,7 @@ Page({
   },
   getPhonenumber(e) {
     let that = this;
-    login.getTokenByPhone(this, e,function yes(res){
+    login.getTokenByPhone(this, e, function yes(res) {
 
       that.isSet()
       if (wx.getStorageSync('user').token) {
@@ -127,21 +128,24 @@ Page({
     })
   },
   onClose() {
-    this.setData({ show: false });
-  },onShareAppMessage: function (res) {
+    this.setData({
+      show: false
+    });
+  },
+  onShareAppMessage: function (res) {
     let user = wx.getStorageSync("user")
     let scene = ''
-    if(user.isStaff){
+    if (user.isStaff) {
       scene = user.userInfo.id
-    }else{
+    } else {
       scene = user.sourceId
     }
-    if(scene=='' || scene == null || scene==undefined){
+    if (scene == '' || scene == null || scene == undefined) {
       scene = wx.getStorageSync('scene')
     }
     return {
-      title: '分享厦门本地宝' ,
-      path: '/pages/index/settle?&scene='+scene
+      title: '分享厦门本地宝',
+      path: '/pages/index/settle?&scene=' + scene
     }
   },
 })
