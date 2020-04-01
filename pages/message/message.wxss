@@ -14,7 +14,7 @@ page{
   width: 59vw;
   background: #ffffff;
   margin:2vw;
-  padding:10px;
+  padding:3vw;
   border-radius: 5px;
   overflow-wrap: break-word
 }
@@ -34,7 +34,7 @@ page{
 }
 .weui-input{
   height: 34px;
-  margin:8px 0px;
+  margin:8px 0px 8px 10px;
   padding:0 10px;
   background: #ffffff;
   border-radius: 3px;
@@ -63,4 +63,32 @@ page{
 .showbutton{
   font-size: 1.1rem!important;
   padding: 0 10px;
+}
+.my{
+  background: #07c160;
+  color: #ffffff;
+}
+.contact{
+  padding: 3vw 4vw;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 92vw;
+  z-index: 9999;
+}
+
+.product{
+
+  display: flex;
+  flex-direction: row;
+  z-index: 999;
+}
+.product .img{
+  width: 15vw;
+  height:12vw;
+}
+.product .title{
+  width: 38vw;
+  padding-left:5px;
+
 }

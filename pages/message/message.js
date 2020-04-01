@@ -8,7 +8,11 @@ Page({
    */
   data: {
     messages: [],
-    inputValue: ""
+    inputValue: "",
+  },
+  onCall:function(e){
+    console.log(e)
+    
   },
   /**
    * 生命周期函数--监听页面加载
@@ -27,20 +31,47 @@ Page({
         show: true
       })
     }
+   
     this.setData({
       options: options
     })
     let that = this;
-    let socketOpen = false
-    const socketMsgQueue = []
-    console.log(options)
     this.getmessages()
 
     app.globalData.callback = function (data) {
       console.log(data)
       that.getmessages()
-
     }
+
+    if(options.img && options.title){
+
+      let receiver
+      if (that.data.receiver && that.data.sender) {
+        receiver = that.data.receiver == wx.getStorageSync('user').userInfo.id ? that.data.sender : that.data.receiver
+      } else {
+        receiver = wx.getStorageSync('user').sourceId
+      }
+
+      let data = {
+        receiver: receiver,
+        content: JSON.stringify({img:options.img,title:options.title,type:options.type}),
+        contentType: "1"
+      }
+      app.sendSocketMessage(
+        {
+          "key": "message",
+          "data": data,
+          "receiver": receiver,
+          "token": wx.getStorageSync('user').token,
+          "timestamp": new Date().getTime()
+        },function(res){
+          that.getmessages()
+        }
+      )
+  
+    }
+
+
   },
   getmessages() {
     let that = this;
@@ -56,6 +87,12 @@ Page({
       },
       success(res) {
         if (res.data.code == 0) {
+          for (let index = 0; index < res.data.data.records.length; index++) {
+            const element = res.data.data.records[index];
+            if(element.contentType==1){
+              res.data.data.records[index].content = JSON.parse(element.content)
+            }
+          }
           that.setData({
             messages: res.data.data.records,
             dialogueId: that.data.options.id || '',
@@ -71,12 +108,13 @@ Page({
       }
     })
   },
-  onConfirm: function (e) {
-    console.log(e)
-    let that = this;
-    console.log(e.detail)
-    let receiver
+  openProduct:function(e){
 
+    console.log(e)
+  },
+  onConfirm: function (e) {
+    let that = this;
+    let receiver
     if (that.data.receiver && that.data.sender) {
       receiver = that.data.receiver == wx.getStorageSync('user').userInfo.id ? that.data.sender : that.data.receiver
     } else {
@@ -108,6 +146,9 @@ Page({
     that.setData({
       scrolltop: 50000
     })
+
+  },
+  openProduct(){
 
   },
   //输入聚焦

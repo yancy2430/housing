@@ -63,7 +63,7 @@ App({
     })
   },
   //统一发送消息
-  sendSocketMessage: function (msg) {
+  sendSocketMessage: function (msg,fun) {
     if (this.globalData.localSocket.readyState === 1) {
       // console.log(JSON.stringify(msg))      
       this.globalData.localSocket.send({
@@ -71,6 +71,9 @@ App({
         success: function (res) {
           // console.log('发送成功,返回结果为',res)
           console.log(res)
+          if(fun){
+            fun(res)
+          }
         }
       })
     } else {
