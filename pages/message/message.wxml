@@ -10,12 +10,14 @@
 
 			<image wx:if="{{item.sender && item.sender != userId}}" class="avater" src="https://weixin.tdeado.com/static/house/avatar.jpg" />
 			<image wx:else class="avater" src="" />
-			<view bindtap="openProduct"  data-index="{{index}}" wx:if="{{item.contentType==1}}" class="content product" >
-				<image bindtap="openProduct" data-index="{{index}}" class="img" src="https://weixin.tdeado.com{{item.content.img}}"></image>
-				<view bindtap="openProduct" data-index="{{index}}" class="title van-multi-ellipsis--l2">{{item.content.title}}</view>
+			<view class="content">
+			<view wx:if="{{item.contentType==1}}" class="product" bindtap="onOpenProduct" data-index="{{index}}">
+				<image class="img" src="https://weixin.tdeado.com{{item.content.img}}"></image>
+				<view class="title van-multi-ellipsis--l2">{{item.content.title}}</view>
 			</view>
-			<view wx:else class="content {{(item.contentType==0 && (item.sender == userId || !item.sender))?'my':''}}">
+			<view wx:else class="content-text {{(item.contentType==0 && (item.sender == userId || !item.sender))?'my':''}}">
 				{{item.content}}
+			</view>
 			</view>
 			<view class="avater" wx:if="{{item.sender == userId || !item.sender}}">
 				<open-data type="userAvatarUrl"></open-data>

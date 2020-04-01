@@ -11,12 +11,7 @@ page{
   flex-direction: row;
 }
 .content{
-  width: 59vw;
-  background: #ffffff;
-  margin:2vw;
-  padding:3vw;
-  border-radius: 5px;
-  overflow-wrap: break-word
+  width: 68vw;
 }
 .avater{
   width: 10vw;
@@ -64,9 +59,20 @@ page{
   font-size: 1.1rem!important;
   padding: 0 10px;
 }
+.content-text{
+  margin:2vw;
+  padding:3vw;
+  border-radius: 5px;
+  overflow-wrap: break-word;
+  background: #ffffff;
+  text-align: left;
+  float: left;
+}
 .my{
   background: #07c160;
   color: #ffffff;
+  text-align: right;
+  float: right;
 }
 .contact{
   padding: 3vw 4vw;
@@ -78,10 +84,15 @@ page{
 }
 
 .product{
-
+  margin:2vw;
+  padding:3vw;
+  border-radius: 5px;
+  overflow-wrap: break-word;
   display: flex;
   flex-direction: row;
   z-index: 999;
+
+  background: #ffffff;
 }
 .product .img{
   width: 15vw;
@@ -89,6 +100,6 @@ page{
 }
 .product .title{
   width: 38vw;
-  padding-left:5px;
+  padding-left:10px;
 
 }

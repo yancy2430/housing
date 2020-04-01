@@ -30,6 +30,7 @@ Page({
   },
   toMessage(e){
     console.log(e.currentTarget.dataset)
+    
     wx.navigateTo({
       url: '/pages/message/message?id='+e.currentTarget.dataset.id+"&receiver="+e.currentTarget.dataset.receiver+"&sender="+e.currentTarget.dataset.sender,
     })

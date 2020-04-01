@@ -129,7 +129,7 @@ Page({
   onMessage(e) {
     if (wx.getStorageSync("user") && wx.getStorageSync("user").userInfo && wx.getStorageSync("user").userInfo.phone) {
       wx.navigateTo({
-        url: '/pages/message/message?img='+this.data.product.details.cover+"&title="+this.data.product.details.productName+"&type=1",
+        url: '/pages/message/message?img='+this.data.product.details.cover+"&title="+this.data.product.details.productName+"&productId="+this.data.product.details.id+"&type=1",
       })
     } else {
       this.setData({

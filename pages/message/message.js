@@ -12,7 +12,17 @@ Page({
   },
   onCall:function(e){
     console.log(e)
-    
+    wx.request({
+      url: 'https://weixin.tdeado.com/miniapp/getPhone?id='+(this.data.options.receiver || wx.getStorageSync('user').sourceId),
+      header:{
+        token:wx.getStorageSync('user').token
+      },
+      success(res){
+        wx.makePhoneCall({
+          phoneNumber: res.data.data,
+        })
+      }
+    })
   },
   /**
    * 生命周期函数--监听页面加载
@@ -31,7 +41,9 @@ Page({
         show: true
       })
     }
-   
+    options.receiver = options.receiver == wx.getStorageSync('user').userInfo.id ? options.sender : options.receiver
+    options.sender = options.sender == wx.getStorageSync('user').userInfo.id ? options.sender : options.receiver
+
     this.setData({
       options: options
     })
@@ -54,7 +66,7 @@ Page({
 
       let data = {
         receiver: receiver,
-        content: JSON.stringify({img:options.img,title:options.title,type:options.type}),
+        content: JSON.stringify({img:options.img,title:options.title,type:options.type,productId:options.productId}),
         contentType: "1"
       }
       app.sendSocketMessage(
@@ -108,9 +120,17 @@ Page({
       }
     })
   },
-  openProduct:function(e){
-
-    console.log(e)
+  onOpenProduct:function(e){
+    console.log(this.data.messages[e.currentTarget.dataset.index].content.type)
+    if(this.data.messages[e.currentTarget.dataset.index].content.type==1){
+      wx.navigateTo({
+        url: '/pages/product/details?id=' + this.data.messages[e.currentTarget.dataset.index].content.productId,
+      })
+    }else{
+      wx.navigateTo({
+        url: '/pages/article/article?id=' + this.data.messages[e.currentTarget.dataset.index].content.productId,
+      })
+    }
   },
   onConfirm: function (e) {
     let that = this;
@@ -127,9 +147,7 @@ Page({
       contentType: "0"
     }
 
-    this.data.messages.push(data)
     this.setData({
-      messages: that.data.messages,
       inputValue: ""
     })
 
@@ -141,11 +159,14 @@ Page({
         "receiver": receiver,
         "token": wx.getStorageSync('user').token,
         "timestamp": new Date().getTime()
+      },function(res){
+        that.getmessages()
+        that.setData({
+          scrolltop: 50000
+        })
       }
     )
-    that.setData({
-      scrolltop: 50000
-    })
+    
 
   },
   openProduct(){
