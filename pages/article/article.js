@@ -32,7 +32,7 @@ Page({
     }
     this.setData({
       id: options.id,
-      src: 'https://weixin.tdeado.com/miniapp/article/' + options.id+'.html?token='+wx.getStorageSync('user').token
+      src: 'https://weixin.tdeado.com/miniapp/article/' + options.id+'.html?token='+wx.getStorageSync('user').token+"&openid="+wx.getStorageSync('session').openid
     })
  
   }, onShareAppMessage: function (res) {

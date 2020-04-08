@@ -7,6 +7,7 @@ Page({
   }
 
     this.data.where.area = options.areaId || '';
+    this.data.area = this.data.where.area
     console.log(this.data.where)
     this.setData({
       where: this.data.where
@@ -155,7 +156,8 @@ Page({
         value: 3
       }
     ],
-
+    products:[],
+    area:"",
     where: {
       area: {},
       price: {},
@@ -248,7 +250,10 @@ Page({
   }) {
     const activeId = this.data.activeId === detail.id ? null : detail.id;
     console.log(detail)
-    this.data.where.area = detail;
+    if(detail.id==0){
+      detail.id = this.data.area
+    }
+    this.data.where.area = detail.id;
     this.setData({
       activeId: activeId,
       where: this.data.where,
@@ -306,45 +311,34 @@ Page({
       token: wx.getStorageSync("user").token
     })
 
-    wx.getStorage({
-      key: 'area',
+    wx.request({
+      url: "https://weixin.tdeado.com/system/cityArea/byPid?pid=" + this.data.where.area,
+      data: {},
+      header: {
+        'token': that.data.token,
+        'content-type': 'application/json' // 默认值
+      },
       success(res) {
-        that.data.where.area = res.data
+        res.data.data.unshift({
+          text:"不限",
+          id:0
+        })
+
         that.setData({
-          area: res.data,
-          where: that.data.where
+          areaList: [{
+              // 导航名称
+              text: '城区',
+              // 禁用选项
+              disabled: false,
+              // 该导航下所有的可选项
+              children: res.data.data
+            },
+
+          ]
         })
-        wx.request({
-          url: "https://weixin.tdeado.com/system/cityArea/byPid?pid=" + res.data.id,
-          data: {},
-          header: {
-            'token': that.data.token,
-            'content-type': 'application/json' // 默认值
-          },
-          success(res) {
-            res.data.data.unshift({
-              text:"不限",
-              id:0
-            })
-
-            that.setData({
-              areaList: [{
-                  // 导航名称
-                  text: '城区',
-                  // 禁用选项
-                  disabled: false,
-                  // 该导航下所有的可选项
-                  children: res.data.data
-                },
-
-              ]
-            })
-          }
-        })
-        that.getProdcut();
-
       }
     })
+    that.getProdcut();
   },onShareAppMessage: function (res) {
     let user = wx.getStorageSync("user")
     let scene = ''

@@ -12,25 +12,20 @@ Page({
   data: {
     loading: false,
     area: [],
-    token: wx.getStorageSync("user").token
-
+    token: wx.getStorageSync("user").token,
+    searchValue:""
   },
   onPullDownRefresh() {
-    wx.request({
-      url: 'https://weixin.tdeado.com/miniapp/hot', //仅为示例，并非真实的接口地址
-      data: {},
-      header: {
-        'token': that.data.token,
-        'content-type': 'application/json' // 默认值
-      },
-      success(res) {
-        console.log(res.data)
-        that.setData({
-          products: res.data.data
-        })
-        wx.stopPullDownRefresh()
-      }
-    })
+    this.getHot()
+    
+  },
+   onChange(e) {
+    this.setData({
+      searchValue: e.detail
+    });
+  },
+  onSearch(){
+    this.getHot()
   },
   onShow() {
     this.getTabBar().init();
@@ -71,9 +66,15 @@ Page({
       }
     })
 
+    this.getHot()
+ 
 
+  },
+  getHot(){
+
+    let that = this;
     wx.request({
-      url: 'https://weixin.tdeado.com/miniapp/hot', //仅为示例，并非真实的接口地址
+      url: 'https://weixin.tdeado.com/miniapp/hot?key='+this.data.searchValue, //仅为示例，并非真实的接口地址
       data: {},
       header: {
         'token': that.data.token,
@@ -87,7 +88,6 @@ Page({
         wx.stopPullDownRefresh()
       }
     })
-
   },
   location() {
     let that = this;

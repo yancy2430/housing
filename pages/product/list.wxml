@@ -29,21 +29,6 @@
       <van-dropdown-item bind:change="sortChange" value="{{ where.sort }}" title="排序" options="{{ sortList }}" />
     </van-dropdown-menu>
   </van-sticky>
-  <van-grid border="{{false}}" square>
-    <van-grid-item text="厦门区域">
-      <van-icon slot="icon" size="40" name="https://ke-image.ljcdn.com/materials/appindexconf/d5592269bafbe134453afb01c5612658.png" />
-    </van-grid-item>
-    <van-grid-item text="漳州区域">
-      <van-icon slot="icon" size="40" name="https://ke-image.ljcdn.com/materials/appindexconf/94250adc5e77f9b816f77032e27a8412.png" />
-    </van-grid-item>
-    <van-grid-item text="泉州区域">
-      <van-icon slot="icon" size="40" name="https://ke-image.ljcdn.com/materials/appindexconf/44b50fa3627b67a9102c82f96ebd9189.png" />
-    </van-grid-item>
-    <van-grid-item text="其他区域">
-      <van-icon slot="icon" size="40" name="https://ke-image.ljcdn.com/materials/appindexconf/d10df2594bba41993ad72a7618c5727d.png" />
-    </van-grid-item>
-  </van-grid>
-  <!-- 间隔边框 -->
   <view class="interval van-hairline--top-bottom"></view>
   <view class="product-list">
        <product-list class="van-hairline--bottom" wx:for="{{products}}" product="{{item}}" bindtap="goProduct" data-id="{{item.id}}">
