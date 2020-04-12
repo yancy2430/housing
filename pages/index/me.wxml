@@ -87,32 +87,32 @@
 		<view class="interval"></view>
 		<van-grid column-num="4">
 			<van-grid-item square link-type="navigateTo" use-slot url="/pages/message/list">
-				<van-icon name="chat-o" color="rgb(25, 137, 250)" size="35px" info="{{ms>0?ms:''}}" />
+				<van-icon name="chat-o" color="#3AC7A8" size="35px" info="{{ms>0?ms:''}}" />
 
 				<button class="btn">消息中心</button>
 			</van-grid-item>
 			<van-grid-item square link-type="navigateTo" use-slot url="/pages/sharelog/sharelog">
-				<van-icon name="upgrade" color="rgb(25, 137, 250)" size="35px" />
+				<van-icon name="upgrade" color="#3AC7A8" size="35px" />
 				<button class="btn">分享记录</button>
 			</van-grid-item>
 			<van-grid-item square link-type="navigateTo" use-slot url="/pages/customer/history">
-				<van-icon name="browsing-history-o" color="rgb(25, 137, 250)" size="35px" />
+				<van-icon name="browsing-history-o" color="#3AC7A8" size="35px" />
 				<button class="btn">客户浏览</button>
 			</van-grid-item>
 			<van-grid-item square link-type="navigateTo" use-slot url="/pages/customer/customer">
-				<van-icon name="friends-o" color="rgb(25, 137, 250)" size="35px" />
+				<van-icon name="friends-o" color="#3AC7A8" size="35px" />
 				<button class="btn">名下客户</button>
 			</van-grid-item>
 			<van-grid-item square link-type="navigateTo" use-slot url="/pages/records/records">
-				<van-icon name="records" color="rgb(25, 137, 250)" size="35px" />
+				<van-icon name="records" color="#3AC7A8" size="35px" />
 				<button class="btn">报备记录</button>
 			</van-grid-item>
 			<van-grid-item square link-type="navigateTo" use-slot url="/pages/qrcode/qrcode">
-				<van-icon name="cluster-o" color="rgb(25, 137, 250)" size="35px" />
+				<van-icon name="cluster-o" color="#3AC7A8" size="35px" />
 				<button class="btn">我的二维码</button>
 			</van-grid-item>
 			<van-grid-item square bindtap="clearCache" use-slot>
-				<van-icon name="replay" color="rgb(25, 137, 250)" size="35px" />
+				<van-icon name="replay" color="#3AC7A8" size="35px" />
 				<button class="btn">退出登录</button>
 			</van-grid-item>
 		</van-grid>
