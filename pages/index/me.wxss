@@ -15,7 +15,7 @@
   display: block;
   width: 90rpx;
   height: 90rpx;
-  margin: 35rpx 20rpx 20rpx 70rpx;
+  margin: 60rpx 20rpx 20rpx 70rpx;
   border-radius: 50%;
   border: 2px solid #fff;
   /* box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);   */
@@ -61,7 +61,8 @@
 
 .name {
   color: #fff;
-  margin-top: 8.2vw;
+  margin-top: 11.2vw;
+
   margin-bottom: 0.5vw;
   font-size: 1.2rem;
   font-weight: 500;
