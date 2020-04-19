@@ -28,20 +28,21 @@
 		<van-row>
 			<van-col span="8">
 				<view class="topitem" bindtap="toCoupons">
-					<view class="topnum">{{countData.coupons}}</view>
+				<van-icon size="20px" name="http://localhost/static/house/1.png" />
+
 					<view class="toptext">优惠券</view>
 				</view>
 			</van-col>
 			<van-col span="8">
 				<view class="topitem" bindtap="toFocus">
 
-					<view class="topnum">{{countData.focus}}</view>
+				<van-icon size="20px" name="http://localhost/static/house/3.png" />
 					<view class="toptext">关注</view>
 				</view>
 			</van-col>
 			<van-col span="8">
 				<view class="topitem" bindtap="toHistory">
-					<view class="topnum">{{countData.history}}</view>
+				<van-icon size="20px" name="http://localhost/static/house/2.png" />
 					<view class="toptext">足迹</view>
 				</view>
 			</van-col>
@@ -87,32 +88,32 @@
 		<view class="interval"></view>
 		<van-grid column-num="4">
 			<van-grid-item square link-type="navigateTo" use-slot url="/pages/message/list">
-				<van-icon name="chat-o" color="#3AC7A8" size="35px" info="{{ms>0?ms:''}}" />
+				<van-icon name="chat-o" color="#2DBE35" size="35px" info="{{ms>0?ms:''}}" />
 
 				<button class="btn">消息中心</button>
 			</van-grid-item>
 			<van-grid-item square link-type="navigateTo" use-slot url="/pages/sharelog/sharelog">
-				<van-icon name="upgrade" color="#3AC7A8" size="35px" />
+				<van-icon name="upgrade" color="#2DBE35" size="35px" />
 				<button class="btn">分享记录</button>
 			</van-grid-item>
 			<van-grid-item square link-type="navigateTo" use-slot url="/pages/customer/history">
-				<van-icon name="browsing-history-o" color="#3AC7A8" size="35px" />
+				<van-icon name="browsing-history-o" color="#2DBE35" size="35px" />
 				<button class="btn">客户浏览</button>
 			</van-grid-item>
 			<van-grid-item square link-type="navigateTo" use-slot url="/pages/customer/customer">
-				<van-icon name="friends-o" color="#3AC7A8" size="35px" />
+				<van-icon name="friends-o" color="#2DBE35" size="35px" />
 				<button class="btn">名下客户</button>
 			</van-grid-item>
 			<van-grid-item square link-type="navigateTo" use-slot url="/pages/records/records">
-				<van-icon name="records" color="#3AC7A8" size="35px" />
+				<van-icon name="records" color="#2DBE35" size="35px" />
 				<button class="btn">报备记录</button>
 			</van-grid-item>
 			<van-grid-item square link-type="navigateTo" use-slot url="/pages/qrcode/qrcode">
-				<van-icon name="cluster-o" color="#3AC7A8" size="35px" />
+				<van-icon name="cluster-o" color="#2DBE35" size="35px" />
 				<button class="btn">我的二维码</button>
 			</van-grid-item>
 			<van-grid-item square bindtap="clearCache" use-slot>
-				<van-icon name="replay" color="#3AC7A8" size="35px" />
+				<van-icon name="replay" color="#2DBE35" size="35px" />
 				<button class="btn">退出登录</button>
 			</van-grid-item>
 		</van-grid>
@@ -120,8 +121,8 @@
 	<view class="interval"></view>
 	<official-account style=""></official-account>
 </view>
-<van-dialog use-slot confirm-button-text="授权" show="{{ show }}" show-cancel-button bind:confirm="onConfirm" confirm-button-open-type="getPhoneNumber" bind:getphonenumber="getPhonenumber" bind:close="onClose">
-	<view style="padding: 1vw;background-color: #1989fa;">
-		<van-button icon="https://weixin.tdeado.com/static/house/wxlogo.png" custom-style="padding: 1vw;" custom-class="showbutton" block type="info">微信授权登录</van-button>
+<van-dialog use-slot confirm-button-color="#2DBE35" confirm-button-text="授权" show="{{ show }}" show-cancel-button bind:confirm="onConfirm" confirm-button-open-type="getPhoneNumber" bind:getphonenumber="getPhonenumber" bind:close="onClose">
+	<view style="padding: 1vw;background-color: #2DBE35;">
+		<van-button icon="https://weixin.tdeado.com/static/house/wxlogo.png" color="#2DBE35" custom-style="padding: 1vw;" custom-class="showbutton" block type="info">微信授权登录</van-button>
 	</view>
 </van-dialog>

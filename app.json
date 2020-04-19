@@ -8,8 +8,8 @@
     "van-tag": "@vant/weapp/tag/index"
   },
   "pages": [
-    "pages/map/map",
     "pages/index/settle",
+    "pages/map/map",
     "pages/message/message",
     "pages/message/list",
     "pages/login/login",
@@ -41,7 +41,7 @@
   },
   "window": {
     "backgroundColor": "#FFFFFF",
-    "navigationBarBackgroundColor": "#3AC7A8",
+    "navigationBarBackgroundColor": "#2DBE35",
     "navigationBarTitleText": "厦门便民宝",
     "navigationBarTextStyle": "white"
   },
