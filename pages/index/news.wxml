@@ -17,8 +17,8 @@
   <view class="interval"></view>
 </view>
 
-<van-dialog use-slot confirm-button-color="#2DBE35" confirm-button-text="授权" show="{{ show }}" show-cancel-button bind:confirm="onConfirm" confirm-button-open-type="getPhoneNumber" bind:getphonenumber="getPhonenumber" bind:close="onClose">
-	<view style="padding: 1vw;background-color: #2DBE35;">
-		<van-button icon="https://weixin.tdeado.com/static/house/wxlogo.png" color="#2DBE35" custom-style="padding: 1vw;" custom-class="showbutton" block type="info">微信授权登录</van-button>
+<van-dialog use-slot confirm-button-color="#2ABD67" confirm-button-text="授权" show="{{ show }}" show-cancel-button bind:confirm="onConfirm" confirm-button-open-type="getPhoneNumber" bind:getphonenumber="getPhonenumber" bind:close="onClose">
+	<view style="padding: 1vw;background-color: #2ABD67;">
+		<van-button icon="https://weixin.tdeado.com/static/house/wxlogo.png" color="#2ABD67" custom-style="padding: 1vw;" custom-class="showbutton" block type="info">微信授权登录</van-button>
 	</view>
 </van-dialog>
