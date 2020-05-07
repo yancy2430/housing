@@ -98,7 +98,11 @@
 			</van-grid-item>
 			<van-grid-item square link-type="navigateTo" use-slot url="/pages/customer/history">
 				<van-icon name="browsing-history-o" color="#2ABD67" size="35px" />
-				<button class="btn">客户浏览</button>
+				<button class="btn">文章浏览</button>
+			</van-grid-item>
+			<van-grid-item square link-type="navigateTo" use-slot url="/pages/customer/houseHistory">
+				<van-icon name="browsing-history-o" color="#2ABD67" size="35px" />
+				<button class="btn">楼盘浏览</button>
 			</van-grid-item>
 			<van-grid-item square link-type="navigateTo" use-slot url="/pages/customer/customer">
 				<van-icon name="friends-o" color="#2ABD67" size="35px" />

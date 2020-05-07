@@ -17,7 +17,7 @@ Page({
   getlist(){
     let that = this;
     wx.request({
-      url: 'https://weixin.tdeado.com/miniapp/customerhistory?type=article',
+      url: 'https://weixin.tdeado.com/miniapp/customerhistory?type=house',
       header:{
         token:wx.getStorageSync("user").token
       },

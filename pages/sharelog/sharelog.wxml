@@ -1,6 +1,8 @@
 <!--pages/sharelog/sharelog.wxml-->
 <view>
-<van-cell-group wx:for="{{list}}" wx:key="key">
+<van-cell-group wx:for="{{sharelog.records}}" wx:key="key">
   <van-cell title="{{item.contentName}}" value="{{item.createTime}}" label="{{item.userName}}" border="{{ false }}" />
 </van-cell-group>
+
+  <view style="text-align: center;padding: 10px;"><van-loading size="20" type="spinner" color="#2ABD67" /></view>
 </view>
