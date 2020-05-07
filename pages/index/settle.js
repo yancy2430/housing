@@ -17,7 +17,7 @@ Page({
     if(options.scene){
       wx.setStorageSync('scene', options.scene)
     }
-    login.login(this)
+    login.check(this)
 
     let that = this;
     
@@ -103,7 +103,7 @@ Page({
 
   },
   onConfirm() {
-    login.login(this)
+    login.check(this)
   },
   getPhonenumber(e) {
     login.getTokenByPhone(this, e)

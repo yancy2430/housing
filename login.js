@@ -1,23 +1,33 @@
-function login(that){
+function check(that){
+  if(wx.getStorageSync('session')){
+    wx.checkSession({
+      success() {
+        getUserInfo(that)
+      },
+      fail() {
+        login(that)
+      }
+    })
+  }else{
+    login(that)
+  }
+}
 
-   // session_key 已经失效，需要重新执行登录流程
-   wx.login({
+function login(that){
+  wx.login({
     success(res) {
       console.log(res)
       if (res.code) {
         //发起网络请求
         wx.request({
-          url: 'https://weixin.tdeado.com/miniapp/login',
+          url: 'http://localhost:8080/member/maLogin',
           data: {
             code: res.code,
             scene: wx.getStorageSync('scene') || ''
           },
           success(res) {
-            wx.setStorage({
-              key: "session",
-              data: res.data.data
-            })
-
+            wx.setStorageSync('session', res.data.data)
+            getUserInfo(that)
           }
         })
       } else {
@@ -25,6 +35,23 @@ function login(that){
       }
     }
   })
+}
+
+function getUserInfo(that){
+  wx.request({
+    url: 'http://localhost:8080/member/userInfo',
+    header: {
+      'content-type': 'application/json' // 默认值
+    },
+    success(res) {
+      if(res.data.code==0){
+        wx.setStorageSync('userInfo', res.data.data)
+        
+      }
+     
+    }
+  })
+
 }
 
 
@@ -59,6 +86,7 @@ function getTokenByPhone(that,e,yes){
   })
 }
 module.exports = {
+  check: check,
   login: login,
   getTokenByPhone:getTokenByPhone
 };
