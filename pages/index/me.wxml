@@ -3,22 +3,16 @@
 	<view class="head">
 		<van-row>
 			<van-col>
-				<block wx:if="{{login}}">
 					<van-image custom-class="avater" round fit="cover" src="https://weixin.tdeado.com/static/images/avatar.jpg" />
-				</block>
-				<block wx:else>
-					<van-image custom-class="avater" round fit="cover" src="https://weixin.tdeado.com/static/images/avatar.jpg" />
-				</block>
 			</van-col>
 			<van-col>
 				<view class="name">
-					<block wx:if="{{login}}">
-						<text class="van-cell-text textButton name">{{phone}}</text>
+					<block wx:if="{{userInfo.phone}}">
+						<text class="van-cell-text textButton name">{{userInfo.phone}}</text>
 					</block>
-					<block wx:if="{{!login}}">
-						<text class="van-cell-text textButton name" bindtap="toLogin">注册/登录</text>
+					<block wx:if="{{!userInfo.phone}}">
+						<text class="van-cell-text textButton name" bindtap="toLogin">授权登录</text>
 					</block>
-
 				</view>
 			</van-col>
 
@@ -29,13 +23,11 @@
 			<van-col span="8">
 				<view class="topitem" bindtap="toCoupons">
 				<van-icon size="20px" name="http://weixin.tdeado.com/static/house/1.png" />
-
 					<view class="toptext">优惠券</view>
 				</view>
 			</van-col>
 			<van-col span="8">
 				<view class="topitem" bindtap="toFocus">
-
 				<van-icon size="20px" name="http://weixin.tdeado.com/static/house/3.png" />
 					<view class="toptext">关注</view>
 				</view>
@@ -48,7 +40,7 @@
 			</van-col>
 		</van-row>
 	</view>
-	<block wx:if="{{!staff}}">
+	<block wx:if="{{!session.staff}}">
 		<view class="interval"></view>
 		<van-cell-group>
 
@@ -67,7 +59,7 @@
 			</van-cell>
 
 
-			<van-cell custom-class="coll-item" size="large" icon="phone-o" border="{{true}}" value="{{countData.contact}}" is-link>
+			<van-cell custom-class="coll-item" size="large" icon="phone-o" border="{{true}}" value="{{userInfo.sourcePhone}}" is-link>
 				<view slot="title">
 					<button class="van-cell-text textButton">咨询电话 </button>
 				</view>
@@ -77,19 +69,14 @@
 					<button class="van-cell-text textButton" open-type="feedback">意见反馈 </button>
 				</view>
 			</van-cell>
-			<!-- <van-cell custom-class="coll-item" size="large" icon="replay" border="{{false}}" is-link>
-				<view slot="title">
-					<button class="van-cell-text textButton" bindtap="clearCache">退出登录</button>
-				</view>
-			</van-cell> -->
+	
 		</van-cell-group>
 	</block>
-	<block wx:if="{{staff}}">
+	<block wx:if="{{session.staff}}">
 		<view class="interval"></view>
 		<van-grid column-num="4">
 			<van-grid-item square link-type="navigateTo" use-slot url="/pages/message/list">
 				<van-icon name="chat-o" color="#2ABD67" size="35px" info="{{ms>0?ms:''}}" />
-
 				<button class="btn">消息中心</button>
 			</van-grid-item>
 			<van-grid-item square link-type="navigateTo" use-slot url="/pages/sharelog/sharelog">
@@ -116,10 +103,7 @@
 				<van-icon name="cluster-o" color="#2ABD67" size="35px" />
 				<button class="btn">我的二维码</button>
 			</van-grid-item>
-			<!-- <van-grid-item square bindtap="clearCache" use-slot>
-				<van-icon name="replay" color="#2ABD67" size="35px" />
-				<button class="btn">退出登录</button>
-			</van-grid-item> -->
+
 		</van-grid>
 	</block>
 	<view class="interval"></view>

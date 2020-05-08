@@ -9,9 +9,9 @@
   },
   "pages": [
     "pages/index/settle",
+    "pages/message/list",
     "pages/map/map",
     "pages/message/message",
-    "pages/message/list",
     "pages/login/login",
     "pages/product/report",
     "pages/records/records",

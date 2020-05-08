@@ -22,7 +22,7 @@
   <view class="interval van-hairline--top-bottom"></view>
   <view class="product-list">
 
-    <product-list class="van-hairline--bottom" wx:for="{{products}}" product="{{item}}" bindtap="goProduct" data-id="{{item.id}}">
+    <product-list class="van-hairline--bottom" wx:for="{{res.records}}" product="{{item}}" bindtap="goProduct" data-id="{{item.id}}">
     </product-list>
 
   <view class="interval"></view>

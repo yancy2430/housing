@@ -1,7 +1,6 @@
 // pages/settle/settle.js
 const app = getApp()
 var login = require('../../login.js');
-var binUtil = require('../../utils/binUtil.js');
 
 
 Page({
@@ -9,39 +8,21 @@ Page({
    * 页面的初始数据
    */
   data: {
-    token: wx.getStorageSync('token'),
-    list: [],
+    res: {
+      current:0,
+      records:[]
+    },
     searchValue: ""
   },  
   onLoad: function (options) {
     if(options.scene){
       wx.setStorageSync('scene', options.scene)
     }
-    login.check(this)
-
-    let that = this;
-    
-    wx.request({
-      url: 'https://weixin.tdeado.com/miniapp/check',
-      success(res) {
-        wx.setStorageSync('checkNum', Number(res.data.data))
-      }
-    })
-  },
-  ab2str(buf) {
-    return String.fromCharCode.apply(null, new Uint16Array(buf));
-  },
-  str2ab(str) {
-    var buf = new ArrayBuffer(str.length * 2); // 2 bytes for each char
-    var bufView = new Uint16Array(buf);
-    for (var i = 0, strLen = str.length; i < strLen; i++) {
-      bufView[i] = str.charCodeAt(i);
-    }
-    return buf;
   },
   onPullDownRefresh() {
-
-    this.getNews("");
+    this.data.res.current = 0
+    this.data.res.records = []
+    this.getNews(this.data.searchValue);
   },
   onShow() {
     this.getTabBar().init();
@@ -65,20 +46,36 @@ Page({
     });
   },
   onSearch() {
+    this.data.res.current = 0
+    this.data.res.records = []
+    this.getNews(this.data.searchValue)
+  },
+  onReachBottom(){
+    this.data.res.current=this.data.res.current+1
     this.getNews(this.data.searchValue)
   },
   getNews(key) {
     let that = this;
     wx.request({
-      url: 'https://weixin.tdeado.com/miniapp/settle?key=' + key,
+      url: 'http://localhost:8080/mini/home/settle',
       header: {
-        'token': that.data.token,
+        'token': wx.getStorageSync('session').token,
         'content-type': 'application/json' // 默认值
+      },
+      data:{
+        key:key,
+        page:that.data.res.current
       },
       success(res) {
         console.log(res.data.data.records)
+        that.data.res.current = res.data.data.current
+        res.data.data.records.forEach(e => {
+          
+          that.data.res.records.push(e)
+        });
+
         that.setData({
-          list: res.data.data.records
+          res: that.data.res
         })
         wx.stopPullDownRefresh()
       }
@@ -87,7 +84,6 @@ Page({
   toArticle(e) {
     let that = this;
     var value = wx.getStorageSync('articleNum')
-
     if (value > wx.getStorageSync('checkNum') && !wx.getStorageSync('user')) {
       that.setData({
         show: true

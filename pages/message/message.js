@@ -15,7 +15,7 @@ Page({
     wx.request({
       url: 'https://weixin.tdeado.com/miniapp/getPhone?id='+(this.data.options.receiver || wx.getStorageSync('user').sourceId),
       header:{
-        token:wx.getStorageSync('user').token
+        token:wx.getStorageSync('session').token
       },
       success(res){
         wx.makePhoneCall({
@@ -28,95 +28,38 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onHide: function () {
-    wx.setStorageSync('ms', 0)
   },
   onUnload() {
-    wx.setStorageSync('ms', 0)
   },
   onLoad: function (options) {
-    if (wx.getStorageSync("user") && wx.getStorageSync("user").userInfo && wx.getStorageSync("user").userInfo.phone) {
-
-    } else {
-      this.setData({
-        show: true
-      })
-    }
-    options.receiver = options.receiver == wx.getStorageSync('user').userInfo.id ? options.sender : options.receiver
-    options.sender = options.sender == wx.getStorageSync('user').userInfo.id ? options.sender : options.receiver
-
+    console.log(options)
     this.setData({
-      options: options
+      userInfo:wx.getStorageSync('userInfo'),
+      to:options.to,
+      offset:options.offset
     })
-    let that = this;
     this.getmessages()
-
-    app.globalData.callback = function (data) {
-      console.log(data)
-      that.getmessages()
-    }
-
-    if(options.img && options.title){
-
-      let receiver
-      if (that.data.receiver && that.data.sender) {
-        receiver = that.data.receiver == wx.getStorageSync('user').userInfo.id ? that.data.sender : that.data.receiver
-      } else {
-        receiver = wx.getStorageSync('user').sourceId
-      }
-
-      let data = {
-        receiver: receiver,
-        content: JSON.stringify({img:options.img,title:options.title,type:options.type,productId:options.productId}),
-        contentType: "1"
-      }
-      app.sendSocketMessage(
-        {
-          "key": "message",
-          "data": data,
-          "receiver": receiver,
-          "token": wx.getStorageSync('user').token,
-          "timestamp": new Date().getTime()
-        },function(res){
-          that.getmessages()
-        }
-      )
-  
-    }
-
-
   },
   getmessages() {
     let that = this;
     wx.request({
-      url: 'https://weixin.tdeado.com/im/message/list',
+      url: 'http://localhost:8080/mini/im/message',
       header: {
-        token: wx.getStorageSync('user').token,
+        token: wx.getStorageSync('session').token,
         'content-type': 'application/x-www-form-urlencoded'
       },
       data: {
-        dialogueId: that.data.options.id || '',
-        receiver: that.data.options.receiver || wx.getStorageSync('user').sourceId,
+        toUserId: that.data.to,
+        offset: that.data.offset ,
       },
       success(res) {
-        if (res.data.code == 0) {
-          for (let index = 0; index < res.data.data.records.length; index++) {
-            const element = res.data.data.records[index];
-            if(element.contentType==1){
-              res.data.data.records[index].content = JSON.parse(element.content)
-            }
-          }
-          that.setData({
-            messages: res.data.data.records,
-            dialogueId: that.data.options.id || '',
-            sender: that.data.options.sender || '',
-            receiver: that.data.options.receiver || '',
-            userId: wx.getStorageSync('user').userInfo.id
-          })
-        }
+        res.data.forEach(item => {
+          that.data.messages.push(item)
+        });
+        console.log(that.data.messages)
         that.setData({
-          scrolltop: 50000
+          messages:that.data.messages
         })
-
       }
     })
   },
@@ -150,24 +93,6 @@ Page({
     this.setData({
       inputValue: ""
     })
-
-    app.sendSocketMessage(
-
-      {
-        "key": "message",
-        "data": data,
-        "receiver": receiver,
-        "token": wx.getStorageSync('user').token,
-        "timestamp": new Date().getTime()
-      },function(res){
-        that.getmessages()
-        that.setData({
-          scrolltop: 50000
-        })
-      }
-    )
-    
-
   },
   openProduct(){
 

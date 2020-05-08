@@ -2,24 +2,35 @@
 const app = getApp()
 var login = require('../../login.js');
 
+
 Page({
   /**
    * 页面的初始数据
    */
   data: {
-    list: []
-  }, onPullDownRefresh() {
-    this.getNews("");
+    res: {
+      current:0,
+      records:[]
+    },
+    searchValue: ""
   },  
   onLoad: function (options) {
     if(options.scene){
       wx.setStorageSync('scene', options.scene)
     }
-
+  },
+  onPullDownRefresh() {
+    this.data.res.current = 0
+    this.data.res.records = []
+    this.getNews(this.data.searchValue);
   },
   onShow() {
     this.getTabBar().init();
-    let that = this;that.getTabBar().setData({
+    let that = this;
+    this.setData({
+      token: wx.getStorageSync("user").token
+    })
+    that.getTabBar().setData({
       ms: wx.getStorageSync('ms')
     })
     app.globalData.callback=function(res){
@@ -27,65 +38,77 @@ Page({
         ms: wx.getStorageSync('ms')
       })
     }
-    this.setData({
-      token: wx.getStorageSync("user").token
-    })
-
     this.getNews("");
-
-  },
-  getNews(key){
-    let that = this;
-    wx.request({
-      url: 'https://weixin.tdeado.com/miniapp/edu?key='+key,
-      header: {
-        'token': that.data.token,
-        'content-type': 'application/json' // 默认值
-      },
-      success(res) {
-        console.log(res.data.data.records)
-        that.setData({
-          list: res.data.data.records
-        })
-        wx.stopPullDownRefresh()
-      }
-    })
   },
   onChange(e) {
     this.setData({
       searchValue: e.detail
     });
   },
-  onSearch(){
+  onSearch() {
+    this.data.res.current = 0
+    this.data.res.records = []
     this.getNews(this.data.searchValue)
+  },
+  onReachBottom(){
+    this.data.res.current=this.data.res.current+1
+    this.getNews(this.data.searchValue)
+  },
+  getNews(key) {
+    let that = this;
+    wx.request({
+      url: 'http://localhost:8080/mini/home/edu',
+      header: {
+        'token': wx.getStorageSync('session').token,
+        'content-type': 'application/json' // 默认值
+      },
+      data:{
+        key:key,
+        page:that.data.res.current
+      },
+      success(res) {
+        console.log(res.data.data.records)
+        that.data.res.current = res.data.data.current
+        res.data.data.records.forEach(e => {
+          
+          that.data.res.records.push(e)
+        });
+
+        that.setData({
+          res: that.data.res
+        })
+        wx.stopPullDownRefresh()
+      }
+    })
   },
   toArticle(e) {
     let that = this;
     var value = wx.getStorageSync('articleNum')
+    if (value > wx.getStorageSync('checkNum') && !wx.getStorageSync('user')) {
+      that.setData({
+        show: true
+      })
 
-      if(value>wx.getStorageSync('checkNum') && !wx.getStorageSync('user')){
-        that.setData({
-          show:true
-        })
-       
-        return;
-      }else{
-        wx.navigateTo({
-          url: '/pages/article/article?id=' + e.currentTarget.dataset.id,
-        })
-        
-      }
-  
+      return;
+    } else {
+      wx.navigateTo({
+        url: '/pages/article/article?id=' + e.currentTarget.dataset.id,
+      })
+
+    }
+
   },
-  onConfirm(){
-      login.login(this)
+  onConfirm() {
+    login.check(this)
   },
   getPhonenumber(e) {
-    login.getTokenByPhone(this,e)
+    login.getTokenByPhone(this, e)
   },
   onClose() {
-    this.setData({ show: false });
-  },onShareAppMessage: function (res) {
+    this.setData({
+      show: false
+    });
+  }, onShareAppMessage: function (res) {
     let user = wx.getStorageSync("user")
     let scene = ''
     if(user.isStaff){
@@ -101,5 +124,4 @@ Page({
       path: '/pages/index/settle?&scene='+scene
     }
   },
-
 })

@@ -15,14 +15,14 @@ Page({
   onLoad: function (options) {
     let that = this;
     wx.request({
-      url: 'https://weixin.tdeado.com/im/dialogue/list',
+      url: 'http://localhost:8080/mini/im/dialogue',
       method:"POST",
       header: {
-        token: wx.getStorageSync('user').token
+        token: wx.getStorageSync('session').token
       },
       success(res){
         that.setData({
-          list:res.data.data
+          list:res.data
         })
       }
     })
@@ -30,9 +30,8 @@ Page({
   },
   toMessage(e){
     console.log(e.currentTarget.dataset)
-    
     wx.navigateTo({
-      url: '/pages/message/message?id='+e.currentTarget.dataset.id+"&receiver="+e.currentTarget.dataset.receiver+"&sender="+e.currentTarget.dataset.sender,
+      url: '/pages/message/message?to='+e.currentTarget.dataset.to+"&offset="+e.currentTarget.dataset.offset,
     })
   }
 

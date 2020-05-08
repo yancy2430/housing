@@ -1,31 +1,28 @@
-//index.js
-//获取应用实例
+// pages/settle/settle.js
 const app = getApp()
+var login = require('../../login.js');
+
 
 Page({
+  /**
+   * 页面的初始数据
+   */
+  data: {
+    res: {
+      current:0,
+      records:[]
+    },
+    searchValue: ""
+  },  
   onLoad: function (options) {
-    if (options.scene) {
+    if(options.scene){
       wx.setStorageSync('scene', options.scene)
     }
-
-  },
-  data: {
-    loading: false,
-    area: [],
-    token: wx.getStorageSync("user").token,
-    searchValue:""
   },
   onPullDownRefresh() {
-    this.getHot()
-    
-  },
-   onChange(e) {
-    this.setData({
-      searchValue: e.detail
-    });
-  },
-  onSearch(){
-    this.getHot()
+    this.data.res.current = 0
+    this.data.res.records = []
+    this.getNews(this.data.searchValue);
   },
   onShow() {
     this.getTabBar().init();
@@ -33,90 +30,58 @@ Page({
     this.setData({
       token: wx.getStorageSync("user").token
     })
-
     that.getTabBar().setData({
       ms: wx.getStorageSync('ms')
     })
-    app.globalData.callback = function (res) {
+    app.globalData.callback=function(res){
       that.getTabBar().setData({
         ms: wx.getStorageSync('ms')
       })
-      that.setData({
-        ms: wx.getStorageSync('ms')
-      })
     }
-    wx.getStorage({
-      key: 'area',
-      success(res) {
-        console.log(res)
-        if (res.data) {
-
-          that.setData({
-            area: res.data
-          })
-        } else {
-          // that.location()
-
-        }
-      },
-      fail(err) {
-        console.log(err)
-        // that.location()
-
-      }
-    })
-
-    this.getHot()
- 
-
+    this.getNews("");
   },
-  getHot(){
-
+  onChange(e) {
+    this.setData({
+      searchValue: e.detail
+    });
+  },
+  onSearch() {
+    this.data.res.current = 0
+    this.data.res.records = []
+    this.getNews(this.data.searchValue)
+  },
+  onReachBottom(){
+    this.data.res.current=this.data.res.current+1
+    this.getNews(this.data.searchValue)
+  },
+  getNews(key) {
     let that = this;
     wx.request({
-      url: 'https://weixin.tdeado.com/miniapp/hot?key='+this.data.searchValue, //仅为示例，并非真实的接口地址
-      data: {},
+      url: 'http://localhost:8080/mini/home/houses',
       header: {
-        'token': that.data.token,
+        'token': wx.getStorageSync('session').token,
         'content-type': 'application/json' // 默认值
       },
+      data:{
+        key:key,
+        page:that.data.res.current
+      },
       success(res) {
-        console.log(res.data)
+        console.log(res.data.data.records)
+        that.data.res.current = res.data.data.current
+        res.data.data.records.forEach(e => {
+          
+          that.data.res.records.push(e)
+        });
+
         that.setData({
-          products: res.data.data
+          res: that.data.res
         })
         wx.stopPullDownRefresh()
       }
     })
   },
-  location() {
-    let that = this;
-    wx.getLocation({
-      type: 'wgs84',
-      success(res) {
-        console.log(res)
-        wx.request({
-          url: 'https://weixin.tdeado.com/location/cityByGps?longitude=' + res.latitude + '&latitude=' + res.longitude,
-          data: {},
-          header: {
-            'token': that.data.token,
-            'content-type': 'application/json' // 默认值
-          },
-          success(res) {
-            console.log(res.data.data)
-            wx.setStorage({
-              key: "area",
-              data: res.data.data
-            })
-            that.setData({
-              area: res.data.data
-            })
-          }
-        })
 
-      }
-    })
-  },
   goProduct(e) {
     console.log(e.currentTarget.dataset.id)
     wx.navigateTo({
@@ -133,31 +98,31 @@ Page({
       url: '/pages/index/area',
     })
   },
-  onShareAppMessage: function (res) {
-    if (res.from === 'button') {
-      // 来自页面内转发按钮
-      console.log(res.target)
-    }
 
-    return {
-      title: '厦门便民宝',
-      path: '/pages/index/settle'
-    }
+  onConfirm() {
+    login.check(this)
   },
-  onShareAppMessage: function (res) {
+  getPhonenumber(e) {
+    login.getTokenByPhone(this, e)
+  },
+  onClose() {
+    this.setData({
+      show: false
+    });
+  }, onShareAppMessage: function (res) {
     let user = wx.getStorageSync("user")
     let scene = ''
-    if (user.isStaff) {
+    if(user.isStaff){
       scene = user.userInfo.id
-    } else {
+    }else{
       scene = user.sourceId
     }
-    if (scene == '' || scene == null || scene == undefined) {
+    if(scene=='' || scene == null || scene==undefined){
       scene = wx.getStorageSync('scene')
     }
     return {
-      title: '分享厦门本地宝',
-      path: '/pages/index/settle?&scene=' + scene
+      title: '分享厦门本地宝' ,
+      path: '/pages/index/settle?&scene='+scene
     }
   },
 })

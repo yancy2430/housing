@@ -1,5 +1,6 @@
 //app.js
 
+var login = require('./login.js');
 App({
   globalData: {
     localSocket: {},
@@ -13,8 +14,7 @@ App({
   },
 
   onShow: function (options) {
-    
-
+    login.check(this)
   },
   onHide: function () {},
 
