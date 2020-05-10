@@ -5,82 +5,97 @@ Page({
    * 页面的初始数据
    */
   data: {
+    activeId:null,
     data:[
       {
+        "id":"area",
         "name": "区域",
-        "type": "tree",
         "data": [
           {
-            "text": "所有城市",
-            "disabled": false,
-            "children": [
-              {
-                "text": "温州",
-                "id": 1,
-                "disabled": true
-              },
-              {
-                "text": "杭州",
-                "id": 2
-              }
-            ]
+            "text": "不限",
+            "value": 0
+          },
+          {
+            "text": "温州",
+            "value": 1
+          },
+          {
+            "text": "杭州",
+            "value": 2
           }
         ]
       },
       {
+        "id":"model",
         "name": "户型",
-        "type": "tag",
         "data": [
           {
+            "text": "不限",
+            "value": 0
+          },
+          {
             "text": "一居室",
-            "id": 1
+            "value": 1
           },
           {
             "text": "二居室",
-            "id": 1
+            "value": 2
           },
           {
             "text": "三居室",
-            "id": 1
+            "value": 3
           }
         ]
       },
       {
+        "id":"price",
         "name": "价格",
-        "type": "select",
         "data": [
           {
-            "text": "所有城市",
-            "disabled": false,
-            "children": [
-              {
-                "text": "温州",
-                "id": 1,
-                "disabled": true
-              },
-              {
-                "text": "杭州",
-                "id": 2
-              }
-            ]
-          }
-        ]
+          "text": "不限",
+          "value": "0"
+        },
+        {
+          "text": "40万以下",
+          "value": "0-40"
+        },
+        {
+          "text": "40-60万",
+          "value": "40-60"
+        },
+        {
+          "text": "60-80万",
+          "value": "60-80"
+        },
+        {
+          "text": "80-100万",
+          "value": "80-100"
+        },
+        {
+          "text": "100-150万",
+          "value": "100-150"
+        },
+        {
+          "text": "150-200万",
+          "value": "150-200"
+        },
+        {
+          "text": "200万以上",
+          "value": "200"
+        }
+      ]
       },
       {
+        "id":"sort",
         "name": "排序",
-        "type": "select",
         "data": [
           {
-            "text": "默认排序",
-            "id": 1
+            "text": "默认",
+            "value": 0
           },
           {
-            "text": "价格排序",
-            "id": 1
-          },
-          {
-            "text": "时间排序",
-            "id": 1
+            "text": "价格",
+            "value": 1
           }
         ]
       },
@@ -91,56 +106,11 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-
+  choose: function (options) {
+    console.log(options.detail)
+    this.setData({
+      data:options.detail.data
+    })
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
 })

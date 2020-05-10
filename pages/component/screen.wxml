@@ -2,33 +2,11 @@
 	<van-dropdown-menu>
 		<block wx:for="{{data}}" wx:key="index">
 
-			<van-dropdown-item wx:if="{{item.type=='tree'}}" title="{{item.name}}">
-				<van-tree-select items="{{item.data}}" active-id="{{activeId}}" bind:click-nav="onClickNav" bind:click-item="onClickItem" />
-			</van-dropdown-item>
-			<van-dropdown-item wx:if="{{item.type=='tag'}}" title="{{item.name}}">
-        <view class="hxwk">
-					<van-button wx:for="{{item.data}}" wx:key="index" custom-class="hxclass" type="primary" color="#f8f8f8" custom-style="{{item.selectd?'color:#1989fa':'color:#000'}}" size="small">{{item.text}}</van-button>
-				</view>
-			</van-dropdown-item>
-			<van-dropdown-item wx:if="{{item.type=='select'}}" options="{{ item.data }}" title="{{item.name}}">
+
+			<van-dropdown-item options="{{ item.data }}" title="{{item.value?item.selectTitle:item.name}}" value="{{ item.value }}" data-index="{{index}}" data-title="{{item.name}}" data-id="{{item.id}}" bind:change="change">
 			</van-dropdown-item>
       
 		</block>
-		<!-- 
-      <van-dropdown-item id="priceitem" title="价格">
-        <van-tree-select items="{{ priceInterval }}" active-id="{{priceActiveId}}" main-active-index="{{priceActiveIndex }}" bind:click-nav="onClickPriceNav" bind:click-item="onClickPriceItem" />
-      </van-dropdown-item>
-      <van-dropdown-item  id="houseTypeitem" title="户型">
-        <view class="hxwk">
-        <van-button wx:for="{{houseType}}" wx:key="index" custom-class="hxclass" type="primary" 
-        bindtap="clickHouseType"
-        data-id="{{index}}"
-        color="#f8f8f8" custom-style="{{item.selectd?'color:#1989fa':'color:#000'}}" size="small">{{item.text}}</van-button>
-        </view>
-        <van-button type="info" block bind:click="onHouseTypeConfirm">
-          确定
-        </van-button>
-      </van-dropdown-item>
-      <van-dropdown-item bind:change="sortChange" value="{{ where.sort }}" title="排序" options="{{ sortList }}" /> -->
+		
 	</van-dropdown-menu>
 </van-sticky>

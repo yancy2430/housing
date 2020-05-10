@@ -1,5 +1,6 @@
 {
   "usingComponents": {
+    "screen": "/pages/component/screen",
     "product-list": "/pages/component/product-list",
     "van-search": "@vant/weapp/search/index",
     "van-dropdown-menu": "@vant/weapp/dropdown-menu/index",
@@ -8,5 +9,7 @@
     "van-tree-select": "@vant/weapp/tree-select/index",
     "van-radio": "@vant/weapp/radio/index",
     "van-radio-group": "@vant/weapp/radio-group/index"
-  }
+    
+  },
+  "enablePullDownRefresh": true
 }

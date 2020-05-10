@@ -6,32 +6,11 @@
   </van-search>
 
   <van-sticky>
-    <van-dropdown-menu>
-      <van-dropdown-item id="areaitem" title="{{areaTitle?areaTitle:'区域'}}">
-        <van-tree-select items="{{ areaList }}" active-id="{{activeId}}" bind:click-nav="onClickNav" bind:click-item="onClickItem" />
-
-      </van-dropdown-item>
-      <van-dropdown-item id="priceitem" title="{{priceActiveId!=0?priceTitle:'价格'}}">
-        <van-tree-select items="{{ priceInterval }}" active-id="{{priceActiveId}}" main-active-index="{{priceActiveIndex }}" bind:click-nav="onClickPriceNav" bind:click-item="onClickPriceItem" />
-
-      </van-dropdown-item>
-      <van-dropdown-item  id="houseTypeitem" title="户型{{selectNum==0?'':'('+selectNum+')'}}">
-        <view class="hxwk">
-        <van-button wx:for="{{houseType}}" wx:key="index" custom-class="hxclass" type="primary" 
-        bindtap="clickHouseType"
-        data-id="{{index}}"
-        color="#f8f8f8" custom-style="{{item.selectd?'color:#1989fa':'color:#000'}}" size="small">{{item.text}}</van-button>
-        </view>
-        <van-button type="info" block bind:click="onHouseTypeConfirm">
-          确定
-        </van-button>
-      </van-dropdown-item>
-      <van-dropdown-item bind:change="sortChange" value="{{ where.sort }}" title="排序" options="{{ sortList }}" />
-    </van-dropdown-menu>
+    <screen data="{{screen}}" bind:choose="choose"></screen>
   </van-sticky>
   <view class="interval van-hairline--top-bottom"></view>
   <view class="product-list">
-       <product-list class="van-hairline--bottom" wx:for="{{products}}" product="{{item}}" bindtap="goProduct" data-id="{{item.id}}">
+       <product-list class="van-hairline--bottom" wx:for="{{res.records}}" product="{{item}}" bindtap="goProduct" data-id="{{item.id}}">
     </product-list>
   </view>
 

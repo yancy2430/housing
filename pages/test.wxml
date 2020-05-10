@@ -1,2 +1,2 @@
 <!--pages/test.wxml-->
-<screen data="{{data}}"></screen>
+<screen data="{{data}}" bind:choose="choose"></screen>
