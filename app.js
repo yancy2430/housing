@@ -9,12 +9,9 @@ App({
     socketMsgQueue: []
   },
   onLaunch: function () {
-
-
   },
 
   onShow: function (options) {
-    login.check(this)
   },
   onHide: function () {},
 

@@ -286,11 +286,11 @@ Page({
   getProdcut(){
     let that = this;
     wx.request({
-      url: 'https://weixin.tdeado.com/miniapp/list', //仅为示例，并非真实的接口地址
+      url: 'http://localhost:8080/mini/house/list', //仅为示例，并非真实的接口地址
       data: that.data.where,
       method:"POST",
       header: {
-        'token': that.data.token,
+        'token': wx.getStorageSync('session').token,
         'content-type': 'application/json' // 默认值
       },
       success(res) {

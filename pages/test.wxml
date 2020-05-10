@@ -1,0 +1,2 @@
+<!--pages/test.wxml-->
+<screen data="{{data}}"></screen>

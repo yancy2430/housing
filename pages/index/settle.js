@@ -26,18 +26,8 @@ Page({
   },
   onShow() {
     this.getTabBar().init();
+    login.check(this)
     let that = this;
-    this.setData({
-      token: wx.getStorageSync("user").token
-    })
-    that.getTabBar().setData({
-      ms: wx.getStorageSync('ms')
-    })
-    app.globalData.callback=function(res){
-      that.getTabBar().setData({
-        ms: wx.getStorageSync('ms')
-      })
-    }
     this.getNews("");
   },
   onChange(e) {
