@@ -1,4 +1,9 @@
-<view class="container">
+
+<web-view src="{{src}}" bindmessage='getMessage'>
+
+</web-view>
+
+<!-- <view class="container">
 	<view class="head">
 		<view>
 			<p class="title">{{product.details.productName}}</p>
@@ -10,7 +15,6 @@
 			</van-tag>
 		</view>
 		<view class="tags">
-			<!-- <text class="van-hairline--surround tag">{{product.details.productFeature}}</text> -->
 		</view>
 		<view>
 			<van-row>
@@ -139,4 +143,4 @@
 	<view style="padding: 1vw;background-color: #2ABD67;">
 		<van-button icon="https://weixin.tdeado.com/static/house/wxlogo.png" color="#2ABD67" custom-style="padding: 1vw;" custom-class="showbutton" block type="info">微信授权登录</van-button>
 	</view>
-</van-dialog>
+</van-dialog> -->

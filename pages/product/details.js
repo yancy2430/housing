@@ -1,4 +1,5 @@
-// pages/product/details.js
+// pages/article/article.js
+
 var login = require('../../login.js');
 Page({
 
@@ -6,150 +7,75 @@ Page({
    * 页面的初始数据
    */
   data: {
-    token: wx.getStorageSync('token'),
-    product: {}
+    login:true
+  
   },
-  onShareAppMessage: function (res) {
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+    login.login(this)
+    if(options.scene){
+      wx.setStorageSync('scene', options.scene)
+    }
+    wx.getStorageSync('key')
+    let that = this;
+    this.setData({
+      token: wx.getStorageSync("user").token
+    })
+    try {
+      var value = wx.getStorageSync('articleNum')
+      value=value+1
+      wx.setStorageSync('articleNum', Number(value))
+    } catch (e) {
+      // Do something when catch error
+    }
+    this.setData({
+      id: options.id,
+      src: 'http://localhost:8080/mini/house/' + options.id+'.html?token='+wx.getStorageSync('session').token+"&openid="+wx.getStorageSync('session').openid
+    })
+ 
+  }, onShareAppMessage: function (res) {
+    let user = wx.getStorageSync("user")
+    let scene = ''
+    if(user.isStaff){
+      scene = user.userInfo.id
+    }else{
+      scene = user.sourceId
+    }
+    if(scene=='' || scene == null || scene==undefined){
+      scene = wx.getStorageSync('scene')
+    }
+
     let that = this
     wx.request({
       url: 'https://weixin.tdeado.com/miniapp/saveShareLog',
       data: {
-        contentId: this.data.product.details.id,
-        type: 1,
-        contentName: this.data.product.details.productName
+        contentId:that.data.id,
+        type:2,
+        contentName:""
       },
-      method: "POST",
+      method:"POST",
       header: {
         'token': that.data.token,
         'content-type': 'application/json' // 默认值
       },
       success(res) {
-
+    
       }
     })
-    let user = wx.getStorageSync("user")
-    let scene = ''
-    if (user.isStaff) {
-      scene = user.userInfo.id
-    } else {
-      scene = user.sourceId
-    }
-    if (scene == '' || scene == null || scene == undefined) {
-      scene = wx.getStorageSync('scene')
-    }
+
     return {
-      title: '分享' + this.data.product.details.productName,
-      path: '/pages/product/details?id=' + this.data.product.details.id + "&scene=" + scene
+      title: that.data.message.title ,
+      path: '/pages/article/article?id=' + this.data.id +"&scene="+scene
+      // imageUrl: that.data.message.image
     }
   },
-  onLoad: function (options) {
-    login.login(this)
-    if (options.scene) {
-      wx.setStorageSync('scene', options.scene)
-    }
-    let that = this
-    this.setData({
-      token: wx.getStorageSync("user").token,
-      staff: wx.getStorageSync('user').isStaff
-    })
-    wx.request({
-      url: 'https://weixin.tdeado.com/miniapp/details?id=' + options.id,
-      data: {},
-      header: {
-        'token': wx.getStorageSync('user').token,
-        'content-type': 'application/json' // 默认值
-      },
-      success(res) {
-        console.log(res.data)
-        that.setData({
-          product: res.data.data
-        })
-      }
-    })
-  },
-  onReport: function (e) {
-    wx.navigateTo({
-      url: '/pages/product/report?id=' + this.data.product.details.id,
-    })
-  },
-  toPhoto: function (e) {
-    console.log(e.currentTarget.dataset.id)
-    wx.navigateTo({
-      url: '/pages/product/photo?id=' + e.currentTarget.dataset.id,
-    })
-  },
-  toBasis: function (e) {
-    console.log(e.currentTarget.dataset.id)
-    wx.navigateTo({
-      url: '/pages/product/basis?id=' + e.currentTarget.dataset.id,
-    })
-  },
-  onClickCall() {
-    if (wx.getStorageSync("user") && wx.getStorageSync("user").userInfo && wx.getStorageSync("user").userInfo.phone) {
-      wx.makePhoneCall({
-        phoneNumber: wx.getStorageSync('sourcePhone') //仅为示例，并非真实的电话号码
-      })
-    } else {
-      this.setData({
-        show: true
-      })
-    }
-
-  },
-  focus(e) {
-    let that = this
-    if (wx.getStorageSync("user") && wx.getStorageSync("user").userInfo && wx.getStorageSync("user").userInfo.phone) {
-      wx.request({
-        url: 'https://weixin.tdeado.com/miniapp/focus?id=' + this.data.product.details.id,
-        data: {},
-        header: {
-          'token': that.data.token,
-          'content-type': 'application/json' // 默认值
-        },
-        success(res) {
-          console.log(res.data)
-          that.data.product.focus = res.data.data
-          that.setData({
-            product: that.data.product
-          })
-        }
-      })
-    } else {
-      this.setData({
-        show: true
-      })
-    }
-
-  },
-  onTag(e) {
-    wx.switchTab({
-      url: e.target.dataset.page
-    })
-  },
-  onMessage(e) {
-    if (wx.getStorageSync("user") && wx.getStorageSync("user").userInfo && wx.getStorageSync("user").userInfo.phone) {
-      wx.navigateTo({
-        url: '/pages/message/message?img='+this.data.product.details.cover+"&title="+this.data.product.details.productName+"&productId="+this.data.product.details.id+"&type=1",
-      })
-    } else {
-      this.setData({
-        show: true
-      })
-    }
-  },
-  onConfirm() {
-    login.login(this)
-  },
-  getPhonenumber(e) {
+  getMessage(e) {
+    console.log(e)
     let that = this;
-    login.getTokenByPhone(this, e, function yes(res) {
-
-
-    })
-  },
-  onClose() {
-    this.setData({
-      show: false
-    });
+    let data = e.detail.data[e.detail.data.length - 1];
+    that.data.message = JSON.parse(data);
+    console.log(data)
   }
 })
