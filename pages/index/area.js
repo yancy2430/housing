@@ -38,7 +38,7 @@ Page({
   getAllCity(name){
     let that = this
     wx.request({
-      url: 'https://weixin.tdeado.com/system/cityArea/byName?name='+name,
+      url: 'https://miniapp.xiambmb.com/system/cityArea/byName?name='+name,
       data: {},
       header: {
         'token': that.data.token,

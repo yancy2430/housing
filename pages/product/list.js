@@ -12,7 +12,7 @@ Page({
     });
     let that= this
     wx.request({
-      url: 'http://localhost:8080/mini/house/screen?area='+this.data.where.area,
+      url: getApp().globalData.domain+'/mini/house/screen?area='+this.data.where.area,
       method: "POST",
       header: {
         'token': wx.getStorageSync('session').token,
@@ -86,7 +86,7 @@ Page({
     let that = this;
     console.log(this.data.where)
     wx.request({
-      url: 'http://localhost:8080/mini/house/list?page='+this.data.res.current, //仅为示例，并非真实的接口地址
+      url: getApp().globalData.domain+'/mini/house/list?page='+this.data.res.current, //仅为示例，并非真实的接口地址
       data: that.data.where,
       method: "POST",
       header: {
@@ -119,7 +119,7 @@ Page({
     })
 
     wx.request({
-      url: "https://weixin.tdeado.com/system/cityArea/byPid?pid=" + this.data.where.area,
+      url: "https://miniapp.xiambmb.com/system/cityArea/byPid?pid=" + this.data.where.area,
       data: {},
       header: {
         'token': that.data.token,

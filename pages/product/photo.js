@@ -23,7 +23,7 @@ Page({
     })
 
     wx.request({
-      url: 'https://weixin.tdeado.com/miniapp/photos?id=' + option.id,
+      url: 'https://miniapp.xiambmb.com/miniapp/photos?id=' + option.id,
       data: {},
       header: {
         'token': that.data.token,

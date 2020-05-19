@@ -117,7 +117,7 @@
   height: 25vw;
   width: 92vw;
   margin: 4vw 4vw 0vw 4vw;
-  background: url(https://weixin.tdeado.com/static/house/coupons1.png) no-repeat center center;
+  background: url(https://miniapp.xiambmb.com/static/house/coupons1.png) no-repeat center center;
   background-size: cover;
 }
 

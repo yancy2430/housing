@@ -51,7 +51,7 @@ Page({
 
     }
     wx.request({
-      url: 'https://weixin.tdeado.com/miniapp/report',
+      url: 'https://miniapp.xiambmb.com/miniapp/report',
       data: {
         name: that.data.name,
         mobile: that.data.mobile,

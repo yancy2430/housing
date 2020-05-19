@@ -6,7 +6,7 @@
   </van-search>
   <van-grid column-num="4">
     <van-grid-item use-slot wx:for="{{res.records}}" wx:key="index" data-id="{{item.id}}" bindtap="toArticle" >
-    <van-image width="16vw" height="16vw" round src="{{item.cover}}"/>
+    <van-image width="16vw" height="16vw" round src="https://miniapp.xiambmb.com{{item.cover}}"/>
     <view style="width: 21.5vw;font-size:0.8rem;overflow: hidden;white-space: nowrap;text-align: center;">{{item.title}}</view>
     </van-grid-item>
   </van-grid>
@@ -19,6 +19,6 @@
 
 <van-dialog use-slot confirm-button-color="#2ABD67" confirm-button-text="授权" show="{{ show }}" show-cancel-button bind:confirm="onConfirm" confirm-button-open-type="getPhoneNumber" bind:getphonenumber="getPhonenumber" bind:close="onClose">
 	<view style="padding: 1vw;background-color: #2ABD67;">
-		<van-button icon="https://weixin.tdeado.com/static/house/wxlogo.png" color="#2ABD67" custom-style="padding: 1vw;" custom-class="showbutton" block type="info">微信授权登录</van-button>
+		<van-button icon="https://miniapp.xiambmb.com/static/house/wxlogo.png" color="#2ABD67" custom-style="padding: 1vw;" custom-class="showbutton" block type="info">微信授权登录</van-button>
 	</view>
 </van-dialog>

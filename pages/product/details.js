@@ -32,7 +32,7 @@ Page({
     }
     this.setData({
       id: options.id,
-      src: 'http://localhost:8080/mini/house/' + options.id+'.html?token='+wx.getStorageSync('session').token+"&openid="+wx.getStorageSync('session').openid
+      src: getApp().globalData.domain+'/mini/house/' + options.id+'.html?token='+wx.getStorageSync('session').token+"&openid="+wx.getStorageSync('session').openid
     })
  
   }, onShareAppMessage: function (res) {
@@ -49,7 +49,7 @@ Page({
 
     let that = this
     wx.request({
-      url: 'https://weixin.tdeado.com/miniapp/saveShareLog',
+      url: 'https://miniapp.xiambmb.com/miniapp/saveShareLog',
       data: {
         contentId:that.data.id,
         type:2,

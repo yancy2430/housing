@@ -15,7 +15,7 @@ Page({
   onLoad: function (options) {
     let that = this;
     wx.request({
-      url: 'http://localhost:8080/mini/im/dialogue',
+      url: getApp().globalData.domain+'/mini/im/dialogue',
       method:"POST",
       header: {
         token: wx.getStorageSync('session').token

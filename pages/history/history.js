@@ -21,7 +21,7 @@ Page({
     })
 
     wx.request({
-      url: 'https://weixin.tdeado.com/miniapp/historyList',
+      url: 'https://miniapp.xiambmb.com/miniapp/historyList',
       header: {
         'token': that.data.token,
         'content-type': 'application/json' // 默认值

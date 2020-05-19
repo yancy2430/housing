@@ -3,7 +3,7 @@
 	<view class="head">
 		<van-row>
 			<van-col>
-					<van-image custom-class="avater" round fit="cover" src="https://weixin.tdeado.com/static/images/avatar.jpg" />
+					<van-image custom-class="avater" round fit="cover" src="https://miniapp.xiambmb.com/static/images/avatar.jpg" />
 			</van-col>
 			<van-col>
 				<view class="name">
@@ -22,19 +22,19 @@
 		<van-row>
 			<van-col span="8">
 				<view class="topitem" bindtap="toCoupons">
-				<van-icon size="20px" name="http://weixin.tdeado.com/static/house/1.png" />
+				<van-icon size="20px" name="http://miniapp.xiambmb.com/static/house/1.png" />
 					<view class="toptext">优惠券</view>
 				</view>
 			</van-col>
 			<van-col span="8">
 				<view class="topitem" bindtap="toFocus">
-				<van-icon size="20px" name="http://weixin.tdeado.com/static/house/3.png" />
+				<van-icon size="20px" name="http://miniapp.xiambmb.com/static/house/3.png" />
 					<view class="toptext">关注</view>
 				</view>
 			</van-col>
 			<van-col span="8">
 				<view class="topitem" bindtap="toHistory">
-				<van-icon size="20px" name="http://weixin.tdeado.com/static/house/2.png" />
+				<van-icon size="20px" name="http://miniapp.xiambmb.com/static/house/2.png" />
 					<view class="toptext">足迹</view>
 				</view>
 			</van-col>
@@ -111,6 +111,6 @@
 </view>
 <van-dialog use-slot confirm-button-color="#2ABD67" confirm-button-text="授权" show="{{ show }}" show-cancel-button bind:confirm="onConfirm" confirm-button-open-type="getPhoneNumber" bind:getphonenumber="getPhonenumber" bind:close="onClose">
 	<view style="padding: 1vw;background-color: #2ABD67;">
-		<van-button icon="https://weixin.tdeado.com/static/house/wxlogo.png" color="#2ABD67" custom-style="padding: 1vw;" custom-class="showbutton" block type="info">微信授权登录</van-button>
+		<van-button icon="https://miniapp.xiambmb.com/static/house/wxlogo.png" color="#2ABD67" custom-style="padding: 1vw;" custom-class="showbutton" block type="info">微信授权登录</van-button>
 	</view>
 </van-dialog>

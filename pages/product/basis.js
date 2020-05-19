@@ -14,7 +14,7 @@ Page({
       token: wx.getStorageSync("user").token
     })
     wx.request({
-      url: 'https://weixin.tdeado.com/miniapp/basis?id=' + option.id,
+      url: 'https://miniapp.xiambmb.com/miniapp/basis?id=' + option.id,
       data: {},
       header: {
         'token': that.data.token,

@@ -22,7 +22,7 @@ Page({
     })
 
     wx.request({
-      url: 'https://weixin.tdeado.com/miniapp/focusList',
+      url: 'https://miniapp.xiambmb.com/miniapp/focusList',
       header: {
         'token': that.data.token,
         'content-type': 'application/json' // 默认值

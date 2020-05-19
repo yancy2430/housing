@@ -34,14 +34,14 @@ Page({
     })
     //发起网络请求
     wx.request({
-      url: 'https://weixin.tdeado.com/miniapp/me/qrcode',
+      url: 'https://miniapp.xiambmb.com/miniapp/me/qrcode',
       header: {
         'token': that.data.token,
         'content-type': 'application/json' // 默认值
       },
       success(res) {
         that.setData({
-          qrcode: "https://weixin.tdeado.com"+res.data.data
+          qrcode: "https://miniapp.xiambmb.com"+res.data.data
         })
       }
     })

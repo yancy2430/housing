@@ -14,8 +14,8 @@
 	<view class="picture" wx:for="{{photo}}" wx:for-index="upid" wx:if="{{item.list.length>0}}">
 		<view class="sm-title">{{item.name}}({{item.list.length}})</view>
 		<view class="images">
-			<image class="image" data-upid="{{upid}}" wx:for="{{item.list}}" wx:key="index" src="http://weixin.tdeado.com/{{item.image}}" bindtap="onClickShow"
-			 data-index="{{index}}" data-src="http://weixin.tdeado.com/{{item.image}}"></image>
+			<image class="image" data-upid="{{upid}}" wx:for="{{item.list}}" wx:key="index" src="http://miniapp.xiambmb.com/{{item.image}}" bindtap="onClickShow"
+			 data-index="{{index}}" data-src="http://miniapp.xiambmb.com/{{item.image}}"></image>
 		</view>
 	</view>
   <van-overlay show="{{ show }}" bindtap="onClickHide">
@@ -24,7 +24,7 @@
         autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" current="{{current}}" style="width: 100%;height: 100%;margin: auto;" >
         <block wx:for="{{selectImg}}" wx:key="index">
           <swiper-item>
-      			<image class="selectImg" src="http://weixin.tdeado.com/{{item}}"></image>
+      			<image class="selectImg" src="http://miniapp.xiambmb.com/{{item}}"></image>
           </swiper-item>
         </block>
       </swiper>

@@ -47,7 +47,7 @@ Page({
   getNews(key) {
     let that = this;
     wx.request({
-      url: 'http://localhost:8080/mini/home/settle',
+      url: getApp().globalData.domain+'/mini/home/settle',
       header: {
         'token': wx.getStorageSync('session').token,
         'content-type': 'application/json' // 默认值

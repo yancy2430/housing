@@ -3,6 +3,7 @@
 var login = require('./login.js');
 App({
   globalData: {
+    domain:"https://miniapp.xiambmb.com",
     localSocket: {},
     callback: function () {},
     exceptionClose: true,

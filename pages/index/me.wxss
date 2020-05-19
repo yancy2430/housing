@@ -4,8 +4,8 @@
 
 .head {
   height: 30vw;
-  /* background: url(http://weixin.tdeado.com/upload/ab33c6f6-e97f-4ca6-9d5d-a1f8a408889d.jpg) no-repeat center center; */
-  background: url(http://weixin.tdeado.com/static/house/mebg.png) no-repeat center center;
+  /* background: url(http://miniapp.xiambmb.com/upload/ab33c6f6-e97f-4ca6-9d5d-a1f8a408889d.jpg) no-repeat center center; */
+  background: url(http://miniapp.xiambmb.com/static/house/mebg.png) no-repeat center center;
   
   background-size: cover;
 }

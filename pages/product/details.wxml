@@ -19,14 +19,14 @@
 		<view>
 			<van-row>
 				<van-col span="16">
-					<image class="bg_img" src="http://weixin.tdeado.com/{{product.details.cover}}"></image>
+					<image class="bg_img" src="http://miniapp.xiambmb.com/{{product.details.cover}}"></image>
 				</van-col>
 				<van-col span="8">
 					<view class="sm_img">
-						<image src="http://weixin.tdeado.com/{{product.covers[0].image}}"></image>
+						<image src="http://miniapp.xiambmb.com/{{product.covers[0].image}}"></image>
 					</view>
 					<view class="sm_img" bindtap="toPhoto" data-id="{{product.details.id}}">
-						<image src="http://weixin.tdeado.com/{{product.covers[1].image}}"></image>
+						<image src="http://miniapp.xiambmb.com/{{product.covers[1].image}}"></image>
 						<view class="overlay">+{{product.covers.length}}\n查看更多</view>
 					</view>
 				</van-col>
@@ -141,6 +141,6 @@
 </van-goods-action>
 <van-dialog use-slot confirm-button-color="#2ABD67" confirm-button-text="授权" show="{{ show }}" show-cancel-button bind:confirm="onConfirm" confirm-button-open-type="getPhoneNumber" bind:getphonenumber="getPhonenumber" bind:close="onClose">
 	<view style="padding: 1vw;background-color: #2ABD67;">
-		<van-button icon="https://weixin.tdeado.com/static/house/wxlogo.png" color="#2ABD67" custom-style="padding: 1vw;" custom-class="showbutton" block type="info">微信授权登录</van-button>
+		<van-button icon="https://miniapp.xiambmb.com/static/house/wxlogo.png" color="#2ABD67" custom-style="padding: 1vw;" custom-class="showbutton" block type="info">微信授权登录</van-button>
 	</view>
 </van-dialog> -->

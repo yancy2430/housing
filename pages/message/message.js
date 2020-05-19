@@ -13,7 +13,7 @@ Page({
   onCall:function(e){
     console.log(e)
     wx.request({
-      url: 'https://weixin.tdeado.com/miniapp/getPhone?id='+(this.data.options.receiver || wx.getStorageSync('user').sourceId),
+      url: 'https://miniapp.xiambmb.com/miniapp/getPhone?id='+(this.data.options.receiver || wx.getStorageSync('user').sourceId),
       header:{
         token:wx.getStorageSync('session').token
       },
@@ -43,7 +43,7 @@ Page({
   getmessages() {
     let that = this;
     wx.request({
-      url: 'http://localhost:8080/mini/im/message',
+      url: getApp().globalData.domain+'/mini/im/message',
       header: {
         token: wx.getStorageSync('session').token,
         'content-type': 'application/x-www-form-urlencoded'

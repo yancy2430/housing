@@ -5,7 +5,6 @@ Page({
    * 页面的初始数据
    */
   data: {
-    token: wx.getStorageSync('token')
 
   },
 
@@ -14,15 +13,11 @@ Page({
    */
   onLoad: function (options) {
     let that = this;
-    this.setData({
-      token: wx.getStorageSync("user").token
-    })
-
     wx.request({
-      url: 'https://weixin.tdeado.com/miniapp/reports', //仅为示例，并非真实的接口地址
+      url: 'https://miniapp.xiambmb.com/mini/member/reportLog', //仅为示例，并非真实的接口地址
       data: {},
       header: {
-        'token': that.data.token,
+        'token': wx.getStorageSync("session").token,
         'content-type': 'application/json' // 默认值
       },
       success(res) {

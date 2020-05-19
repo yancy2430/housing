@@ -20,7 +20,7 @@ function login(that){
       if (res.code) {
         //发起网络请求
         wx.request({
-          url: 'http://localhost:8080/mini/member/maLogin',
+          url: getApp().globalData.domain+'/mini/member/maLogin',
           data: {
             code: res.code,
             scene: wx.getStorageSync('scene') || ''
@@ -39,7 +39,7 @@ function login(that){
 
 function getUserInfo(that){
   wx.request({
-    url: 'http://localhost:8080/mini/member/userInfo',
+    url: getApp().globalData.domain+'/mini/member/userInfo',
     header: {
       'content-type': 'application/json', // 默认值
       'token':wx.getStorageSync('session').token
@@ -59,7 +59,7 @@ function getUserInfo(that){
 function getTokenByPhone(that,e,yes){
   //发起网络请求
   wx.request({
-    url: 'https://weixin.tdeado.com/miniapp/phone',
+    url: 'https://miniapp.xiambmb.com/miniapp/phone',
     header: {
       'content-type': 'application/json' // 默认值
     },
