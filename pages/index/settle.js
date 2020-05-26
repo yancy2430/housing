@@ -57,7 +57,10 @@ Page({
         page:that.data.res.current
       },
       success(res) {
-        console.log(res.data.data.records)
+        if(res.data.code==-1){
+          that.getNews("")
+          return;
+        }
         that.data.res.current = res.data.data.current
         res.data.data.records.forEach(e => {
           

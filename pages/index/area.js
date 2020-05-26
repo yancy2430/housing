@@ -38,7 +38,7 @@ Page({
   getAllCity(name){
     let that = this
     wx.request({
-      url: 'https://miniapp.xiambmb.com/system/cityArea/byName?name='+name,
+      url: getApp().globalData.domain+'/system/cityArea/byName?name='+name,
       data: {},
       header: {
         'token': that.data.token,

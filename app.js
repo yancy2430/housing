@@ -10,6 +10,10 @@ App({
     socketMsgQueue: []
   },
   onLaunch: function () {
+    wx.removeStorageSync('session')
+    wx.removeStorageSync('userInfo')
+    wx.removeStorageSync('articleNum')
+
   },
 
   onShow: function (options) {
