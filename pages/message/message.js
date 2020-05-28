@@ -92,7 +92,6 @@ Page({
 
       //将计时器赋值给setInter
       that.data.setInter = setInterval(function(){that.newmsg()}, 500);
-      console.log(that.data.setInter)
       }
     })
   },
