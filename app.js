@@ -3,7 +3,7 @@
 var login = require('./login.js');
 App({
   globalData: {
-    domain:"https://miniapp.xiambmb.com",
+    domain:"http://localhost:8881",
     localSocket: {},
     callback: function () {},
     exceptionClose: true,
@@ -13,9 +13,9 @@ App({
     wx.removeStorageSync('session')
     wx.removeStorageSync('userInfo')
     wx.removeStorageSync('articleNum')
+    
 
   },
-
   onShow: function (options) {
   },
   onHide: function () {},

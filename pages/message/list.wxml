@@ -1,6 +1,6 @@
 <!--pages/message/list.wxml-->
 <view class="msglist">
-  <view class="msgitem van-hairline--bottom" wx:for="{{list}}" wx:key="index" data-to="{{item.to}}" data-offset="{{item.offset}}" bindtap="toMessage">
+  <view class="msgitem van-hairline--bottom" wx:for="{{dialogues.records}}" wx:key="index" data-id="{{item.id}}" bindtap="toMessage">
     <image class="avatar" src="{{item.avatar}}"></image>
     <view>
     <view class="title">{{item.title}}</view>

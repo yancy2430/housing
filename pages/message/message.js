@@ -7,21 +7,13 @@ Page({
    * 页面的初始数据
    */
   data: {
+    setInter:'',
     messages: [],
     inputValue: "",
   },
   onCall:function(e){
-    console.log(e)
-    wx.request({
-      url: 'https://miniapp.xiambmb.com/miniapp/getPhone?id='+(this.data.options.receiver || wx.getStorageSync('user').sourceId),
-      header:{
-        token:wx.getStorageSync('session').token
-      },
-      success(res){
-        wx.makePhoneCall({
-          phoneNumber: res.data.data,
-        })
-      }
+    wx.makePhoneCall({
+      phoneNumber:  wx.getStorageSync('userInfo').sourcePhone,
     })
   },
   /**
@@ -29,16 +21,53 @@ Page({
    */
   onHide: function () {
   },
-  onUnload() {
+
+  onUnload: function () {
+    var that =this;
+    //清除计时器  即清除setInter
+    clearInterval(that.data.setInter)
   },
   onLoad: function (options) {
     console.log(options)
     this.setData({
       userInfo:wx.getStorageSync('userInfo'),
-      to:options.to,
-      offset:options.offset
+      dialogueId:options.dialogueId
     })
     this.getmessages()
+
+  },
+  newmsg:function(){
+    let that = this;
+    wx.request({
+      url: getApp().globalData.domain+'/mini/im/newmsg',
+      header: {
+        token: wx.getStorageSync('session').token,
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      data: {
+        dialogueId: that.data.dialogueId || "",
+      },
+      success:function(res) {
+        if(res.data.data.length>0){
+          res.data.data.forEach(item => {
+            that.data.messages.push(item)
+          });
+         
+          that.setData({
+            messages:that.data.messages
+          })
+  
+          that.setData({
+            scrolltop: 5000
+          })
+          wx.pageScrollTo({
+            duration: 300,
+            selector: ".bp"
+          })
+        }
+      }
+    })
+  
   },
   getmessages() {
     let that = this;
@@ -49,17 +78,21 @@ Page({
         'content-type': 'application/x-www-form-urlencoded'
       },
       data: {
-        toUserId: that.data.to,
-        offset: that.data.offset ,
+        dialogueId: that.data.dialogueId || "",
       },
       success(res) {
-        res.data.forEach(item => {
+        console.log(res)
+        res.data.data.records.forEach(item => {
           that.data.messages.push(item)
         });
         console.log(that.data.messages)
         that.setData({
           messages:that.data.messages
         })
+
+      //将计时器赋值给setInter
+      that.data.setInter = setInterval(function(){that.newmsg()}, 500);
+      console.log(that.data.setInter)
       }
     })
   },
@@ -77,22 +110,39 @@ Page({
   },
   onConfirm: function (e) {
     let that = this;
-    let receiver
-    if (that.data.receiver && that.data.sender) {
-      receiver = that.data.receiver == wx.getStorageSync('user').userInfo.id ? that.data.sender : that.data.receiver
-    } else {
-      receiver = wx.getStorageSync('user').sourceId
-    }
 
     let data = {
-      receiver: receiver,
+      to: that.data.to || "",
       content: e.detail.value,
-      contentType: "0"
+      type: "0"
     }
 
     this.setData({
       inputValue: ""
     })
+    wx.request({
+      url: getApp().globalData.domain+'/mini/im/sendMessage',
+      header: {
+        token: wx.getStorageSync('session').token,
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      data:data,
+      success:function(res){
+        that.data.messages.push({
+          content: e.detail.value,
+          from: wx.getStorageSync('userInfo').id,
+          fromAvatar: "https://weixin.tdeado.com/static/images/avatar.jpg",
+          fromName: "匿名客户",
+          toAvatar: "https://weixin.tdeado.com/static/images/avatar.jpg",
+          toName: "匿名客户",
+          type: 1
+        })
+        that.setData({
+          messages:that.data.messages
+        })
+      }
+    })
+
   },
   openProduct(){
 

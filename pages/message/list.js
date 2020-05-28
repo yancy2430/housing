@@ -6,6 +6,7 @@ Page({
    */
   data: {
     
+    dialogues:{}
 
   },
 
@@ -21,8 +22,9 @@ Page({
         token: wx.getStorageSync('session').token
       },
       success(res){
+        console.log(res.data.data)
         that.setData({
-          list:res.data
+          dialogues:res.data.data
         })
       }
     })
@@ -31,7 +33,7 @@ Page({
   toMessage(e){
     console.log(e.currentTarget.dataset)
     wx.navigateTo({
-      url: '/pages/message/message?to='+e.currentTarget.dataset.to+"&offset="+e.currentTarget.dataset.offset,
+      url: '/pages/message/message?dialogueId='+e.currentTarget.dataset.id,
     })
   }
 

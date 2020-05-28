@@ -58,7 +58,9 @@ Page({
       },
       success(res) {
         if(res.data.code==-1){
-          that.getNews("")
+          setTimeout(function () {
+              that.getNews("")
+           }, 2000) //延迟时间 这里是1秒
           return;
         }
         that.data.res.current = res.data.data.current
