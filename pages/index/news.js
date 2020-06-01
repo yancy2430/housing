@@ -84,7 +84,7 @@ Page({
   toArticle(e) {
     let that = this;
     var value = wx.getStorageSync('articleNum')
-    if (value > wx.getStorageSync('checkNum') && !wx.getStorageSync('user')) {
+    if (value > wx.getStorageSync('checkNum') && !wx.getStorageSync('userInfo')) {
       that.setData({
         show: true
       })
@@ -109,7 +109,7 @@ Page({
       show: false
     });
   }, onShareAppMessage: function (res) {
-    let user = wx.getStorageSync("user")
+    let user = wx.getStorageSync("userInfo")
     let scene = ''
     if(user.isStaff){
       scene = user.userInfo.id

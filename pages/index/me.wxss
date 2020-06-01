@@ -3,9 +3,9 @@
 .container {}
 
 .head {
-  height: 30vw;
+  height: 40vw;
   /* background: url(http://miniapp.xiambmb.com/upload/ab33c6f6-e97f-4ca6-9d5d-a1f8a408889d.jpg) no-repeat center center; */
-  background: url(http://miniapp.xiambmb.com/static/house/mebg.png) no-repeat center center;
+  background: url(http://miniapp.xiambmb.com/static/house/mebg.png) no-repeat;
   
   background-size: cover;
 }
@@ -15,7 +15,7 @@
   display: block;
   width: 90rpx;
   height: 90rpx;
-  margin: 60rpx 20rpx 20rpx 70rpx;
+  margin: 120rpx 20rpx 20rpx 70rpx;
   border-radius: 50%;
   border: 2px solid #fff;
   /* box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);   */
@@ -61,7 +61,7 @@
 
 .name {
   color: #fff;
-  margin-top: 11.2vw;
+  margin-top: 19.2vw;
 
   margin-bottom: 0.5vw;
   font-size: 1.2rem;

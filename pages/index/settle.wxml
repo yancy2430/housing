@@ -23,3 +23,4 @@
 		<van-button icon="https://miniapp.xiambmb.com/static/house/wxlogo.png" color="#2ABD67" custom-style="padding: 1vw;" custom-class="showbutton" block type="info">微信授权登录</van-button>
 	</view>
 </van-dialog>
+<van-toast id="van-toast" />

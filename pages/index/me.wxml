@@ -22,19 +22,19 @@
 		<van-row>
 			<van-col span="8">
 				<view class="topitem" bindtap="toCoupons">
-				<van-icon size="20px" name="http://miniapp.xiambmb.com/static/house/1.png" />
+				<van-icon size="35px" name="http://miniapp.xiambmb.com/static/house/1.png" />
 					<view class="toptext">优惠券</view>
 				</view>
 			</van-col>
 			<van-col span="8">
 				<view class="topitem" bindtap="toFocus">
-				<van-icon size="20px" name="http://miniapp.xiambmb.com/static/house/3.png" />
+				<van-icon size="35px" name="http://miniapp.xiambmb.com/static/house/3.png" />
 					<view class="toptext">关注</view>
 				</view>
 			</van-col>
 			<van-col span="8">
 				<view class="topitem" bindtap="toHistory">
-				<van-icon size="20px" name="http://miniapp.xiambmb.com/static/house/2.png" />
+				<van-icon size="35px" name="http://miniapp.xiambmb.com/static/house/2.png" />
 					<view class="toptext">足迹</view>
 				</view>
 			</van-col>
@@ -76,31 +76,31 @@
 		<view class="interval"></view>
 		<van-grid column-num="4">
 			<van-grid-item square link-type="navigateTo" use-slot url="/pages/message/list">
-				<van-icon name="chat-o" color="#2ABD67" size="35px" info="{{ms>0?ms:''}}" />
+				<van-icon name="http://miniapp.xiambmb.com/static/house/menu_evaluation.png"  size="35px" info="{{ms>0?ms:''}}" />
 				<button class="btn">消息中心</button>
 			</van-grid-item>
 			<van-grid-item square link-type="navigateTo" use-slot url="/pages/sharelog/sharelog">
-				<van-icon name="upgrade" color="#2ABD67" size="35px" />
+				<van-icon name="http://miniapp.xiambmb.com/static/house/menu_purchase.png" color="#2ABD67" size="35px" />
 				<button class="btn">分享记录</button>
 			</van-grid-item>
 			<van-grid-item square link-type="navigateTo" use-slot url="/pages/customer/history">
-				<van-icon name="browsing-history-o" color="#2ABD67" size="35px" />
+				<van-icon name="http://miniapp.xiambmb.com/static/house/menu_salesorder.png" color="#2ABD67" size="35px" />
 				<button class="btn">文章浏览</button>
 			</van-grid-item>
 			<van-grid-item square link-type="navigateTo" use-slot url="/pages/customer/houseHistory">
-				<van-icon name="browsing-history-o" color="#2ABD67" size="35px" />
+				<van-icon name="http://miniapp.xiambmb.com/static/house/menu_commgm.png" color="#2ABD67" size="35px" />
 				<button class="btn">楼盘浏览</button>
 			</van-grid-item>
 			<van-grid-item square link-type="navigateTo" use-slot url="/pages/customer/customer">
-				<van-icon name="friends-o" color="#2ABD67" size="35px" />
+				<van-icon name="http://miniapp.xiambmb.com/static/house/menu_fundmg.png" color="#2ABD67" size="35px" />
 				<button class="btn">名下客户</button>
 			</van-grid-item>
 			<van-grid-item square link-type="navigateTo" use-slot url="/pages/records/records">
-				<van-icon name="records" color="#2ABD67" size="35px" />
+				<van-icon name="http://miniapp.xiambmb.com/static/house/menu_distributionorder.png" color="#2ABD67" size="35px" />
 				<button class="btn">报备记录</button>
 			</van-grid-item>
 			<van-grid-item square link-type="navigateTo" use-slot url="/pages/qrcode/qrcode">
-				<van-icon name="cluster-o" color="#2ABD67" size="35px" />
+				<van-icon name="http://miniapp.xiambmb.com/static/house/menu_scancode.png" color="#2ABD67" size="35px" />
 				<button class="btn">我的二维码</button>
 			</van-grid-item>
 

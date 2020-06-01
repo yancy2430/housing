@@ -110,7 +110,7 @@ Page({
       show: false
     });
   }, onShareAppMessage: function (res) {
-    let user = wx.getStorageSync("user")
+    let user = wx.getStorageSync("userInfo")
     let scene = ''
     if(user.isStaff){
       scene = user.userInfo.id
