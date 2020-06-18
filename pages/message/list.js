@@ -14,6 +14,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    
+
+  },
+  onShow:function(){
     let that = this;
     wx.request({
       url: getApp().globalData.domain+'/mini/im/dialogue',
@@ -28,7 +32,6 @@ Page({
         })
       }
     })
-
   },
   toMessage(e){
     console.log(e.currentTarget.dataset)

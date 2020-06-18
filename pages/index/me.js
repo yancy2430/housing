@@ -39,6 +39,7 @@ Page({
   onShow() {
     this.getTabBar().init();
     let that = this;
+    getApp().globalData.msThat = this
     this.setData({
       userInfo: wx.getStorageSync('userInfo'),
       session: wx.getStorageSync('session')
@@ -47,20 +48,29 @@ Page({
     that.getTabBar().setData({
       ms: wx.getStorageSync('ms')
     })
-    app.globalData.callback = function (res) {
-      that.getTabBar().setData({
-        ms: wx.getStorageSync('ms')
-      })
-      that.setData({
-        ms: wx.getStorageSync('ms')
-      })
-    }
+
+    that.setData({
+      ms: wx.getStorageSync('ms')
+    })
+  
   },
   
   toLogin(e) {
-    this.setData({
-      show: true
-    })
+    if(wx.getStorageSync('userInfo').phone){
+      this.setData({
+        userInfo: wx.getStorageSync('userInfo'),
+        session: wx.getStorageSync('session')
+      })
+  
+      wx.navigateTo({
+        url: '/pages/message/message',
+      })
+    }else{
+      this.setData({
+        show: true
+      })
+    }
+    
   },
 
   celltel() {

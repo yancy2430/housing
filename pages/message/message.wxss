@@ -24,15 +24,20 @@ page{
 .editor{
   display: flex;
   background: #fafafa;
-  height: 8vh;
   width: 100vw;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 1000;
 }
+
 .weui-input{
   height: 34px;
   margin:8px 0px 8px 10px;
   padding:0 10px;
   background: #ffffff;
   border-radius: 3px;
+  z-index: 1001;
   width: 100%;
 }
 .icon-l{
@@ -76,7 +81,7 @@ page{
 }
 .contact{
   padding: 3vw 4vw;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 92vw;

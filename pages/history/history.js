@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    token: wx.getStorageSync("user").token
+    token: wx.getStorageSync('session').token
 
   },
   /**
@@ -17,11 +17,11 @@ Page({
     }
     let that = this;
     this.setData({
-      token: wx.getStorageSync("user").token
+      token: wx.getStorageSync('session').token
     })
 
     wx.request({
-      url: 'https://miniapp.xiambmb.com/miniapp/historyList',
+      url: getApp().globalData.domain+'/miniapp/historyList',
       header: {
         'token': that.data.token,
         'content-type': 'application/json' // 默认值
@@ -45,7 +45,7 @@ Page({
       url: '/pages/product/details?id=' + e.currentTarget.dataset.id,
     })
   },onShareAppMessage: function (res) {
-    let user = wx.getStorageSync("user")
+    let user = wx.getStorageSync('session')
     let scene = ''
     if(user.isStaff){
       scene = user.userInfo.id

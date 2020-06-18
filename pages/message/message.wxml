@@ -4,38 +4,43 @@
 	<view class="contact">
 		<van-button type="primary" icon="phone" round block bindtap="onCall">通话</van-button>
 	</view>
-	<scroll-view scroll-y="true" style="height: 91vh;" scroll-top="{{scrolltop}}">
-		
-	<view class="interval"></view>
-	<view class="interval"></view>
-	<view class="interval"></view>
-	<view class="interval"></view>
-	<view class="interval"></view>
-		<view class="message wp" wx:for="{{messages}}" wx:key="index">
+	<scroll-view scroll-y="true" style="height:100vh" scroll-top="{{scrolltop}}">
 
-			<image wx:if="{{item.from!=userInfo.id}}" class="avater" src="{{item.fromAvatar}}" />
-			<image wx:else class="avater" src="" />
-			<view class="content">
-			<view class="content-text {{((item.from == userInfo.id))?'my':''}}">
-				{{item.content}}
-			</view>
-			</view>
-			<view class="avater" wx:if="{{item.from == userInfo.id}}">
-				<open-data type="userAvatarUrl"></open-data>
-			</view>
-			<block wx:else>
-				<image class="avater" src=""></image>
-			</block>
+		<view id="j_page">
+		<view class="interval"></view>
+		<view class="interval"></view>
+		<view class="interval"></view>
+		<view class="interval"></view>
+		<view class="interval"></view>
+			<view class="message wp" wx:for="{{messages}}" wx:key="index">
 
+				<image wx:if="{{item.from!=userInfo.id}}" class="avater" src="{{item.fromAvatar?item.fromAvatar:'https://miniapp.xiambmb.com/static/images/avatar.jpg'}}" />
+				<image wx:else class="avater" src="" />
+				<view class="content">
+					<view class="content-text {{((item.from == userInfo.id))?'my':''}}">
+						{{item.content}}
+					</view>
+				</view>
+				<view class="avater" wx:if="{{item.from == userInfo.id}}">
+					<open-data type="userAvatarUrl"></open-data>
+				</view>
+				<block wx:else>
+					<image class="avater" src=""></image>
+				</block>
+
+			</view>
+		<view class="interval"></view>
+		<view class="interval"></view>
+		<view class="interval"></view>
+		<view class="interval"></view>
+		<view class="interval"></view>
 		</view>
-		<view class="sdp"></view>
 	</scroll-view>
-	<view class="editor bp van-hairline--top" style="padding-bottom:{{bottom}}px">
-		<input value="{{inputValue}}" class="weui-input" adjust-position="{{false}}" bindfocus="foucus" bindblur="blur" placeholder="" bindconfirm="onConfirm" confirm-type="send" />
-		<van-icon class="icon-r" name="share" size="30px" />
-	</view>
-	<!-- <view class="time">2020-03-20 11:21:31</view> -->
 
+		<view class="editor bp van-hairline--top" style="bottom:0px">
+			<input value="{{inputValue}}" confirm-hold="{{true}}" class="weui-input" adjust-position="{{true}}" bindfocus="foucus" bindblur="blur" placeholder="" bindconfirm="onConfirm" confirm-type="send" />
+			<van-icon class="icon-r" name="share" size="30px" />
+		</view>
 </view>
 <van-dialog use-slot confirm-button-color="#2ABD67" confirm-button-text="授权" show="{{ show }}" show-cancel-button bind:confirm="onConfirm" confirm-button-open-type="getPhoneNumber" bind:getphonenumber="getPhonenumber" bind:close="onClose">
 	<view style="padding: 1vw;background-color: #2ABD67;">

@@ -1,4 +1,6 @@
 // pages/product/list.js
+
+var login = require('../../login.js');
 Page({
 
   onLoad: function (options) {
@@ -26,8 +28,10 @@ Page({
       }
   
     })
+    this.data.res.current = 0
+    this.data.res.records = []
+    that.getProdcut();
 
-    this.getProdcut();
   },
   /**
    * 页面的初始数据
@@ -77,10 +81,39 @@ Page({
 
   },
   goProduct(e) {
+    let that = this
     console.log(e.currentTarget.dataset.id)
-    wx.navigateTo({
-      url: '/pages/product/details?id=' + e.currentTarget.dataset.id,
+    wx.request({
+      url: getApp().globalData.domain + '/mini/member/check?tyep=1',
+      header: {
+        'token': wx.getStorageSync('session').token,
+        'content-type': 'application/json' // 默认值
+      },
+      success: function (res) {
+        if (res.data.data) {
+          wx.navigateTo({
+            url: '/pages/product/details?id=' + e.currentTarget.dataset.id,
+          })
+        } else {
+          that.setData({
+            show: true
+          })
+        }
+
+      }
     })
+    
+  },
+  onConfirm() {
+    login.check(this)
+  },
+  getPhonenumber(e) {
+    login.getTokenByPhone(this, e)
+  },
+  onClose() {
+    this.setData({
+      show: false
+    });
   },
   getProdcut() {
     let that = this;
@@ -115,40 +148,12 @@ Page({
   onShow: function () {
     let that = this;
     this.setData({
-      token: wx.getStorageSync("user").token
+      token: wx.getStorageSync('session').token
     })
 
-    wx.request({
-      url: "https://miniapp.xiambmb.com/system/cityArea/byPid?pid=" + this.data.where.area,
-      data: {},
-      header: {
-        'token': that.data.token,
-        'content-type': 'application/json' // 默认值
-      },
-      success(res) {
-        res.data.data.unshift({
-          text: "不限",
-          id: 0
-        })
-
-        that.setData({
-          areaList: [{
-              // 导航名称
-              text: '城区',
-              // 禁用选项
-              disabled: false,
-              // 该导航下所有的可选项
-              children: res.data.data
-            },
-
-          ]
-        })
-      }
-    })
-    that.getProdcut();
   },
   onShareAppMessage: function (res) {
-    let user = wx.getStorageSync("user")
+    let user = wx.getStorageSync('session')
     let scene = ''
     if (user.isStaff) {
       scene = user.userInfo.id

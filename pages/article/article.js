@@ -21,7 +21,8 @@ Page({
     wx.getStorageSync('key')
     let that = this;
     this.setData({
-      token: wx.getStorageSync("user").token
+      options:options,
+      token: wx.getStorageSync('session').token
     })
     try {
       var value = wx.getStorageSync('articleNum')
@@ -30,13 +31,18 @@ Page({
     } catch (e) {
       // Do something when catch error
     }
+
+  },
+  loginCallback:function(res){
+    let that = this
+
     this.setData({
-      id: options.id,
-      src: getApp().globalData.domain+'/mini/article/' + options.id+'.html?token='+wx.getStorageSync('session').token+"&openid="+wx.getStorageSync('session').openid
+      id: that.data.options.id,
+      src: getApp().globalData.domain+'/mini/article/' + that.data.options.id+'.html?token='+wx.getStorageSync('session').token+"&openid="+wx.getStorageSync('session').openid
     })
  
   }, onShareAppMessage: function (res) {
-    let user = wx.getStorageSync("user")
+    let user = wx.getStorageSync('session')
     let scene = ''
     if(user.isStaff){
       scene = user.userInfo.id
@@ -49,7 +55,7 @@ Page({
 
     let that = this
     wx.request({
-      url: 'https://miniapp.xiambmb.com/miniapp/saveShareLog',
+      url: getApp().globalData.domain+'/mini/member/saveShareLog',
       data: {
         contentId:that.data.id,
         type:2,
@@ -57,7 +63,7 @@ Page({
       },
       method:"POST",
       header: {
-        'token': that.data.token,
+        'token': wx.getStorageSync('session').token,
         'content-type': 'application/json' // 默认值
       },
       success(res) {

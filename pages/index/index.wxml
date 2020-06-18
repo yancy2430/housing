@@ -14,7 +14,7 @@
     <van-grid-item text="泉州区域" bindtap="toList" data-id="1209">
       <van-icon slot="icon" size="40" name="https://ke-image.ljcdn.com/materials/appindexconf/44b50fa3627b67a9102c82f96ebd9189.png" />
     </van-grid-item>
-    <van-grid-item text="其他区域" bindtap="toList" data-id="">
+    <van-grid-item text="其他区域" bindtap="toList" data-id="-1">
       <van-icon slot="icon" size="40" name="https://ke-image.ljcdn.com/materials/appindexconf/d10df2594bba41993ad72a7618c5727d.png" />
     </van-grid-item>
   </van-grid>
@@ -32,3 +32,8 @@
   <view class="interval"></view>
   </view>
 </view>
+<van-dialog use-slot confirm-button-color="#2ABD67" confirm-button-text="授权" show="{{ show }}" show-cancel-button bind:confirm="onConfirm" confirm-button-open-type="getPhoneNumber" bind:getphonenumber="getPhonenumber" bind:close="onClose">
+	<view style="padding: 1vw;background-color: #2ABD67;">
+		<van-button icon="https://miniapp.xiambmb.com/static/house/wxlogo.png" color="#2ABD67" custom-style="padding: 1vw;" custom-class="showbutton" block type="info">微信授权登录</van-button>
+	</view>
+</van-dialog>

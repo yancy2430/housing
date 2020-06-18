@@ -68,3 +68,11 @@ padding: 0 5px;
   margin: 0 3vw 2vw 3vw;
 
 }
+.text{
+  text-align: center;
+  color: #666;
+}
+.showbutton{
+  font-size: 1.1rem!important;
+  padding: 0 10px;
+}

@@ -29,19 +29,17 @@ Page({
    */
   onShow: function () {
     let that = this;
-    this.setData({
-      token: wx.getStorageSync("user").token
-    })
+  
     //发起网络请求
     wx.request({
-      url: 'https://miniapp.xiambmb.com/miniapp/me/qrcode',
+      url: getApp().globalData.domain+'/mini/member/shareQrCode',
       header: {
-        'token': that.data.token,
+        'token':  wx.getStorageSync("session").token,
         'content-type': 'application/json' // 默认值
       },
       success(res) {
         that.setData({
-          qrcode: "https://miniapp.xiambmb.com"+res.data.data
+          qrcode: getApp().globalData.domain+res.data.data
         })
       }
     })
@@ -74,7 +72,7 @@ Page({
   onReachBottom: function () {
 
   },onShareAppMessage: function (res) {
-    let user = wx.getStorageSync("user")
+    let user = wx.getStorageSync('session')
     let scene = ''
     if(user.isStaff){
       scene = user.userInfo.id

@@ -3,9 +3,11 @@
 var login = require('./login.js');
 App({
   globalData: {
-    domain:"http://localhost:8881",
+    // domain:"http://192.168.0.104:8080",
+    domain:"https://miniapp.xiambmb.com",
     localSocket: {},
     callback: function () {},
+    msThat: null,
     exceptionClose: true,
     socketMsgQueue: []
   },
@@ -39,8 +41,12 @@ App({
         'content-type': 'application/x-www-form-urlencoded'
       },
       success:function(res) {
-        wx.setStorageSync('msgcount', res.data.data)
-        
+        wx.setStorageSync('ms', res.data.data)
+        if(null!=that.globalData.msThat){
+          that.globalData.msThat.getTabBar().setData({
+            ms: wx.getStorageSync('ms')
+          })
+        }
       }
     })
   

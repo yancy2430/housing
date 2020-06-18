@@ -1,14 +1,12 @@
-.wp {
-  background: url(https://miniapp.xiambmb.com/static/house/login_bg.png) no-repeat center center;
-  background-size: cover;
-  height: 100vh;background-position-y: 0px;
-
+/* pages/settle/settle.wxss */
+.container{
+  position: relative;
 }
-
-.loginBtn {
-  width: 60vw;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  padding: 10vw 20vw;
+.text{
+  text-align: center;
+  color: #666;
+}
+.showbutton{
+  font-size: 1.1rem!important;
+  padding: 0 10px;
 }

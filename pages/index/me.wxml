@@ -44,14 +44,14 @@
 		<view class="interval"></view>
 		<van-cell-group>
 
-			<van-cell custom-class="coll-item" size="large" wx:if="{{login}}" link-type="navigateTo" url="/pages/message/message" icon="service-o" border="{{true}}" value="咨询最新政策" is-link>
+			<van-cell custom-class="coll-item" size="large" wx:if="{{userInfo.phone}}" link-type="navigateTo" url="/pages/message/message" icon="service-o" border="{{true}}" value="咨询最新政策" is-link>
 
 				<view slot="title">
 					<button class="van-cell-text textButton">在线咨询 <van-tag wx:if="{{ms>0}}" type="danger" round>{{ms}}</van-tag></button>
 					
 				</view>
 			</van-cell>
-			<van-cell custom-class="coll-item" size="large" wx:if="{{!login}}" bindtap="toLogin" icon="service-o" border="{{true}}" value="咨询最新政策" is-link>
+			<van-cell custom-class="coll-item" size="large" wx:if="{{!userInfo.phone}}" bindtap="toLogin" icon="service-o" border="{{true}}" value="咨询最新政策" is-link>
 				<view slot="title">
 					<button class="van-cell-text textButton">在线咨询 </button>
 					
@@ -59,7 +59,7 @@
 			</van-cell>
 
 
-			<van-cell custom-class="coll-item" size="large" icon="phone-o" border="{{true}}" value="{{userInfo.sourcePhone}}" is-link>
+			<van-cell custom-class="coll-item" size="large" icon="phone-o" border="{{true}}" value="{{userInfo.phone?userInfo.sourcePhone:''}}" is-link>
 				<view slot="title">
 					<button class="van-cell-text textButton">咨询电话 </button>
 				</view>

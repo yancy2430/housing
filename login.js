@@ -47,7 +47,9 @@ function getUserInfo(that){
     success(res) {
       if(res.data.code==0){
         wx.setStorageSync('userInfo', res.data.data)
-        
+        if(that.loginCallback){
+          that.loginCallback(res.data.data)
+        }
       }
      
     }
@@ -59,8 +61,9 @@ function getUserInfo(that){
 function getTokenByPhone(that,e,yes){
   //发起网络请求
   wx.request({
-    url: 'https://miniapp.xiambmb.com/miniapp/phone',
+    url: getApp().globalData.domain+'/mini/member/setPhone',
     header: {
+      "token":wx.getStorageSync('session').token,
       'content-type': 'application/json' // 默认值
     },
     data: {
@@ -73,11 +76,8 @@ function getTokenByPhone(that,e,yes){
     success(res) {
       console.log(res)
       if(res.data.code==0){
-        wx.setStorage({
-          key: "user",
-          data: res.data.data
-        })
-        wx.setStorageSync('sourcePhone', res.data.data.sourcePhone)
+        
+        login(that)
         if(yes){
           yes(res.data);
         }

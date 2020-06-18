@@ -6,7 +6,7 @@ Page({
    */
   data: {
     allArea: {},
-    token: wx.getStorageSync("user").token,
+    token: wx.getStorageSync('session').token,
     searchValue:""
   },
   onChange(e) {
@@ -20,7 +20,7 @@ Page({
   onLoad: function (option) {
     let that = this
     this.setData({
-      token: wx.getStorageSync("user").token
+      token: wx.getStorageSync('session').token
     })
 
     wx.getStorage({

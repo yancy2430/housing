@@ -11,7 +11,7 @@ Page({
   onLoad: function (option) {
     let that = this;
     this.setData({
-      token: wx.getStorageSync("user").token
+      token: wx.getStorageSync('session').token
     })
     wx.request({
       url: 'https://miniapp.xiambmb.com/miniapp/basis?id=' + option.id,

@@ -9,17 +9,28 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let that = this;
-    if (options.scene) {
-      wx.setStorage({
-        key: "scene",
-        data: options.scene
-      })
-    }
-    login.login(this)
+    
   },
   onShow() {
+    this.setData({
+      show: true
+    })
 
+  },
+  onConfirm() {
+    login.check(this)
+  },
+  getPhonenumber(e) {
+    login.getTokenByPhone(this, e, function(res){
+      wx.navigateBack()
+
+    })
+  },
+  onClose() {
+    this.setData({
+      show: false
+    });
+    wx.navigateBack()
   },
   getPhoneNumber(e) {
     login.getTokenByPhone(this, e, function (res) {

@@ -1,11 +1,13 @@
 <!--pages/message/list.wxml-->
 <view class="msglist">
-  <view class="msgitem van-hairline--bottom" wx:for="{{dialogues.records}}" wx:key="index" data-id="{{item.id}}" bindtap="toMessage">
-    <image class="avatar" src="{{item.avatar}}"></image>
-    <view>
-    <view class="title">{{item.title}}</view>
-    <view class="desc van-ellipsis">{{item.newMsg}}</view>
-    </view>
-    <view class="time">{{item.createTime}}</view>
-  </view>
+	<view class="msgitem van-hairline--bottom" wx:for="{{dialogues.records}}" wx:key="index" data-id="{{item.id}}" bindtap="toMessage">
+		<!-- <image class="avatar" src="{{item.avatar?item.avatar:'https://miniapp.xiambmb.com/static/images/avatar.jpg'}}"></image> -->
+
+		<van-icon size="50" info="{{item.unread && item.unread>0?item.unread:''}}" name="{{item.avatar?item.avatar:'https://miniapp.xiambmb.com/static/images/avatar.jpg'}}" />
+		<view>
+			<view class="title">{{item.title?item.title:'匿名用户'}}</view>
+			<view class="desc van-ellipsis">{{item.newMsg}}</view>
+		</view>
+		<view class="time">{{item.updateTime}}</view>
+	</view>
 </view>

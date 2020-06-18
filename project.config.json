@@ -23,7 +23,7 @@
 			"disablePlugins": [],
 			"outputPath": ""
 		},
-		"useCompilerModule": true,
+		"useCompilerModule": false,
 		"userConfirmedUseCompilerModuleSwitch": false
 	},
 	"compileType": "miniprogram",
@@ -79,6 +79,13 @@
 					"name": "pages/index/settle",
 					"pathName": "pages/index/settle",
 					"query": "scene=12345",
+					"scene": null
+				},
+				{
+					"id": 3,
+					"name": "pages/product/details",
+					"pathName": "pages/product/details",
+					"query": "id=1249899301300080641&scene=",
 					"scene": null
 				}
 			]

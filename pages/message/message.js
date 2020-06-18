@@ -28,14 +28,36 @@ Page({
     clearInterval(that.data.setInter)
   },
   onLoad: function (options) {
-    console.log(options)
+    console.log(wx.getSystemInfo())
+
+
     this.setData({
       userInfo:wx.getStorageSync('userInfo'),
       dialogueId:options.dialogueId
     })
     this.getmessages()
+    let that =this
+    wx.onKeyboardHeightChange(function(res){
+      that.setData({
+        bottom:res.height
+      })
 
+      console.log("onKeyboardHeightChange")
+      console.log(res.height)
+    });
   },
+
+  toBottom:function(){
+    let that = this;
+    wx.createSelectorQuery().select('#j_page').boundingClientRect(function (rect) {
+      console.log(rect.height)
+      that.setData({
+        scrolltop: rect.height,
+        tb:"tb"
+      })
+    }).exec()
+  },
+
   newmsg:function(){
     let that = this;
     wx.request({
@@ -56,14 +78,7 @@ Page({
           that.setData({
             messages:that.data.messages
           })
-  
-          that.setData({
-            scrolltop: 5000
-          })
-          wx.pageScrollTo({
-            duration: 300,
-            selector: ".bp"
-          })
+          that.toBottom();
         }
       }
     })
@@ -89,7 +104,7 @@ Page({
         that.setData({
           messages:that.data.messages
         })
-
+        that.toBottom();
       //将计时器赋值给setInter
       that.data.setInter = setInterval(function(){that.newmsg()}, 500);
       }
@@ -111,7 +126,7 @@ Page({
     let that = this;
 
     let data = {
-      to: that.data.to || "",
+      dialogueId: that.data.dialogueId || "",
       content: e.detail.value,
       type: "0"
     }
@@ -139,38 +154,22 @@ Page({
         that.setData({
           messages:that.data.messages
         })
+        that.toBottom();
       }
     })
-
   },
   openProduct(){
-
   },
   //输入聚焦
-
-
   foucus: function (e) {
-
     var that = this;
 
-    that.setData({
-      bottom: e.detail.height,
-      scrolltop: 5000
-    })
-    wx.pageScrollTo({
-      duration: 300,
-      selector: ".bp"
-    })
+    that.toBottom();
+
   },
   blur: function (e) {
-
     var that = this;
 
-    that.setData({
-
-      bottom: 0
-
-    })
 
   },
   onConfirmDialog() {
@@ -178,7 +177,6 @@ Page({
   },
   getPhonenumber(e) {
     let that = this;
-    console.log(e)
     if (e.detail.errMsg == 'getPhoneNumber:fail user deny') {
       wx.navigateBack({
         delta: 1

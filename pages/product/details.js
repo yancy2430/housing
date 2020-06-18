@@ -21,7 +21,9 @@ Page({
     wx.getStorageSync('key')
     let that = this;
     this.setData({
-      token: wx.getStorageSync("user").token
+      id: options.id,
+      options:options,
+      token: wx.getStorageSync('session').token
     })
     try {
       var value = wx.getStorageSync('articleNum')
@@ -30,13 +32,18 @@ Page({
     } catch (e) {
       // Do something when catch error
     }
-    this.setData({
-      id: options.id,
-      src: getApp().globalData.domain+'/mini/house/' + options.id+'.html?token='+wx.getStorageSync('session').token+"&openid="+wx.getStorageSync('session').openid
-    })
+  
  
-  }, onShareAppMessage: function (res) {
-    let user = wx.getStorageSync("user")
+  },
+  loginCallback:function(res){
+    let that = this
+    this.setData({
+      id: that.data.options.id,
+      src: getApp().globalData.domain+'/mini/house/' + that.data.options.id+'.html?token='+wx.getStorageSync('session').token+"&openid="+wx.getStorageSync('session').openid
+    })
+  }
+  , onShareAppMessage: function (res) {
+    let user = wx.getStorageSync('session')
     let scene = ''
     if(user.isStaff){
       scene = user.userInfo.id
@@ -49,15 +56,15 @@ Page({
 
     let that = this
     wx.request({
-      url: 'https://miniapp.xiambmb.com/miniapp/saveShareLog',
+      url: getApp().globalData.domain+'/mini/member/saveShareLog',
       data: {
         contentId:that.data.id,
-        type:2,
+        type:1,
         contentName:""
       },
       method:"POST",
       header: {
-        'token': that.data.token,
+        'token': wx.getStorageSync('session').token,
         'content-type': 'application/json' // 默认值
       },
       success(res) {
@@ -65,9 +72,10 @@ Page({
       }
     })
 
+    console.log('/pages/product/details?id=' + this.data.id +"&scene="+scene)
     return {
       title: that.data.message.title ,
-      path: '/pages/article/article?id=' + this.data.id +"&scene="+scene
+      path: '/pages/product/details?id=' + this.data.id +"&scene="+scene
       // imageUrl: that.data.message.image
     }
   },

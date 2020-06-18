@@ -19,12 +19,12 @@ Page({
     }
     let that = this;
     this.setData({
-      token:wx.getStorageSync("user").token
+      token:wx.getStorageSync('session').token
     })
     
   },
   onShareAppMessage: function (res) {
-    let user = wx.getStorageSync("user")
+    let user = wx.getStorageSync('session')
     let scene = ''
     if(user.isStaff){
       scene = user.userInfo.id

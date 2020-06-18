@@ -22,6 +22,9 @@ Page({
     wx.showLoading({
       title: '加载中',
     })
+    this.data.res.current = 0
+    this.data.res.records = []
+    this.getNews("");
   },
   onPullDownRefresh() {
     this.data.res.current = 0
@@ -30,13 +33,12 @@ Page({
   },
   onShow() {
     this.getTabBar().init();
+
     login.check(this)
     let that = this;
-    that.getTabBar().setData({
-      ms: wx.getStorageSync('ms')
-    })
+    getApp().globalData.msThat = this
+   
     
-    this.getNews("");
   },
   onChange(e) {
     this.setData({
@@ -65,7 +67,7 @@ Page({
         page:that.data.res.current
       },
       success(res) {
-        if(res.data.code==-1){
+        if(res.data.code!=0){
           setTimeout(function () {
               that.getNews("")
            }, 2000) //延迟时间 这里是1秒
@@ -88,20 +90,25 @@ Page({
   },
   toArticle(e) {
     let that = this;
-    var value = wx.getStorageSync('articleNum')
-    if (value > wx.getStorageSync('checkNum') && !wx.getStorageSync('userInfo')) {
-      that.setData({
-        show: true
-      })
+    wx.request({
+      url: getApp().globalData.domain + '/mini/member/check?tyep=2',
+      header: {
+        'token': wx.getStorageSync('session').token,
+        'content-type': 'application/json' // 默认值
+      },
+      success: function (res) {
+        if (res.data.data) {
+          wx.navigateTo({
+            url: '/pages/article/article?id=' + e.currentTarget.dataset.id,
+          })
+        } else {
+          that.setData({
+            show: true
+          })
+        }
 
-      return;
-    } else {
-      wx.navigateTo({
-        url: '/pages/article/article?id=' + e.currentTarget.dataset.id,
-      })
-
-    }
-
+      }
+    })
   },
   onConfirm() {
     login.check(this)

@@ -17,7 +17,7 @@ Page({
   getlist(){
     let that = this;
     wx.request({
-      url: 'https://miniapp.xiambmb.com/mini/member/houseLog',
+      url: getApp().globalData.domain+'/mini/member/houseLog',
       header:{
         token:wx.getStorageSync("session").token
       },
