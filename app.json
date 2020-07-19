@@ -5,7 +5,9 @@
     "van-col": "@vant/weapp/col/index",
     "van-sticky": "@vant/weapp/sticky/index",
     "van-toast": "@vant/weapp/toast/index",
-    "van-tag": "@vant/weapp/tag/index"
+    "van-divider": "@vant/weapp/divider/index",
+    "van-tag": "@vant/weapp/tag/index",
+    "van-loading": "@vant/weapp/loading/index"
   },
   "pages": [
     "pages/index/settle",

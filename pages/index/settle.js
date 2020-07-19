@@ -13,15 +13,14 @@ Page({
       current:0,
       records:[]
     },
+    msg:"",
     searchValue: ""
   },  
   onLoad: function (options) {
     if(options.scene){
       wx.setStorageSync('scene', options.scene)
     }
-    wx.showLoading({
-      title: '加载中',
-    })
+    
     this.data.res.current = 0
     this.data.res.records = []
     this.getNews("");
@@ -68,9 +67,12 @@ Page({
       },
       success(res) {
         if(res.data.code!=0){
-          setTimeout(function () {
-              that.getNews("")
-           }, 2000) //延迟时间 这里是1秒
+          // setTimeout(function () {
+          //     that.getNews("")
+          //  }, 2000) //延迟时间 这里是1秒
+          that.setData({
+            msg:res.data.msg
+          })
           return;
         }
         that.data.res.current = res.data.data.current
@@ -84,7 +86,6 @@ Page({
         })
         wx.stopPullDownRefresh()
         wx.hideLoading()
-
       }
     })
   },

@@ -1,22 +1,26 @@
 <view class="container">
 
-
   <van-search shape="round" value="{{ searchValue }}" placeholder="请输入搜索关键词" use-action-slot bind:change="onChange" bind:search="onSearch">
     <view slot="label" bind:tap="onClick">
       <text class="area-text" bindtap="toArea">{{area.name}}</text>
     </view>
   </van-search>
+
+<van-empty description="内容未找到" wx:if="{{empty}}">
+  <van-button round type="danger" class="bottom-button">
+    重新加载
+  </van-button>
+</van-empty>
   <van-grid column-num="4">
     <van-grid-item use-slot wx:for="{{res.records}}" wx:key="index" data-id="{{item.id}}" bindtap="toArticle">
       <van-image width="16vw" height="16vw" round src="https://miniapp.xiambmb.com{{item.cover}}" />
       <view style="width: 21.5vw;font-size:0.8rem;overflow: hidden;white-space: nowrap;text-align: center;">{{item.title}}</view>
     </van-grid-item>
   </van-grid>
-  <view class="interval"></view>
-  <view class="interval"></view>
-  <view class="interval"></view>
-  <view class="interval"></view>
-  <view class="interval"></view>
+  <van-divider contentPosition="center">
+    <van-loading type="spinner" />
+  </van-divider>
+  <view class="bottom"></view>
 </view>
 <van-dialog use-slot confirm-button-color="#2ABD67" confirm-button-text="授权" show="{{ show }}" show-cancel-button bind:confirm="onConfirm" confirm-button-open-type="getPhoneNumber" bind:getphonenumber="getPhonenumber" bind:close="onClose">
 	<view style="padding: 1vw;background-color: #2ABD67;">
