@@ -32,6 +32,11 @@ function login(that){
         })
       } else {
         console.log('登录失败！' + res.errMsg)
+        wx.showToast({
+          title: res.errMsg,  // 标题
+          icon: 'none',   // 图标类型，默认success
+          duration: 1500   // 提示窗停留时间，默认1500ms
+        })
       }
     }
   })
@@ -50,6 +55,12 @@ function getUserInfo(that){
         if(that.loginCallback){
           that.loginCallback(res.data.data)
         }
+      }else{
+        wx.showToast({
+          title: res.data.msg,  // 标题
+          icon: 'none',   // 图标类型，默认success
+          duration: 1500   // 提示窗停留时间，默认1500ms
+        })
       }
      
     }
@@ -81,6 +92,12 @@ function getTokenByPhone(that,e,yes){
         if(yes){
           yes(res.data);
         }
+      }else{
+        wx.showToast({
+          title: res.data.msg,  // 标题
+          icon: 'none',   // 图标类型，默认success
+          duration: 1500   // 提示窗停留时间，默认1500ms
+        })
       }
      
     }

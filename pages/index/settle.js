@@ -17,13 +17,14 @@ Page({
     searchValue: ""
   },  
   onLoad: function (options) {
+   
+    this.data.res.current = 0
+    this.data.res.records = []
+    this.getNews("");
     if(options.scene){
       wx.setStorageSync('scene', options.scene)
     }
     
-    this.data.res.current = 0
-    this.data.res.records = []
-    this.getNews("");
   },
   onPullDownRefresh() {
     this.data.res.current = 0
@@ -55,6 +56,7 @@ Page({
   },
   getNews(key) {
     let that = this;
+    console.log(wx.getStorageSync('userInfo'))
     wx.request({
       url: getApp().globalData.domain+'/mini/home/settle',
       header: {
@@ -67,9 +69,9 @@ Page({
       },
       success(res) {
         if(res.data.code!=0){
-          // setTimeout(function () {
-          //     that.getNews("")
-          //  }, 2000) //延迟时间 这里是1秒
+          setTimeout(function () {
+              that.getNews("")
+           }, 2000) //延迟时间 这里是1秒
           that.setData({
             msg:res.data.msg
           })
@@ -133,7 +135,7 @@ Page({
       scene = wx.getStorageSync('scene')
     }
     return {
-      title: '分享厦门本地宝' ,
+      title: '分享厦门便民宝' ,
       path: '/pages/index/settle?&scene='+scene
     }
   },

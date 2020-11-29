@@ -164,7 +164,7 @@ Page({
       scene = wx.getStorageSync('scene')
     }
     return {
-      title: '分享厦门本地宝',
+      title: '分享厦门便民宝',
       path: '/pages/index/settle?&scene=' + scene
     }
   },

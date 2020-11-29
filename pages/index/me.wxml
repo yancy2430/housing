@@ -21,10 +21,22 @@
 	<view class="tops">
 		<van-row>
 			<van-col span="8">
-				<view class="topitem" bindtap="toCoupons">
+				
+				<block wx:if="{{userInfo.phone}}">
+					<view class="topitem" bindtap="toCoupons">
 				<van-icon size="35px" name="http://miniapp.xiambmb.com/static/house/1.png" />
 					<view class="toptext">优惠券</view>
 				</view>
+					</block>
+					<block wx:if="{{!userInfo.phone}}">
+					
+						<view class="topitem" bindtap="toLogin">
+						<van-icon size="35px" name="http://miniapp.xiambmb.com/static/house/1.png" />
+							<view class="toptext">优惠券</view>
+						</view>
+
+					</block>
+
 			</van-col>
 			<van-col span="8">
 				<view class="topitem" bindtap="toFocus">

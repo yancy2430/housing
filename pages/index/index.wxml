@@ -24,7 +24,9 @@
 
     <product-list class="van-hairline--bottom" wx:for="{{res.records}}" product="{{item}}" bindtap="goProduct" data-id="{{item.id}}">
     </product-list>
-
+  <!-- <van-divider contentPosition="center">
+    <van-loading type="spinner" />
+  </van-divider> -->
   <view class="interval"></view>
   <view class="interval"></view>
   <view class="interval"></view>
